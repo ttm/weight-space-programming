@@ -26,8 +26,10 @@ jobs:
       - name: Unit tests
         run: python -m unittest discover -s tests -v
       - name: Reproduce benchmark
-        run: python -m wsp benchmark --directory examples --random-trials 30 --output /tmp/wsp-benchmark.json
+        run: python -m wsp benchmark --directory examples --random-trials 30 --output results/initial_benchmark.json
       - name: Reproduce repair
-        run: python -m wsp repair fixtures/xor2_corrupted.json repairs/xor2_bias_fix.json --output /tmp/wsp-repair.json
+        run: python -m wsp repair fixtures/xor2_corrupted.json repairs/xor2_bias_fix.json --output results/xor2_repair.json
       - name: Reproduce perturbation checks
-        run: python -m wsp stress examples/xor2.json --output /tmp/wsp-stress.json
+        run: python -m wsp stress examples/xor2.json --output results/xor2_stress.json
+      - name: Committed results match exactly
+        run: git diff --exit-code -- results/

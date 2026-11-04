@@ -33,24 +33,24 @@
       "random_baseline": {
         "splits": {
           "edge": {
-            "max": 24.94790748556399,
-            "mean": 4.494573948639805,
+            "max": 24.9479074856,
+            "mean": 4.49457394864,
             "metric": "mse",
-            "min": 0.4850605477416449,
+            "min": 0.485060547742,
             "perfect_trials": 0
           },
           "ood": {
-            "max": 480.86106102021046,
-            "mean": 144.52377026001898,
+            "max": 480.86106102,
+            "mean": 144.52377026,
             "metric": "mse",
-            "min": 26.383566957348833,
+            "min": 26.3835669573,
             "perfect_trials": 0
           },
           "test": {
-            "max": 38.16482107939433,
-            "mean": 8.103476102829974,
+            "max": 38.1648210794,
+            "mean": 8.10347610283,
             "metric": "mse",
-            "min": 0.9243014005883846,
+            "min": 0.924301400588,
             "perfect_trials": 0
           }
         },
@@ -120,21 +120,21 @@
         "splits": {
           "edge": {
             "max": 1.0,
-            "mean": 0.4583333333333333,
+            "mean": 0.458333333333,
             "metric": "accuracy",
             "min": 0.0,
             "perfect_trials": 1
           },
           "ood": {
             "max": 0.93359375,
-            "mean": 0.46803385416666665,
+            "mean": 0.468033854167,
             "metric": "accuracy",
             "min": 0.009765625,
             "perfect_trials": 0
           },
           "test": {
             "max": 0.9140625,
-            "mean": 0.48040364583333334,
+            "mean": 0.480403645833,
             "metric": "accuracy",
             "min": 0.052734375,
             "perfect_trials": 0
@@ -176,21 +176,21 @@
         "splits": {
           "edge": {
             "max": 0.8,
-            "mean": 0.5066666666666667,
+            "mean": 0.506666666667,
             "metric": "accuracy",
             "min": 0.2,
             "perfect_trials": 0
           },
           "ood": {
             "max": 0.99609375,
-            "mean": 0.4918619791666667,
+            "mean": 0.491861979167,
             "metric": "accuracy",
             "min": 0.00390625,
             "perfect_trials": 0
           },
           "test": {
             "max": 0.873046875,
-            "mean": 0.49147135416666665,
+            "mean": 0.491471354167,
             "metric": "accuracy",
             "min": 0.126953125,
             "perfect_trials": 0
@@ -232,14 +232,14 @@
         "splits": {
           "edge": {
             "max": 0.8,
-            "mean": 0.4266666666666667,
+            "mean": 0.426666666667,
             "metric": "accuracy",
             "min": 0.2,
             "perfect_trials": 0
           },
           "ood": {
             "max": 0.955078125,
-            "mean": 0.4397786458333333,
+            "mean": 0.439778645833,
             "metric": "accuracy",
             "min": 0.044921875,
             "perfect_trials": 0
@@ -301,7 +301,7 @@
             "metric": "mse",
             "n": 512,
             "passed": true,
-            "value": 5.238529448733282e-32
+            "value": 5.23852944873e-32
           },
           "test": {
             "metric": "mse",
@@ -317,24 +317,24 @@
       "random_baseline": {
         "splits": {
           "edge": {
-            "max": 43.72862149401149,
-            "mean": 5.095606802280062,
+            "max": 43.728621494,
+            "mean": 5.09560680228,
             "metric": "mse",
-            "min": 0.24342546609321689,
+            "min": 0.243425466093,
             "perfect_trials": 0
           },
           "ood": {
-            "max": 678.0268340082017,
-            "mean": 149.37017656556583,
+            "max": 678.026834008,
+            "mean": 149.370176566,
             "metric": "mse",
-            "min": 19.5957131990107,
+            "min": 19.595713199,
             "perfect_trials": 0
           },
           "test": {
-            "max": 42.421593860700646,
-            "mean": 6.787543236671082,
+            "max": 42.4215938607,
+            "mean": 6.78754323667,
             "metric": "mse",
-            "min": 1.175321339884264,
+            "min": 1.17532133988,
             "perfect_trials": 0
           }
         },
@@ -362,7 +362,7 @@
         "splits": {
           "test": {
             "max": 0.75,
-            "mean": 0.5041666666666667,
+            "mean": 0.504166666667,
             "metric": "accuracy",
             "min": 0.375,
             "perfect_trials": 0
@@ -411,14 +411,14 @@
           },
           "ood": {
             "max": 0.98828125,
-            "mean": 0.33990885416666666,
+            "mean": 0.339908854167,
             "metric": "accuracy",
             "min": 0.0,
             "perfect_trials": 0
           },
           "test": {
             "max": 0.892578125,
-            "mean": 0.3077473958333333,
+            "mean": 0.307747395833,
             "metric": "accuracy",
             "min": 0.0,
             "perfect_trials": 0
@@ -448,7 +448,7 @@
         "splits": {
           "test": {
             "max": 0.5,
-            "mean": 0.4583333333333333,
+            "mean": 0.458333333333,
             "metric": "accuracy",
             "min": 0.25,
             "perfect_trials": 0

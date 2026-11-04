@@ -33,6 +33,8 @@ python3 -m unittest discover -s tests -v
 
 Without installation, prefix commands with `PYTHONPATH=src` (on Unix-based shells).
 
+Reports round floats to 12 significant digits, which absorbs last-bit differences between platforms' math libraries: regenerating `results/` reproduces the committed files byte for byte, and CI checks this with `git diff --exit-code results/`.
+
 ## Run controlled generation conditions
 
 An external participant, human or LLM, must **write the candidate JSON artifact directly**. The harness never generates or optimizes candidate weights.

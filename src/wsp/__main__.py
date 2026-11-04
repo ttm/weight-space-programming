@@ -12,8 +12,23 @@ from .session import finalize, probe, start
 from .tasks import TASKS
 
 
+def _round_floats(data: object, digits: int = 12) -> object:
+    """Round floats to `digits` significant digits so reports are byte-identical across platforms.
+
+    Random baselines and noise perturbations draw weights with random.gauss, which calls the C library's log/cos/sin;
+    their last bit differs between operating systems and CPU architectures.
+    """
+    if isinstance(data, float):
+        return float(f"{data:.{digits}g}")
+    if isinstance(data, dict):
+        return {key: _round_floats(value, digits) for key, value in data.items()}
+    if isinstance(data, (list, tuple)):
+        return [_round_floats(value, digits) for value in data]
+    return data
+
+
 def _print(data: object, output: str | None = None) -> None:
-    contents = json.dumps(data, indent=2, sort_keys=True, allow_nan=False) + "\n"
+    contents = json.dumps(_round_floats(data), indent=2, sort_keys=True, allow_nan=False) + "\n"
     if output:
         path = Path(output)
         path.parent.mkdir(parents=True, exist_ok=True)

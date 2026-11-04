@@ -5,6 +5,7 @@ from pathlib import Path
 import tempfile
 import unittest
 
+from wsp.__main__ import _round_floats
 from wsp.evaluation import evaluate, equivalent, permute_hidden, random_baseline, rescale_relu, stress
 from wsp.network import load_candidate, validate_network
 from wsp.session import start, probe, finalize
@@ -46,6 +47,12 @@ class HandcraftedTests(unittest.TestCase):
     def test_splits_deterministic(self):
         self.assertEqual(samples("compare2", "test"), samples("compare2", "test"))
         self.assertNotEqual(samples("compare2", "test"), samples("compare2", "ood"))
+
+    def test_reports_absorb_platform_float_noise(self):
+        # absdiff2 random-baseline MSE as computed on two platforms; their libm results differ in the last bit.
+        self.assertEqual(_round_floats(24.94790748556399), _round_floats(24.947907485563984))
+        report = {"value": 1e-31, "passed": True, "n": [512, 0.75]}
+        self.assertEqual(json.dumps(_round_floats(report)), json.dumps(report))
 
     def test_stress_and_random_baseline(self):
         candidate = load_candidate(ROOT / "examples/xor2.json")
