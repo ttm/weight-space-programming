@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "task": "parity3",
+  "author": "GPT-6 (analytically constructed, not trained)",
+  "method": "direct_weights",
+  "explanation": "Let s=x1+x2+x3. The output is ReLU(s)-2ReLU(s-1)+2ReLU(s-2)-0.5; it alternates sign at integer counts 0,1,2,3.",
+  "network": {
+    "layers": [
+      {
+        "weights": [
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "bias": [
+          0,
+          -1,
+          -2
+        ],
+        "activation": "relu"
+      },
+      {
+        "weights": [
+          [
+            1,
+            -2,
+            2
+          ]
+        ],
+        "bias": [
+          -0.5
+        ],
+        "activation": "linear"
+      }
+    ]
+  }
+}

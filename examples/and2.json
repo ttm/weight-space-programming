@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "task": "and2",
+  "author": "GPT-6 (analytically constructed, not trained)",
+  "method": "direct_weights",
+  "explanation": "Single linear separator: x1+x2-1.5 > 0 iff both bits are one.",
+  "network": {
+    "layers": [
+      {
+        "weights": [
+          [
+            1,
+            1
+          ]
+        ],
+        "bias": [
+          -1.5
+        ],
+        "activation": "linear"
+      }
+    ]
+  }
+}

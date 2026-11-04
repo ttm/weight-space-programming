@@ -1,0 +1,84 @@
+{
+  "invariances": {
+    "hidden_neuron_permutation": true,
+    "relu_positive_rescaling": true
+  },
+  "noise": {
+    "0.01": {
+      "test": {
+        "max": 1.0,
+        "mean": 1.0,
+        "min": 1.0
+      }
+    },
+    "0.1": {
+      "test": {
+        "max": 1.0,
+        "mean": 0.9875,
+        "min": 0.75
+      }
+    },
+    "0.5": {
+      "test": {
+        "max": 0.75,
+        "mean": 0.5875,
+        "min": 0.25
+      }
+    }
+  },
+  "original": {
+    "all_passed": true,
+    "parameters": 9,
+    "splits": {
+      "test": {
+        "metric": "accuracy",
+        "n": 4,
+        "passed": true,
+        "value": 1.0
+      }
+    },
+    "task": "xor2"
+  },
+  "quantized": {
+    "0": {
+      "all_passed": true,
+      "parameters": 9,
+      "splits": {
+        "test": {
+          "metric": "accuracy",
+          "n": 4,
+          "passed": true,
+          "value": 1.0
+        }
+      },
+      "task": "xor2"
+    },
+    "1": {
+      "all_passed": true,
+      "parameters": 9,
+      "splits": {
+        "test": {
+          "metric": "accuracy",
+          "n": 4,
+          "passed": true,
+          "value": 1.0
+        }
+      },
+      "task": "xor2"
+    },
+    "3": {
+      "all_passed": true,
+      "parameters": 9,
+      "splits": {
+        "test": {
+          "metric": "accuracy",
+          "n": 4,
+          "passed": true,
+          "value": 1.0
+        }
+      },
+      "task": "xor2"
+    }
+  },
+  "task": "xor2"
+}

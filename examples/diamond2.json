@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "task": "diamond2",
+  "author": "GPT-6 (analytically constructed, not trained)",
+  "method": "direct_weights",
+  "explanation": "Logit 1-|x|-|y| is positive inside the open L1 unit ball.",
+  "network": {
+    "layers": [
+      {
+        "weights": [
+          [
+            1,
+            0
+          ],
+          [
+            -1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            -1
+          ]
+        ],
+        "bias": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "activation": "relu"
+      },
+      {
+        "weights": [
+          [
+            -1,
+            -1,
+            -1,
+            -1
+          ]
+        ],
+        "bias": [
+          1
+        ],
+        "activation": "linear"
+      }
+    ]
+  }
+}

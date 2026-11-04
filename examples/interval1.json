@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "task": "interval1",
+  "author": "GPT-6 (analytically constructed, not trained)",
+  "method": "direct_weights",
+  "explanation": "Logit 0.5-ReLU(x)-ReLU(-x)=0.5-|x|: positive precisely on the open interval.",
+  "network": {
+    "layers": [
+      {
+        "weights": [
+          [
+            1
+          ],
+          [
+            -1
+          ]
+        ],
+        "bias": [
+          0,
+          0
+        ],
+        "activation": "relu"
+      },
+      {
+        "weights": [
+          [
+            -1,
+            -1
+          ]
+        ],
+        "bias": [
+          0.5
+        ],
+        "activation": "linear"
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "task": "xor2",
+  "author": "GPT-6 (analytically constructed, not trained)",
+  "method": "deliberately_incorrect_control",
+  "explanation": "Negative control: this is OR, not XOR; it should fail 1 of 4 truth-table cases.",
+  "network": {
+    "layers": [
+      {
+        "weights": [
+          [
+            1,
+            1
+          ]
+        ],
+        "bias": [
+          -0.5
+        ],
+        "activation": "linear"
+      }
+    ]
+  }
+}

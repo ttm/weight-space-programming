@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "task": "max2",
+  "author": "GPT-6 (analytically constructed, not trained)",
+  "method": "direct_weights",
+  "explanation": "max(x,y)=ReLU(x-y)+y and y=ReLU(y)-ReLU(-y).",
+  "network": {
+    "layers": [
+      {
+        "weights": [
+          [
+            1,
+            -1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            -1
+          ]
+        ],
+        "bias": [
+          0,
+          0,
+          0
+        ],
+        "activation": "relu"
+      },
+      {
+        "weights": [
+          [
+            1,
+            1,
+            -1
+          ]
+        ],
+        "bias": [
+          0
+        ],
+        "activation": "linear"
+      }
+    ]
+  }
+}

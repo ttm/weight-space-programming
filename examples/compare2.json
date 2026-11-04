@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "task": "compare2",
+  "author": "GPT-6 (analytically constructed, not trained)",
+  "method": "direct_weights",
+  "explanation": "The logit x-y is positive iff x>y; equality is not positive.",
+  "network": {
+    "layers": [
+      {
+        "weights": [
+          [
+            1,
+            -1
+          ]
+        ],
+        "bias": [
+          0
+        ],
+        "activation": "linear"
+      }
+    ]
+  }
+}

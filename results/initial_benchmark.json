@@ -1,0 +1,492 @@
+{
+  "note": "Deterministic local benchmark; not an independent blind evaluation",
+  "records": [
+    {
+      "author": "GPT-6 (analytically constructed, not trained)",
+      "evaluation": {
+        "all_passed": true,
+        "parameters": 9,
+        "splits": {
+          "edge": {
+            "metric": "mse",
+            "n": 3,
+            "passed": true,
+            "value": 0.0
+          },
+          "ood": {
+            "metric": "mse",
+            "n": 512,
+            "passed": true,
+            "value": 0.0
+          },
+          "test": {
+            "metric": "mse",
+            "n": 512,
+            "passed": true,
+            "value": 0.0
+          }
+        },
+        "task": "absdiff2"
+      },
+      "method": "direct_weights",
+      "path": "examples/absdiff2.json",
+      "random_baseline": {
+        "splits": {
+          "edge": {
+            "max": 24.94790748556399,
+            "mean": 4.494573948639805,
+            "metric": "mse",
+            "min": 0.4850605477416449,
+            "perfect_trials": 0
+          },
+          "ood": {
+            "max": 480.86106102021046,
+            "mean": 144.52377026001898,
+            "metric": "mse",
+            "min": 26.383566957348833,
+            "perfect_trials": 0
+          },
+          "test": {
+            "max": 38.16482107939433,
+            "mean": 8.103476102829974,
+            "metric": "mse",
+            "min": 0.9243014005883846,
+            "perfect_trials": 0
+          }
+        },
+        "trials": 30
+      }
+    },
+    {
+      "author": "GPT-6 (analytically constructed, not trained)",
+      "evaluation": {
+        "all_passed": true,
+        "parameters": 3,
+        "splits": {
+          "test": {
+            "metric": "accuracy",
+            "n": 4,
+            "passed": true,
+            "value": 1.0
+          }
+        },
+        "task": "and2"
+      },
+      "method": "direct_weights",
+      "path": "examples/and2.json",
+      "random_baseline": {
+        "splits": {
+          "test": {
+            "max": 1.0,
+            "mean": 0.55,
+            "metric": "accuracy",
+            "min": 0.25,
+            "perfect_trials": 2
+          }
+        },
+        "trials": 30
+      }
+    },
+    {
+      "author": "GPT-6 (analytically constructed, not trained)",
+      "evaluation": {
+        "all_passed": true,
+        "parameters": 3,
+        "splits": {
+          "edge": {
+            "metric": "accuracy",
+            "n": 4,
+            "passed": true,
+            "value": 1.0
+          },
+          "ood": {
+            "metric": "accuracy",
+            "n": 512,
+            "passed": true,
+            "value": 1.0
+          },
+          "test": {
+            "metric": "accuracy",
+            "n": 512,
+            "passed": true,
+            "value": 1.0
+          }
+        },
+        "task": "compare2"
+      },
+      "method": "direct_weights",
+      "path": "examples/compare2.json",
+      "random_baseline": {
+        "splits": {
+          "edge": {
+            "max": 1.0,
+            "mean": 0.4583333333333333,
+            "metric": "accuracy",
+            "min": 0.0,
+            "perfect_trials": 1
+          },
+          "ood": {
+            "max": 0.93359375,
+            "mean": 0.46803385416666665,
+            "metric": "accuracy",
+            "min": 0.009765625,
+            "perfect_trials": 0
+          },
+          "test": {
+            "max": 0.9140625,
+            "mean": 0.48040364583333334,
+            "metric": "accuracy",
+            "min": 0.052734375,
+            "perfect_trials": 0
+          }
+        },
+        "trials": 30
+      }
+    },
+    {
+      "author": "GPT-6 (analytically constructed, not trained)",
+      "evaluation": {
+        "all_passed": true,
+        "parameters": 17,
+        "splits": {
+          "edge": {
+            "metric": "accuracy",
+            "n": 5,
+            "passed": true,
+            "value": 1.0
+          },
+          "ood": {
+            "metric": "accuracy",
+            "n": 512,
+            "passed": true,
+            "value": 1.0
+          },
+          "test": {
+            "metric": "accuracy",
+            "n": 512,
+            "passed": true,
+            "value": 1.0
+          }
+        },
+        "task": "diamond2"
+      },
+      "method": "direct_weights",
+      "path": "examples/diamond2.json",
+      "random_baseline": {
+        "splits": {
+          "edge": {
+            "max": 0.8,
+            "mean": 0.5066666666666667,
+            "metric": "accuracy",
+            "min": 0.2,
+            "perfect_trials": 0
+          },
+          "ood": {
+            "max": 0.99609375,
+            "mean": 0.4918619791666667,
+            "metric": "accuracy",
+            "min": 0.00390625,
+            "perfect_trials": 0
+          },
+          "test": {
+            "max": 0.873046875,
+            "mean": 0.49147135416666665,
+            "metric": "accuracy",
+            "min": 0.126953125,
+            "perfect_trials": 0
+          }
+        },
+        "trials": 30
+      }
+    },
+    {
+      "author": "GPT-6 (analytically constructed, not trained)",
+      "evaluation": {
+        "all_passed": true,
+        "parameters": 7,
+        "splits": {
+          "edge": {
+            "metric": "accuracy",
+            "n": 5,
+            "passed": true,
+            "value": 1.0
+          },
+          "ood": {
+            "metric": "accuracy",
+            "n": 512,
+            "passed": true,
+            "value": 1.0
+          },
+          "test": {
+            "metric": "accuracy",
+            "n": 512,
+            "passed": true,
+            "value": 1.0
+          }
+        },
+        "task": "interval1"
+      },
+      "method": "direct_weights",
+      "path": "examples/interval1.json",
+      "random_baseline": {
+        "splits": {
+          "edge": {
+            "max": 0.8,
+            "mean": 0.4266666666666667,
+            "metric": "accuracy",
+            "min": 0.2,
+            "perfect_trials": 0
+          },
+          "ood": {
+            "max": 0.955078125,
+            "mean": 0.4397786458333333,
+            "metric": "accuracy",
+            "min": 0.044921875,
+            "perfect_trials": 0
+          },
+          "test": {
+            "max": 0.748046875,
+            "mean": 0.4546875,
+            "metric": "accuracy",
+            "min": 0.251953125,
+            "perfect_trials": 0
+          }
+        },
+        "trials": 30
+      }
+    },
+    {
+      "author": "GPT-6 (analytically constructed, not trained)",
+      "evaluation": {
+        "all_passed": true,
+        "parameters": 6,
+        "splits": {
+          "test": {
+            "metric": "accuracy",
+            "n": 32,
+            "passed": true,
+            "value": 1.0
+          }
+        },
+        "task": "majority5"
+      },
+      "method": "direct_weights",
+      "path": "examples/majority5.json",
+      "random_baseline": {
+        "splits": {
+          "test": {
+            "max": 0.6875,
+            "mean": 0.48125,
+            "metric": "accuracy",
+            "min": 0.21875,
+            "perfect_trials": 0
+          }
+        },
+        "trials": 30
+      }
+    },
+    {
+      "author": "GPT-6 (analytically constructed, not trained)",
+      "evaluation": {
+        "all_passed": true,
+        "parameters": 13,
+        "splits": {
+          "edge": {
+            "metric": "mse",
+            "n": 3,
+            "passed": true,
+            "value": 0.0
+          },
+          "ood": {
+            "metric": "mse",
+            "n": 512,
+            "passed": true,
+            "value": 5.238529448733282e-32
+          },
+          "test": {
+            "metric": "mse",
+            "n": 512,
+            "passed": true,
+            "value": 0.0
+          }
+        },
+        "task": "max2"
+      },
+      "method": "direct_weights",
+      "path": "examples/max2.json",
+      "random_baseline": {
+        "splits": {
+          "edge": {
+            "max": 43.72862149401149,
+            "mean": 5.095606802280062,
+            "metric": "mse",
+            "min": 0.24342546609321689,
+            "perfect_trials": 0
+          },
+          "ood": {
+            "max": 678.0268340082017,
+            "mean": 149.37017656556583,
+            "metric": "mse",
+            "min": 19.5957131990107,
+            "perfect_trials": 0
+          },
+          "test": {
+            "max": 42.421593860700646,
+            "mean": 6.787543236671082,
+            "metric": "mse",
+            "min": 1.175321339884264,
+            "perfect_trials": 0
+          }
+        },
+        "trials": 30
+      }
+    },
+    {
+      "author": "GPT-6 (analytically constructed, not trained)",
+      "evaluation": {
+        "all_passed": true,
+        "parameters": 16,
+        "splits": {
+          "test": {
+            "metric": "accuracy",
+            "n": 8,
+            "passed": true,
+            "value": 1.0
+          }
+        },
+        "task": "parity3"
+      },
+      "method": "direct_weights",
+      "path": "examples/parity3.json",
+      "random_baseline": {
+        "splits": {
+          "test": {
+            "max": 0.75,
+            "mean": 0.5041666666666667,
+            "metric": "accuracy",
+            "min": 0.375,
+            "perfect_trials": 0
+          }
+        },
+        "trials": 30
+      }
+    },
+    {
+      "author": "GPT-6 (analytically constructed, not trained)",
+      "evaluation": {
+        "all_passed": true,
+        "parameters": 6,
+        "splits": {
+          "edge": {
+            "metric": "accuracy",
+            "n": 5,
+            "passed": true,
+            "value": 1.0
+          },
+          "ood": {
+            "metric": "accuracy",
+            "n": 512,
+            "passed": true,
+            "value": 1.0
+          },
+          "test": {
+            "metric": "accuracy",
+            "n": 512,
+            "passed": true,
+            "value": 1.0
+          }
+        },
+        "task": "thermostat1"
+      },
+      "method": "direct_weights",
+      "path": "examples/thermostat1.json",
+      "random_baseline": {
+        "splits": {
+          "edge": {
+            "max": 0.6,
+            "mean": 0.28,
+            "metric": "accuracy",
+            "min": 0.0,
+            "perfect_trials": 0
+          },
+          "ood": {
+            "max": 0.98828125,
+            "mean": 0.33990885416666666,
+            "metric": "accuracy",
+            "min": 0.0,
+            "perfect_trials": 0
+          },
+          "test": {
+            "max": 0.892578125,
+            "mean": 0.3077473958333333,
+            "metric": "accuracy",
+            "min": 0.0,
+            "perfect_trials": 0
+          }
+        },
+        "trials": 30
+      }
+    },
+    {
+      "author": "GPT-6 (analytically constructed, not trained)",
+      "evaluation": {
+        "all_passed": true,
+        "parameters": 9,
+        "splits": {
+          "test": {
+            "metric": "accuracy",
+            "n": 4,
+            "passed": true,
+            "value": 1.0
+          }
+        },
+        "task": "xor2"
+      },
+      "method": "direct_weights",
+      "path": "examples/xor2.json",
+      "random_baseline": {
+        "splits": {
+          "test": {
+            "max": 0.5,
+            "mean": 0.4583333333333333,
+            "metric": "accuracy",
+            "min": 0.25,
+            "perfect_trials": 0
+          }
+        },
+        "trials": 30
+      }
+    },
+    {
+      "author": "GPT-6 (analytically constructed, not trained)",
+      "evaluation": {
+        "all_passed": false,
+        "parameters": 3,
+        "splits": {
+          "test": {
+            "metric": "accuracy",
+            "n": 4,
+            "passed": false,
+            "value": 0.75
+          }
+        },
+        "task": "xor2"
+      },
+      "method": "deliberately_incorrect_control",
+      "path": "examples/xor2_linear_failure.json",
+      "random_baseline": {
+        "splits": {
+          "test": {
+            "max": 0.75,
+            "mean": 0.45,
+            "metric": "accuracy",
+            "min": 0.25,
+            "perfect_trials": 0
+          }
+        },
+        "trials": 30
+      }
+    }
+  ],
+  "schema_version": 1
+}

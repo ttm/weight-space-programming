@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "task": "majority5",
+  "author": "GPT-6 (analytically constructed, not trained)",
+  "method": "direct_weights",
+  "explanation": "The binary majority threshold is sum(x)-2.5 > 0.",
+  "network": {
+    "layers": [
+      {
+        "weights": [
+          [
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        ],
+        "bias": [
+          -2.5
+        ],
+        "activation": "linear"
+      }
+    ]
+  }
+}

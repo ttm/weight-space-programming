@@ -1,0 +1,32 @@
+{
+  "after": {
+    "all_passed": true,
+    "parameters": 9,
+    "splits": {
+      "test": {
+        "metric": "accuracy",
+        "n": 4,
+        "passed": true,
+        "value": 1.0
+      }
+    },
+    "task": "xor2"
+  },
+  "before": {
+    "all_passed": false,
+    "parameters": 9,
+    "splits": {
+      "test": {
+        "metric": "accuracy",
+        "n": 4,
+        "passed": false,
+        "value": 0.5
+      }
+    },
+    "task": "xor2"
+  },
+  "edited_parameters": 1,
+  "fraction_edited": 0.1111111111111111,
+  "parameters": 9,
+  "task": "xor2"
+}

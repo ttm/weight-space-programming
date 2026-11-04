@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "task": "thermostat1",
+  "author": "GPT-6 (analytically constructed, not trained)",
+  "method": "direct_weights",
+  "explanation": "Actions [hold,cool,heat] have logits [0,-x-0.4,x-0.4]. Argmax chooses hold for the deadband; ties favor hold.",
+  "network": {
+    "layers": [
+      {
+        "weights": [
+          [
+            0
+          ],
+          [
+            -1
+          ],
+          [
+            1
+          ]
+        ],
+        "bias": [
+          0,
+          -0.4,
+          -0.4
+        ],
+        "activation": "linear"
+      }
+    ]
+  }
+}

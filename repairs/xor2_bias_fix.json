@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "task": "xor2",
+  "explanation": "Restore the XOR decision margin by directly changing the single output bias from -1.5 to -0.5.",
+  "edits": [
+    {
+      "layer": 1,
+      "kind": "bias",
+      "row": 0,
+      "from": -1.5,
+      "to": -0.5
+    }
+  ]
+}

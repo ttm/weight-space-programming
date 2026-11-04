@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "task": "xor2",
+  "author": "GPT-6 (analytically constructed, not trained)",
+  "method": "deliberately_corrupted_fixture",
+  "explanation": "A larger negative output bias suppresses the positive XOR cases.",
+  "network": {
+    "layers": [
+      {
+        "weights": [
+          [
+            1,
+            -1
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "bias": [
+          0,
+          0
+        ],
+        "activation": "relu"
+      },
+      {
+        "weights": [
+          [
+            1,
+            1
+          ]
+        ],
+        "bias": [
+          -1.5
+        ],
+        "activation": "linear"
+      }
+    ]
+  }
+}
