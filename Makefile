@@ -1,4 +1,4 @@
-PYTHON ?= python
+PYTHON ?= python3
 export PYTHONPATH=src
 
 .PHONY: test benchmark stress repair

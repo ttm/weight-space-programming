@@ -43,11 +43,11 @@ For `and2`, **2/30** random networks happened to be perfect on the four-case tru
 ## 5. Exact commands
 
 ```bash
-python -m pip install -e .
-python -m unittest discover -s tests -v
-python -m wsp benchmark --directory examples --random-trials 30 --output results/initial_benchmark.json
-python -m wsp stress examples/xor2.json --output results/xor2_stress.json
-python -m wsp repair fixtures/xor2_corrupted.json repairs/xor2_bias_fix.json --output results/xor2_repair.json
+python3 -m pip install -e .
+python3 -m unittest discover -s tests -v
+python3 -m wsp benchmark --directory examples --random-trials 30 --output results/initial_benchmark.json
+python3 -m wsp stress examples/xor2.json --output results/xor2_stress.json
+python3 -m wsp repair fixtures/xor2_corrupted.json repairs/xor2_bias_fix.json --output results/xor2_repair.json
 ```
 
 The `results/*.json` files retain the detailed task scores, baselines and invariance diagnostics. These files were generated from committed numeric artifacts; rerunning the commands does not involve model calls, stochastic training or web access.

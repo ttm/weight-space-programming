@@ -20,15 +20,15 @@ The constructions are **analytic circuit synthesis expressed as neural weights**
 Requires Python 3.10+; **no external dependencies** for the core experiments.
 
 ```bash
-python -m pip install -e .
-python -m wsp list
-python -m wsp describe xor2
-python -m wsp evaluate examples/xor2.json
-python -m wsp evaluate examples/xor2_linear_failure.json
-python -m wsp benchmark --directory examples --output results/initial_benchmark.json
-python -m wsp stress examples/xor2.json --output results/xor2_stress.json
-python -m wsp repair fixtures/xor2_corrupted.json repairs/xor2_bias_fix.json --output results/xor2_repair.json
-python -m unittest discover -s tests -v
+python3 -m pip install -e .
+python3 -m wsp list
+python3 -m wsp describe xor2
+python3 -m wsp evaluate examples/xor2.json
+python3 -m wsp evaluate examples/xor2_linear_failure.json
+python3 -m wsp benchmark --directory examples --output results/initial_benchmark.json
+python3 -m wsp stress examples/xor2.json --output results/xor2_stress.json
+python3 -m wsp repair fixtures/xor2_corrupted.json repairs/xor2_bias_fix.json --output results/xor2_repair.json
+python3 -m unittest discover -s tests -v
 ```
 
 Without installation, prefix commands with `PYTHONPATH=src` (on Unix-based shells).
@@ -39,13 +39,13 @@ An external participant, human or LLM, must **write the candidate JSON artifact 
 
 ```bash
 # Zero validation feedback; explanation required.
-python -m wsp start xor2 --session .runs/xor-blind.json --mode blind --explanation required
-python -m wsp finalize examples/xor2.json --session .runs/xor-blind.json
+python3 -m wsp start xor2 --session .runs/xor-blind.json --mode blind --explanation required
+python3 -m wsp finalize examples/xor2.json --session .runs/xor-blind.json
 
 # At most two validation calls; no explanation field permitted.
-python -m wsp start xor2 --session .runs/xor-budget.json --mode budgeted --budget 2 --explanation forbidden
-python -m wsp probe fixtures/xor2_weights_only.json --session .runs/xor-budget.json
-python -m wsp finalize fixtures/xor2_weights_only.json --session .runs/xor-budget.json
+python3 -m wsp start xor2 --session .runs/xor-budget.json --mode budgeted --budget 2 --explanation forbidden
+python3 -m wsp probe fixtures/xor2_weights_only.json --session .runs/xor-budget.json
+python3 -m wsp finalize fixtures/xor2_weights_only.json --session .runs/xor-budget.json
 ```
 
 A `blind` session rejects `probe` altogether. `finalize` records a digest of the candidate, the score, and a timestamp, and rejects repeated finalization. **The `evaluate` command is an unrestricted developer tool**; preventing participants from bypassing the blind setup requires a separate execution service, inaccessible test-set seeds, and permissions or an audit mechanism. See [protocol](docs/PROTOCOL.md).
