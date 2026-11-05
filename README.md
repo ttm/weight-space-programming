@@ -121,6 +121,8 @@ Ordinary `wsp start` accepts `--architecture-file architecture.json` to lock dep
 
 For actual model calls, explicitly opt into the manual [exploratory GitHub Action](.github/workflows/research-pilot.yml), configure an API key in the repository's `OPENAI_API_KEY` secret, and supply a model ID. Normal CI makes no paid calls; a ChatGPT subscription is separate from API billing.
 
+The [completed November 5 model-trial report](experiments/reports/README.md) archives exact prompts, raw model outputs and a reproducible validation script. The tiny model produced **0/4 valid weight submissions** and **0/6 exact network interpretations**. The apparent 3/3 gauge consistency was a trivial all-zero-prediction collapse, not functional understanding. These are exploratory negative results only. Run `python scripts/verify_model_reports.py` for a no-inference integrity and statistics replay.
+
 See [paired weight-reading model pilot](docs/WEIGHT_READING_PILOT.md), [one-time open-weight-model inference](docs/OPEN_MODEL_SMOKE.md), [artifact provenance](docs/PROVENANCE.md), [gradient baseline methodology](docs/GRADIENT.md), [exploratory methods](docs/EXPLORATORY.md), [weight-space equivalence](docs/THEORY.md), and the [roadmap](docs/ROADMAP.md). `make check` regenerates the development control summary in `results/development_research.json`.
 
 ## Research question

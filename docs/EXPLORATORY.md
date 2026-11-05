@@ -46,3 +46,7 @@ Preregister primary outcomes and stopping rules in `docs/PREREGISTRATION.md` **b
 ## Development artifact provenance
 
 `python scripts/index_provenance.py` regenerates the auditable `results/provenance_index.json` and rejects incomplete structured metadata (except the deliberately minimal weights-only fixture). `wsp start` additionally accepts `--reasoning-effort`, `--access-route` and `--tools-used-json` for session provenance. See [PROVENANCE.md](PROVENANCE.md); the historical model information is reported, not independently authenticated.
+
+## Completed CPU open-weight trials, 2026-11-05
+
+Both one-time model-inference workflows completed. The report at [experiments/reports/README.md](../experiments/reports/README.md) separates strict zero-feedback task scores from post-hoc diagnostics, and archives exact model completions and prompts. Model inference can be replayed only by separately running an explicitly provisioned inference job; `python scripts/verify_model_reports.py` verifies the archived scores and hashes without inference. The observed results were 0/4 valid weight synthesis and 0/6 exact network interpretation; all 6 interpretation responses were the constant all-zero prediction. No broader LLM-science claim is warranted.

@@ -72,3 +72,13 @@ No scientific claim about general LLM weight-space reasoning follows from these 
 A conventional supervised Adam baseline, implemented with reverse-mode derivatives and validated against numerical finite differences, uses the same generated-task architectures. On eight tasks (two seeds per family), it passes all held-out splits **0/8** after 100 update pairs, **0/8** after 500, and **2/8** after 3,000. Partial test accuracy for Boolean families improves in several cases. The symbolic reference compiler remains 8/8 by construction.
 
 This comparison is not compute- or information-matched: Adam receives labeled training examples and the LLM participant sees a symbolic behavioral specification. Its zero exact successes at lower budgets cannot establish superiority of direct weights. See [GRADIENT.md](GRADIENT.md) and the generated `results/development_research.json` summary.
+
+## 9. First genuine model trials (November 5, 2026)
+
+A pinned, open-weight, small instruction model (Qwen3-0.6B) ran in public GitHub Actions with **no model-accessible tools and zero validation probes**. These exploratory experiments have an immutable raw-output archive and a no-inference replay script at [experiments/reports](../experiments/reports/README.md).
+
+- Synthesis: **0/4** valid weight submissions. All raw answers were Markdown-fenced JSON that reproduced task/architecture descriptions instead of numerical network weights; a secondary post-hoc extraction did not recover any valid weight artifact.
+- Weight reading under equivalent ReLU reparameterization: **6/6** parseable JSON outputs, **0/6** correct truth tables, **66.67%** mean bitwise accuracy. All six predicted the same all-zero 16-bit label sequence, so **3/3 pair consistency** is a trivial degenerate baseline.
+- The two Action workflows completed successfully. Those workflow statuses do not imply successful model performance.
+
+**Interpretation:** negative small-model pilot, useful for exposing serialization compliance and trivial baseline artifacts. No conclusion can be extrapolated to general language-model competence, scaling, or causally meaningful invariance from 4 and 3 independent task instances. The original raw prompts, model replies, hashes, decoding metadata, topology contracts and final scores are archived.

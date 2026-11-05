@@ -1,0 +1,139 @@
+{
+  "decode": "greedy",
+  "exact": 0,
+  "feedback_probes": 0,
+  "model": "Qwen/Qwen3-0.6B",
+  "model_revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+  "pairs": [
+    {
+      "both_valid": true,
+      "id": "wread_ea5aac84aa1e",
+      "original_exact": false,
+      "same_predicted_function": true,
+      "transformed_exact": false
+    },
+    {
+      "both_valid": true,
+      "id": "wread_fbb9ae84c832",
+      "original_exact": false,
+      "same_predicted_function": true,
+      "transformed_exact": false
+    },
+    {
+      "both_valid": true,
+      "id": "wread_2858cc5430ff",
+      "original_exact": false,
+      "same_predicted_function": true,
+      "transformed_exact": false
+    }
+  ],
+  "records": [
+    {
+      "elapsed_seconds": 5.134,
+      "id": "wread_ea5aac84aa1e",
+      "output_tokens": 22,
+      "prompt": "Interpret ONLY the literal numerical neural-network weights below, without executing the network or using code, tools, APIs, or forward-pass queries. The inputs are 4 bits (x0,x1,x2,x3) and the output class is 1 iff the final scalar logit is >0; otherwise 0. Return ONLY valid JSON of exactly this form: {\"truth_table\":\"0000000000000000\"}, where the 16 characters are the predicted outputs on inputs 0000, 0001, ..., 1111 in lexicographic order. All 16 characters must be 0 or 1. No explanation. The architecture is 4 inputs, 3 ReLU hidden neurons, 1 linear output.\nNETWORK:\n{\"layers\":[{\"activation\":\"relu\",\"bias\":[1.0,0.0,-2.0],\"weights\":[[-1.0,0.0,-1.0,-1.0],[-1.0,0.0,-1.0,1.0],[1.0,1.0,1.0,0.0]]},{\"activation\":\"linear\",\"bias\":[-0.5],\"weights\":[[1.0,1.0,1.0]]}]}",
+      "prompt_sha256": "b410d7eb002d5a447257934955f6f18ca19a0cfa5ce9914ca0d1825f4de4d53a",
+      "result": {
+        "bit_accuracy": 0.625,
+        "error": null,
+        "exact": false,
+        "predicted": "0000000000000000",
+        "raw": "{\"truth_table\":\"0000000000000000\"}",
+        "sha256": "47abd76f554178e33c2008f5a943f50f477fda42da1af4a10dfffebb972d0dbe",
+        "valid": true
+      },
+      "variant": "original"
+    },
+    {
+      "elapsed_seconds": 5.086,
+      "id": "wread_ea5aac84aa1e",
+      "output_tokens": 22,
+      "prompt": "Interpret ONLY the literal numerical neural-network weights below, without executing the network or using code, tools, APIs, or forward-pass queries. The inputs are 4 bits (x0,x1,x2,x3) and the output class is 1 iff the final scalar logit is >0; otherwise 0. Return ONLY valid JSON of exactly this form: {\"truth_table\":\"0000000000000000\"}, where the 16 characters are the predicted outputs on inputs 0000, 0001, ..., 1111 in lexicographic order. All 16 characters must be 0 or 1. No explanation. The architecture is 4 inputs, 3 ReLU hidden neurons, 1 linear output.\nNETWORK:\n{\"layers\":[{\"activation\":\"relu\",\"bias\":[0.5,0.0,-1.0],\"weights\":[[-0.5,0.0,-0.5,-0.5],[-2.0,0.0,-2.0,2.0],[0.5,0.5,0.5,0.0]]},{\"activation\":\"linear\",\"bias\":[-0.5],\"weights\":[[2.0,0.5,2.0]]}]}",
+      "prompt_sha256": "ae466195e94b8ae08430c7712b022e214f1e5575fafea8c6c720f7b762df4bac",
+      "result": {
+        "bit_accuracy": 0.625,
+        "error": null,
+        "exact": false,
+        "predicted": "0000000000000000",
+        "raw": "{\"truth_table\":\"0000000000000000\"}",
+        "sha256": "47abd76f554178e33c2008f5a943f50f477fda42da1af4a10dfffebb972d0dbe",
+        "valid": true
+      },
+      "variant": "gauge_transformed"
+    },
+    {
+      "elapsed_seconds": 4.991,
+      "id": "wread_fbb9ae84c832",
+      "output_tokens": 22,
+      "prompt": "Interpret ONLY the literal numerical neural-network weights below, without executing the network or using code, tools, APIs, or forward-pass queries. The inputs are 4 bits (x0,x1,x2,x3) and the output class is 1 iff the final scalar logit is >0; otherwise 0. Return ONLY valid JSON of exactly this form: {\"truth_table\":\"0000000000000000\"}, where the 16 characters are the predicted outputs on inputs 0000, 0001, ..., 1111 in lexicographic order. All 16 characters must be 0 or 1. No explanation. The architecture is 4 inputs, 3 ReLU hidden neurons, 1 linear output.\nNETWORK:\n{\"layers\":[{\"activation\":\"relu\",\"bias\":[-1.0,-1.0,-2.0],\"weights\":[[-1.0,1.0,0.0,1.0],[-1.0,0.0,1.0,1.0],[1.0,1.0,1.0,0.0]]},{\"activation\":\"linear\",\"bias\":[-0.5],\"weights\":[[1.0,1.0,1.0]]}]}",
+      "prompt_sha256": "4b2f0f3a752212325e566300b59c134372a5abc6f8b94625e505865745113cab",
+      "result": {
+        "bit_accuracy": 0.6875,
+        "error": null,
+        "exact": false,
+        "predicted": "0000000000000000",
+        "raw": "{\"truth_table\":\"0000000000000000\"}",
+        "sha256": "47abd76f554178e33c2008f5a943f50f477fda42da1af4a10dfffebb972d0dbe",
+        "valid": true
+      },
+      "variant": "original"
+    },
+    {
+      "elapsed_seconds": 5.011,
+      "id": "wread_fbb9ae84c832",
+      "output_tokens": 22,
+      "prompt": "Interpret ONLY the literal numerical neural-network weights below, without executing the network or using code, tools, APIs, or forward-pass queries. The inputs are 4 bits (x0,x1,x2,x3) and the output class is 1 iff the final scalar logit is >0; otherwise 0. Return ONLY valid JSON of exactly this form: {\"truth_table\":\"0000000000000000\"}, where the 16 characters are the predicted outputs on inputs 0000, 0001, ..., 1111 in lexicographic order. All 16 characters must be 0 or 1. No explanation. The architecture is 4 inputs, 3 ReLU hidden neurons, 1 linear output.\nNETWORK:\n{\"layers\":[{\"activation\":\"relu\",\"bias\":[-2.0,-1.0,-2.0],\"weights\":[[1.0,1.0,1.0,0.0],[-1.0,0.0,1.0,1.0],[-2.0,2.0,0.0,2.0]]},{\"activation\":\"linear\",\"bias\":[-0.5],\"weights\":[[1.0,1.0,0.5]]}]}",
+      "prompt_sha256": "440368ec608e249afba570ba94c8e804120f9d5ccbf1dbf851f7c838967148df",
+      "result": {
+        "bit_accuracy": 0.6875,
+        "error": null,
+        "exact": false,
+        "predicted": "0000000000000000",
+        "raw": "{\"truth_table\":\"0000000000000000\"}",
+        "sha256": "47abd76f554178e33c2008f5a943f50f477fda42da1af4a10dfffebb972d0dbe",
+        "valid": true
+      },
+      "variant": "gauge_transformed"
+    },
+    {
+      "elapsed_seconds": 5.015,
+      "id": "wread_2858cc5430ff",
+      "output_tokens": 22,
+      "prompt": "Interpret ONLY the literal numerical neural-network weights below, without executing the network or using code, tools, APIs, or forward-pass queries. The inputs are 4 bits (x0,x1,x2,x3) and the output class is 1 iff the final scalar logit is >0; otherwise 0. Return ONLY valid JSON of exactly this form: {\"truth_table\":\"0000000000000000\"}, where the 16 characters are the predicted outputs on inputs 0000, 0001, ..., 1111 in lexicographic order. All 16 characters must be 0 or 1. No explanation. The architecture is 4 inputs, 3 ReLU hidden neurons, 1 linear output.\nNETWORK:\n{\"layers\":[{\"activation\":\"relu\",\"bias\":[-1.0,1.0,1.0],\"weights\":[[-1.0,1.0,0.0,1.0],[-1.0,-1.0,0.0,-1.0],[0.0,-1.0,-1.0,-1.0]]},{\"activation\":\"linear\",\"bias\":[-0.5],\"weights\":[[1.0,1.0,1.0]]}]}",
+      "prompt_sha256": "cac32dbe9eb7f805da5d6a2c65cb39eb291db0abc466c88c19b9e2c2ff639f46",
+      "result": {
+        "bit_accuracy": 0.6875,
+        "error": null,
+        "exact": false,
+        "predicted": "0000000000000000",
+        "raw": "{\"truth_table\":\"0000000000000000\"}",
+        "sha256": "47abd76f554178e33c2008f5a943f50f477fda42da1af4a10dfffebb972d0dbe",
+        "valid": true
+      },
+      "variant": "original"
+    },
+    {
+      "elapsed_seconds": 5.077,
+      "id": "wread_2858cc5430ff",
+      "output_tokens": 22,
+      "prompt": "Interpret ONLY the literal numerical neural-network weights below, without executing the network or using code, tools, APIs, or forward-pass queries. The inputs are 4 bits (x0,x1,x2,x3) and the output class is 1 iff the final scalar logit is >0; otherwise 0. Return ONLY valid JSON of exactly this form: {\"truth_table\":\"0000000000000000\"}, where the 16 characters are the predicted outputs on inputs 0000, 0001, ..., 1111 in lexicographic order. All 16 characters must be 0 or 1. No explanation. The architecture is 4 inputs, 3 ReLU hidden neurons, 1 linear output.\nNETWORK:\n{\"layers\":[{\"activation\":\"relu\",\"bias\":[-0.25,4.0,1.0],\"weights\":[[-0.25,0.25,0.0,0.25],[-4.0,-4.0,0.0,-4.0],[0.0,-1.0,-1.0,-1.0]]},{\"activation\":\"linear\",\"bias\":[-0.5],\"weights\":[[4.0,0.25,1.0]]}]}",
+      "prompt_sha256": "231bc10b82088877f96d1f9872d3468d209cfd7caa2062d7476faa40a6a8e0b7",
+      "result": {
+        "bit_accuracy": 0.6875,
+        "error": null,
+        "exact": false,
+        "predicted": "0000000000000000",
+        "raw": "{\"truth_table\":\"0000000000000000\"}",
+        "sha256": "47abd76f554178e33c2008f5a943f50f477fda42da1af4a10dfffebb972d0dbe",
+        "valid": true
+      },
+      "variant": "gauge_transformed"
+    }
+  ],
+  "schema_version": 1,
+  "status": "exploratory_unregistered_weight_reading",
+  "tools_available_to_model": [],
+  "total": 6,
+  "valid": 6
+}

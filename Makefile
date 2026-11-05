@@ -3,7 +3,7 @@ export PYTHONPATH=src
 # Committed results use the public seeds, whatever the caller's environment holds.
 unexport WSP_SEED_SALT
 
-.PHONY: test benchmark stress repair results check research-results provenance-results
+.PHONY: test benchmark stress repair results check research-results provenance-results model-replay
 
 test:
 	$(PYTHON) -m unittest discover -s tests -v
@@ -28,6 +28,10 @@ provenance-results:
 # Regenerate every committed result.
 results: benchmark stress repair research-results provenance-results
 
-# Unit tests, then fail unless regenerating results/ reproduces the committed files exactly.
-check: test results
+# Validate archived model outputs without new inference; no API credentials or extra dependencies.
+model-replay:
+	$(PYTHON) scripts/verify_model_reports.py
+
+# Unit tests, exact regenerated results, and replay archived model outputs.
+check: test results model-replay
 	@git diff --exit-code -- results/ || { echo "results/ no longer matches the committed files; commit them if the change is intended." >&2; exit 1; }

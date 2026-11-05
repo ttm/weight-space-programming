@@ -1,0 +1,244 @@
+{
+  "reference_results": [
+    {
+      "all_passed": true,
+      "family": "dnf4",
+      "splits": {
+        "test": {
+          "metric": "accuracy",
+          "n": 16,
+          "passed": true,
+          "value": 1.0
+        }
+      },
+      "task": "gen_b7f2b746d4043895"
+    },
+    {
+      "all_passed": true,
+      "family": "hinge1",
+      "splits": {
+        "edge": {
+          "max_abs_error": 0.0,
+          "metric": "mse",
+          "n": 9,
+          "passed": true,
+          "value": 0.0
+        },
+        "ood": {
+          "max_abs_error": 0.0,
+          "metric": "mse",
+          "n": 256,
+          "passed": true,
+          "value": 0.0
+        },
+        "test": {
+          "max_abs_error": 0.0,
+          "metric": "mse",
+          "n": 256,
+          "passed": true,
+          "value": 0.0
+        }
+      },
+      "task": "gen_f97c0ba6a718ec4a"
+    },
+    {
+      "all_passed": true,
+      "family": "l1ball2",
+      "splits": {
+        "edge": {
+          "metric": "accuracy",
+          "n": 7,
+          "passed": true,
+          "value": 1.0
+        },
+        "ood": {
+          "metric": "accuracy",
+          "n": 256,
+          "passed": true,
+          "value": 1.0
+        },
+        "test": {
+          "metric": "accuracy",
+          "n": 256,
+          "passed": true,
+          "value": 1.0
+        }
+      },
+      "task": "gen_ac94fdef876f887a"
+    },
+    {
+      "all_passed": true,
+      "family": "threshold4",
+      "splits": {
+        "test": {
+          "metric": "accuracy",
+          "n": 16,
+          "passed": true,
+          "value": 1.0
+        }
+      },
+      "task": "gen_04939059be1f1b81"
+    }
+  ],
+  "status": "dry_run_only",
+  "tasks": [
+    {
+      "architecture": {
+        "layers": [
+          {
+            "activation": "relu",
+            "inputs": 4,
+            "outputs": 3
+          },
+          {
+            "activation": "linear",
+            "inputs": 3,
+            "outputs": 1
+          }
+        ]
+      },
+      "description": "Given four input bits, return 1 iff any specified three-literal conjunction holds.",
+      "kind": "binary",
+      "schema_version": 1,
+      "spec": {
+        "clauses": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              3,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              0
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              3,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              3,
+              0
+            ]
+          ]
+        ],
+        "meaning": "OR of clauses; each clause is AND of its listed (zero-indexed bit, required value) pairs"
+      },
+      "task": "gen_b7f2b746d4043895",
+      "threshold_rule": "binary label 1 iff final logit > 0"
+    },
+    {
+      "architecture": {
+        "layers": [
+          {
+            "activation": "relu",
+            "inputs": 1,
+            "outputs": 3
+          },
+          {
+            "activation": "linear",
+            "inputs": 3,
+            "outputs": 1
+          }
+        ]
+      },
+      "description": "Implement the specified 1D piecewise-linear function, for all real x.",
+      "kind": "regression",
+      "schema_version": 1,
+      "spec": {
+        "coefficients": [
+          1,
+          1,
+          1
+        ],
+        "constant": -1.0,
+        "formula": "constant + sum(coefficients[i]*max(0,x-knots[i]))",
+        "knots": [
+          -0.5,
+          1.0,
+          1.5
+        ]
+      },
+      "task": "gen_f97c0ba6a718ec4a",
+      "threshold_rule": "regression with linear scalar output"
+    },
+    {
+      "architecture": {
+        "layers": [
+          {
+            "activation": "relu",
+            "inputs": 2,
+            "outputs": 4
+          },
+          {
+            "activation": "linear",
+            "inputs": 4,
+            "outputs": 1
+          }
+        ]
+      },
+      "description": "Classify whether a point is strictly inside a specified 2D L1 ball.",
+      "kind": "binary",
+      "schema_version": 1,
+      "spec": {
+        "center": [
+          -0.25,
+          0.0
+        ],
+        "formula": "1 iff abs(x-center[0])+abs(y-center[1]) < radius; equality is 0",
+        "radius": 1.0
+      },
+      "task": "gen_ac94fdef876f887a",
+      "threshold_rule": "binary label 1 iff final logit > 0"
+    },
+    {
+      "architecture": {
+        "layers": [
+          {
+            "activation": "linear",
+            "inputs": 4,
+            "outputs": 1
+          }
+        ]
+      },
+      "description": "Classify a weighted Boolean threshold with strict greater-than comparison.",
+      "kind": "binary",
+      "schema_version": 1,
+      "spec": {
+        "bias": -2.5,
+        "formula": "1 iff sum(weights[i]*x[i])+bias > 0; inputs are four bits",
+        "weights": [
+          2,
+          -3,
+          2,
+          1
+        ]
+      },
+      "task": "gen_04939059be1f1b81",
+      "threshold_rule": "binary label 1 iff final logit > 0"
+    }
+  ]
+}

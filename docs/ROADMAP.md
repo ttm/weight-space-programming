@@ -98,6 +98,12 @@ Done when the preregistration is committed before the first pilot session and th
 
 Draw the experiment tasks from secret seeds, run the participants, analyze exactly as preregistered, and report in RESULTS.md, including failure and rejected-JSON rates. A null or negative result is reported the same way.
 
+## Model-trial results checkpoint: November 5, 2026
+
+Two single-sample, small-open-model (`Qwen/Qwen3-0.6B`) GitHub Actions experiments have now **completed**. Strict direct synthesis failed with **0/4 numeric weight artifacts** and no recoverable candidate even with post-hoc JSON inspection; the model copied task/architecture descriptions instead. Weight interpretation returned **6/6 valid JSON answers but 0/6 exact functions**, predicting an all-zero 16-bit truth table in all cases. The **3/3 equivalent-pair agreement is trivial output collapse**, not representation-invariant competence. Both experiments had zero validation feedback and preserved raw model responses and prompts in [experiments/reports](../experiments/reports/README.md). The runner and evaluator CI succeeded. This is an exploratory pipeline exercise, not a confirmatory study.
+
+Next priority: more capable models; cleaner JSON/weight serialization prompt ablations; class-balance baselines; repeated task seeds; and a sealed evaluator with matched compute and preregistered claims. An external model service cannot be launched through GitHub merely from a user's ChatGPT plan.
+
 ## Implementation checkpoint: November 5, 2026
 
 - **H2/H5 empirical smoke test:** a separate one-time GitHub Action submits original and gauge-transformed equivalent networks to the pinned public Qwen3-0.6B model and scores the predicted truth tables without exposing the oracle; see [WEIGHT_READING_PILOT.md](WEIGHT_READING_PILOT.md). No result is asserted until the workflow completes.
