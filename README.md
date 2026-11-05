@@ -92,12 +92,13 @@ The tests are deterministic, and every result is inspectable. **They are not a s
 ## Repository map
 
 - `src/wsp/`: network interpreter, task oracles, evaluator, perturbations, feedback-controlled session bookkeeping, sparse weight patches, CLI.
-- `examples/`: ten successful directly authored networks and one negative control.
+- `examples/`: ten successful directly authored networks and one negative control, written by ChatGPT 6 with high reasoning ([provenance](docs/ROADMAP.md#provenance-of-the-existing-artifacts)).
 - `fixtures/`, `repairs/`: corrupted network and explicit repair patch.
 - `tests/`: reproducibility, malformed input, feedback-budget, invariance, repair and score checks.
 - `results/`: actual initial scores and diagnostic reports from running this code.
 - [`docs/PROTOCOL.md`](docs/PROTOCOL.md): rigor, experimental conditions and limitations.
 - [`docs/RESEARCH_AGENDA.md`](docs/RESEARCH_AGENDA.md): further investigations and falsifiable hypotheses.
+- [`docs/ROADMAP.md`](docs/ROADMAP.md): order of upcoming work, what counts as done, and open decisions.
 - [`docs/RESULTS.md`](docs/RESULTS.md): interpretation, baseline caveats, and follow-up designs.
 
 ## Research question

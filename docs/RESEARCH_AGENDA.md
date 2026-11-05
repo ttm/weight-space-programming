@@ -123,3 +123,5 @@ A controller that passes selected trajectories is not automatically stable; unst
 | 5 | Independent multi-model benchmark, sealed evaluator and public paper | Replication by an external team |
 
 The most important transition is **from inspectable showcase examples to pre-registered, externally scored tasks that the agent has not seen and cannot tune against**.
+
+[ROADMAP.md](ROADMAP.md) holds the current order of work. It runs stage 2 before stage 1, because the baselines, task generator and participant runner that stage 2 needs are also what stage 1 needs.
