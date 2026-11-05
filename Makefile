@@ -36,6 +36,14 @@ model-replay:
 	@for report in experiments/reports/*-balanced-reading-*.json; do \
 	  if test -f "$$report"; then $(PYTHON) scripts/verify_balanced_reading.py "$$report"; fi; \
 	done
+	@if test -f experiments/reports/2026-11-05-balanced-reading-direct.json && \
+	    test -f experiments/reports/2026-11-05-balanced-reading-deliberate.json; then \
+	  $(PYTHON) scripts/compare_balanced_reading.py \
+	    experiments/reports/2026-11-05-balanced-reading-direct.json \
+	    experiments/reports/2026-11-05-balanced-reading-deliberate.json >/dev/null; fi
+	@for report in experiments/reports/*-constrained-reading.json; do \
+	  if test -f "$$report"; then $(PYTHON) scripts/verify_constrained_reading.py "$$report"; fi; \
+	done
 
 check: test results model-replay
 	@git diff --exit-code -- results/ || { echo "results/ no longer matches committed files; commit intended changes." >&2; exit 1; }

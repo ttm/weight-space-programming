@@ -40,3 +40,7 @@ A successful reference executor provides a functionality ceiling, **not** a mode
 ## Limits and next gate
 
 This benchmark is intentionally small and elementary. Source-open deterministic tasks can be memorized or reconstructed; model capability estimates require separate held-out problems and multiple models with independently sampled generations. Pair agreement is neither sufficient nor necessary for understanding without exact function accuracy. The current benchmark does not establish interpretability of arbitrary trained large-model weights.
+
+## Observed first-pilot outcome
+
+The pinned model run completed successfully: **0/8 strictly valid JSON truth tables for each condition, 0/16 overall**. The model copied the input enumeration as the alleged truth table, identically for all presentations. Consequently, exact function and pair-level success are 0, but these are instruction/serialization failures rather than numerical forecasts. Unmodified model outputs are [direct](../experiments/reports/2026-11-05-balanced-reading-direct.json) and [deliberate](../experiments/reports/2026-11-05-balanced-reading-deliberate.json). The responsive [constrained-format study](CONSTRAINED_READING.md) is explicitly post-hoc exploratory.

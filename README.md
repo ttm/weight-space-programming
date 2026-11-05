@@ -149,3 +149,9 @@ python scripts/verify_balanced_reading.py .runs/oracle.json .runs/zero.json
 ```
 
 The explicitly launched [one-shot GitHub Action](.github/workflows/one-shot-balanced-reading.yml) uses pinned Qwen2.5-1.5B-Instruct for eight genuine model predictions under two frozen prompt instructions, with no paid API key. Model inferences, if completed, are **exploratory** and cannot be conflated with constructive reference checks or statistical evidence of general skill. See [protocol](docs/BALANCED_READING.md), [implementation tasks](docs/TASKS.md) and [evidence-led roadmap](docs/ROADMAP.md).
+
+### First balanced pilot: model results and follow-up
+
+The November 5, 2026, pinned Qwen2.5-1.5B-Instruct run returned **0/8 valid truth-table JSON responses in each of two prompt conditions (0/16 overall)**. Every completion copied the input enumeration instead of computing model outputs. The strict zero scores are preserved in [direct](experiments/reports/2026-11-05-balanced-reading-direct.json) and [deliberate](experiments/reports/2026-11-05-balanced-reading-deliberate.json) raw-response archives. This is an observed **format/copying failure**, not a diagnostic of numerical reasoning ability.
+
+To separate response-format compliance from function inference, the [post-hoc constrained-output follow-up](docs/CONSTRAINED_READING.md) allows only the two output-token choices `0` and `1` for exactly 16 positions. It records the model's choices and conditional binary-token probabilities with the *same* balanced tasks, preserving the original failed runs. This is explicitly exploratory, not evidence from preregistered tests.

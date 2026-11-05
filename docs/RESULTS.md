@@ -82,3 +82,9 @@ A pinned, open-weight, small instruction model (Qwen3-0.6B) ran in public GitHub
 - The two Action workflows completed successfully. Those workflow statuses do not imply successful model performance.
 
 **Interpretation:** negative small-model pilot, useful for exposing serialization compliance and trivial baseline artifacts. No conclusion can be extrapolated to general language-model competence, scaling, or causally meaningful invariance from 4 and 3 independent task instances. The original raw prompts, model replies, hashes, decoding metadata, topology contracts and final scores are archived.
+
+## Balanced open-model weight-reading results (November 5, 2026)
+
+A second actual inference study ran Qwen2.5-1.5B-Instruct (pinned revision `989aa7980e4cf806f80c7fef2b1adb7bc71aa306`) on eight balanced original/gauge network views, across four underlying functions. There were two separate prompts per view: direct and deliberate. **All 16 completions were invalid for the strict JSON contract.** Both conditions had 0/8 exact interpretations and 0/4 both-exact pairs. The model mechanically repeated the list of 16 *input* patterns inside a fenced JSON object rather than reporting output bits, independently of weight values. This does not establish any mathematical inability to interpret weights, because no correct-format predictions were observed.
+
+The before-inference protocol is [BALANCED_READING.md](BALANCED_READING.md); the exact raw reports are [direct](../experiments/reports/2026-11-05-balanced-reading-direct.json) and [deliberate](../experiments/reports/2026-11-05-balanced-reading-deliberate.json). The comparator and verifier replay each result without querying the model. A separate explicitly post-hoc [constrained-output protocol](CONSTRAINED_READING.md) is designed to measure whether conditional binary-token predictions recover any actual signal; it must not be retroactively treated as a preregistered arm of the first study.

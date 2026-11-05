@@ -20,9 +20,18 @@ This ledger records measurable acceptance criteria, not promised scientific outc
 - [x] Prove equality of all 16 outputs and equality of restricted canonical fingerprints on all pairs.
 - [x] Build parser and scorer: exact truth table, format compliance, per-bit accuracy, paired *both-exact*, trivial agreement.
 - [x] Test oracle control at 100% and all-zero control at 0% exact / 50% bit accuracy.
-- [ ] Execute an explicit, no-paid-API, one-shot pinned model pilot through CI.
-- [ ] Archive raw responses and verify their hashes without re-running inference.
-- [ ] Write balanced-study interpretation, including the independent-function sample size and negative findings.
+- [x] Execute an explicit, no-paid-API, one-shot pinned model pilot through CI.
+- [x] Archive raw responses and verify their hashes without re-running inference.
+- [x] Write balanced-study interpretation, including the independent-function sample size and negative findings.
+
+## 1b. Post-hoc constrained-output diagnostic
+
+- [x] Preserve the original 16/16 invalid JSON outputs as failed strict-format submissions.
+- [x] Predeclare a separate exploratory follow-up that forbids copying an input enumeration.
+- [x] Implement an exact 16-token binary-alphabet decoder, plus separate restricted-token confidence/Brier scoring.
+- [x] Verify oracle and all-zero controls without downloading a model.
+- [ ] Execute constrained output decoding on the pinned open model and archive the immutable full report.
+- [ ] Distinguish recovered numerical function signal from the previous instruction-following failure.
 
 ## 2. Novel weight synthesis (H1)
 

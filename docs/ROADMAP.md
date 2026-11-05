@@ -32,6 +32,8 @@ The previous 3/3 pair agreement was a constant-output collapse. Construct a new 
 
 **Exit:** model outputs (including negative results), checksums, and replayable scores are archived; interpretation distinguishes genuine pair success from trivial agreement. Then extend to repeated seeds and more capable models, without selecting tasks based on test outcomes.
 
+**P1 checkpoint (2026-11-05):** The pinned Qwen2.5-1.5B first model run completed with 0/8 valid JSON outputs in each of two prompt conditions (16/16 copied the input enumeration). The raw failed responses remain archived. A separately labeled **post-hoc** follow-up now constrains each output to one of two binary tokens, avoiding the copying/JSON confound but changing the inference contract. The original results are not overwritten or reinterpreted as model success. See [CONSTRAINED_READING.md](CONSTRAINED_READING.md).
+
 ### P2. Weight synthesis on genuinely novel specifications (H1)
 
 Use constructively realizable generated families, with a fixed architecture known to contain a witness; compare weights-only, schema-constrained exemplars, and explanation-required prompts with matched inference settings. Count every invalid JSON response as failure, but report serialization compliance separately from mathematical accuracy. Start exploratory with one-shot/zero-validation, then compare feedback budgets of 0 and 3. Include **insufficient-architecture and contradiction** negatives where successful abstention is separately scored.

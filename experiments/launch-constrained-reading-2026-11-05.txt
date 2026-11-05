@@ -1,0 +1,3 @@
+One-shot constrained binary-output follow-up, designed after the 2026-11-05 JSON copying failures.
+Previous experiment results remain immutable and are not substituted. No paid model API.
+Protocol docs/CONSTRAINED_READING.md and frozen generator seed 20261105.
