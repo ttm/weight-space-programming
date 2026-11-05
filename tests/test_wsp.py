@@ -2,9 +2,11 @@ from __future__ import annotations
 
 from hashlib import sha256
 import json
+import os
 from pathlib import Path
 import tempfile
 import unittest
+from unittest import mock
 
 from wsp.__main__ import _round_floats
 from wsp.evaluation import evaluate, equivalent, permute_hidden, random_baseline, rescale_relu, stress
@@ -61,6 +63,19 @@ class HandcraftedTests(unittest.TestCase):
     def test_splits_deterministic(self):
         self.assertEqual(samples("compare2", "test"), samples("compare2", "test"))
         self.assertNotEqual(samples("compare2", "test"), samples("compare2", "ood"))
+
+    def test_seed_salt_holds_back_test_inputs(self):
+        splits = ("validation", "test", "ood", "edge")
+        with mock.patch.dict(os.environ):
+            os.environ.pop("WSP_SEED_SALT", None)
+            public = {split: samples("compare2", split) for split in splits}
+        with mock.patch.dict(os.environ, {"WSP_SEED_SALT": "evaluator-secret"}), tempfile.TemporaryDirectory() as d:
+            salted = {split: samples("compare2", split) for split in splits}
+            self.assertEqual([salted[s] == public[s] for s in splits], [True, False, False, True])
+            start(Path(d) / "s.json", "compare2", "blind", "optional")
+            self.assertTrue(finalize(Path(d) / "s.json", ROOT / "examples/compare2.json")["all_passed"])
+            final = json.loads((Path(d) / "s.json").read_text())["final"]
+            self.assertEqual(final["seed_salt_sha256"], sha256(b"evaluator-secret").hexdigest())
 
     def test_reports_absorb_platform_float_noise(self):
         # absdiff2 random-baseline MSE as computed on two platforms; their libm results differ in the last bit.

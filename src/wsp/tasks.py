@@ -4,7 +4,11 @@ from __future__ import annotations
 from dataclasses import dataclass
 from hashlib import sha256
 from itertools import product
+import os
 import random
+
+# An evaluator who sets this environment variable holds back the seeded test and OOD inputs.
+SEED_SALT_VARIABLE = "WSP_SEED_SALT"
 
 
 @dataclass(frozen=True)
@@ -46,8 +50,18 @@ def target(task: str, x: list[float]) -> float | int:
     raise KeyError(task)
 
 
+def seed_salt_sha256() -> str | None:
+    """SHA-256 of the secret seed salt, or None when the public seeds are in use."""
+    salt = os.environ.get(SEED_SALT_VARIABLE)
+    return sha256(salt.encode()).hexdigest() if salt else None
+
+
 def _seed(task: str, split: str) -> int:
-    return int.from_bytes(sha256(f"wsp-v1:{task}:{split}".encode()).digest()[:8], "big")
+    key = f"wsp-v1:{task}:{split}"
+    salt = os.environ.get(SEED_SALT_VARIABLE)
+    if salt and split in {"test", "ood"}:  # validation stays public, so probe results stay reproducible
+        key += ":" + salt
+    return int.from_bytes(sha256(key.encode()).digest()[:8], "big")
 
 
 def samples(task_name: str, split: str) -> list[tuple[list[float], float | int]]:

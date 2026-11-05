@@ -1,5 +1,7 @@
 PYTHON ?= python3
 export PYTHONPATH=src
+# Committed results use the public seeds, whatever the caller's environment holds.
+unexport WSP_SEED_SALT
 
 .PHONY: test benchmark stress repair
 

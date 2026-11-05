@@ -9,7 +9,7 @@ from pathlib import Path
 from . import __version__
 from .evaluation import evaluate
 from .network import parse_candidate, validate_network
-from .tasks import TASKS
+from .tasks import TASKS, seed_salt_sha256
 
 MODES = {"blind", "budgeted", "open"}
 EXPLANATIONS = {"required", "optional", "forbidden"}
@@ -92,6 +92,7 @@ def finalize(session_path: Path, candidate_path: Path) -> dict:
     if session["finalized"]:
         raise ValueError("Session already finalized: final evaluation can only be recorded once")
     record = _submit(candidate_path, session, ("test", "ood", "edge"))
+    record["seed_salt_sha256"] = seed_salt_sha256()  # which test and OOD inputs produced the score
     session["finalized"] = True
     session["final"] = record
     _write(session_path, session)
