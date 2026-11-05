@@ -30,8 +30,15 @@ This ledger records measurable acceptance criteria, not promised scientific outc
 - [x] Predeclare a separate exploratory follow-up that forbids copying an input enumeration.
 - [x] Implement an exact 16-token binary-alphabet decoder, plus separate restricted-token confidence/Brier scoring.
 - [x] Verify oracle and all-zero controls without downloading a model.
-- [ ] Execute constrained output decoding on the pinned open model and archive the immutable full report.
-- [ ] Distinguish recovered numerical function signal from the previous instruction-following failure.
+- [x] Execute constrained output decoding on the pinned open model and archive the immutable full report.
+- [x] Distinguish numerical function signal from the previous instruction-following failure: the forced-format model still collapsed to all-zero predictions.
+
+## 1c. Evidence escalation after small-model negative results
+
+- [ ] Compare at least one substantially stronger language model against the same balanced bank, with full raw provenance.
+- [ ] Repeat on independent seeds and newly generated families without changing prompts after score inspection.
+- [ ] Report separate rates for format compliance, exact function decoding, trivial agreement, and conditional confidence calibration.
+- [ ] Freeze externally sealed H2 protocol before any confirmatory inference.
 
 ## 2. Novel weight synthesis (H1)
 

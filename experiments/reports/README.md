@@ -50,3 +50,13 @@ python scripts/verify_model_reports.py
 ```
 
 This rechecks immutable recorded model outputs, hashes, summary counts and pair agreement. It **does not regenerate model completions**. Full prompt texts and exact raw completions are preserved in the two archived JSON files. Model checkpoint and code are pinned in the workflow scripts; to rerun inference, use the original workflow configuration and explicitly allow the associated resource use.
+
+## Balanced reading studies with a pinned 1.5B model
+
+The later exploratory balanced study kept four independent function classes (8/16 positives each), matched 4-ReLU-1 topology, and original/gauge-transformed network pairs. Model: `Qwen/Qwen2.5-1.5B-Instruct`, revision `989aa7980e4cf806f80c7fef2b1adb7bc71aa306`.
+
+- [Direct](2026-11-05-balanced-reading-direct.json): **0/8 valid JSON** and 0/8 exact. All eight outputs copied the input enumeration.
+- [Deliberate](2026-11-05-balanced-reading-deliberate.json): **0/8 valid JSON** and 0/8 exact. The same copy error occurred eight times.
+- [Post-hoc constrained binary-token follow-up](2026-11-05-constrained-reading.json): **8/8 valid**, **0/8 exact**, **0/4 both-exact equivalent pairs**, all eight predictions constant-zero, 50% bit accuracy and restricted-token Brier 0.39443402, worse than a neutral 0.25 probability baseline.
+
+The model calls really ran in GitHub Actions without paid API credentials. Successful jobs mean complete inference and archiving, **not successful weight interpretation**. The first study and the responsive follow-up are separate and not confirmatory. Replay scores with `python scripts/verify_balanced_reading.py`, `python scripts/verify_constrained_reading.py`, or `make model-replay`.

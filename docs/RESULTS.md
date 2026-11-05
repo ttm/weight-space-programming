@@ -88,3 +88,19 @@ A pinned, open-weight, small instruction model (Qwen3-0.6B) ran in public GitHub
 A second actual inference study ran Qwen2.5-1.5B-Instruct (pinned revision `989aa7980e4cf806f80c7fef2b1adb7bc71aa306`) on eight balanced original/gauge network views, across four underlying functions. There were two separate prompts per view: direct and deliberate. **All 16 completions were invalid for the strict JSON contract.** Both conditions had 0/8 exact interpretations and 0/4 both-exact pairs. The model mechanically repeated the list of 16 *input* patterns inside a fenced JSON object rather than reporting output bits, independently of weight values. This does not establish any mathematical inability to interpret weights, because no correct-format predictions were observed.
 
 The before-inference protocol is [BALANCED_READING.md](BALANCED_READING.md); the exact raw reports are [direct](../experiments/reports/2026-11-05-balanced-reading-direct.json) and [deliberate](../experiments/reports/2026-11-05-balanced-reading-deliberate.json). The comparator and verifier replay each result without querying the model. A separate explicitly post-hoc [constrained-output protocol](CONSTRAINED_READING.md) is designed to measure whether conditional binary-token predictions recover any actual signal; it must not be retroactively treated as a preregistered arm of the first study.
+
+## Constrained binary reading follow-up: format repaired, no reasoning signal
+
+An **explicitly post-hoc** follow-up was run after the invalid-JSON failures. Model: `Qwen/Qwen2.5-1.5B-Instruct` revision `989aa7980e4cf806f80c7fef2b1adb7bc71aa306`, deterministic greedy decoding constrained to the single tokens for 0 or 1. The prompt omitted the original 16 input-enumeration strings and the decoder forced exactly 16 binary choices. The same four function instances and their eight equivalent parameter presentations were evaluated.
+
+| Outcome | Result |
+|---|---:|
+| Valid 16-bit answers | 8/8 |
+| Exact truth tables | 0/8 |
+| Independent functions with both parameter views correct | 0/4 |
+| Agreement of equivalent views | 4/4, all trivial constant-zero agreement |
+| Mean bitwise accuracy | 50% (identical to constant-zero baseline) |
+| Mean conditional binary-token Brier | 0.39443402 (unconditioned-calibration caveat) |
+| Brier for uninformative fixed probability 0.5 | 0.25 |
+
+Every model response was `0000000000000000`, despite balanced true functions. The mean `P(1)` from the binary-restricted token logits was about 0.135, showing a marked bias toward zero. Raw per-bit restricted-token probabilities and prompts are archived in [the exact report](../experiments/reports/2026-11-05-constrained-reading.json) and validated independently by `scripts/verify_constrained_reading.py`. The result is a clearer negative observation for this small model, not a general impossibility result for weight-space interpretation; the design changed after the initial failed experiment and includes just four underlying functions. See [CONSTRAINED_READING.md](CONSTRAINED_READING.md).

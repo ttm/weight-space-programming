@@ -26,3 +26,7 @@ python scripts/verify_constrained_reading.py .runs/constrained-oracle.json .runs
 ```
 
 The one-shot open-model workflow runs the `model` participant without an API key only when the explicit launch marker is pushed or manually dispatched. It archives raw model choices to `experiments/reports/2026-11-05-constrained-reading.json` upon successful completion.
+
+## Observed result after the protocol was frozen
+
+The explicitly launched [GitHub Actions run](https://github.com/ttm/weight-space-programming/actions/runs/42036593612) completed successfully and archived [all raw model predictions](../experiments/reports/2026-11-05-constrained-reading.json). **8/8 valid 16-bit outputs, 0/8 correct functions, 0/4 both-exact pairs, and all eight predictions constant zero.** The four apparent equivalent-pair agreements are degenerate. Mean per-bit accuracy = 0.5; restricted-binary-token Brier = 0.39443402 versus 0.25 for a neutral binary probability forecast. No functional interpretation competence was established at this model scale and prompt condition. This observation does not license retroactive claims about preregistration or larger models.

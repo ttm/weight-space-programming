@@ -125,3 +125,7 @@ A controller that passes selected trajectories is not automatically stable; unst
 The most important transition is **from inspectable showcase examples to pre-registered, externally scored tasks that the agent has not seen and cannot tune against**.
 
 [ROADMAP.md](ROADMAP.md) holds the current order of work. It runs stage 2 before stage 1, because the baselines, task generator and participant runner that stage 2 needs are also what stage 1 needs.
+
+## Balanced null-prediction guardrail for H2/H5
+
+Matched-topology, equivalent-parameter agreement must not be credited as understanding unless the underlying truth tables are also predicted correctly. The November 2026 exploratory pilots showed that a small model can agree on all pairs by repeating a constant-zero answer. All future reading studies should include label-balanced function banks or explicitly account for prevalence, and report per-function both-exact success, constant-prediction rates, chance baselines, and calibration separately from raw pair agreement. Under forced binary-token decoding, conditional next-token confidence is not the same as unrestricted model probability. See [RESULTS.md](RESULTS.md) and [CONSTRAINED_READING.md](CONSTRAINED_READING.md).
