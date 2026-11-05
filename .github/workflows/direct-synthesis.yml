@@ -1,0 +1,38 @@
+name: Verify GPT-6 direct-weight self-study (no model inference)
+
+on:
+  push:
+    paths:
+      - 'src/wsp/direct_synthesis.py'
+      - 'src/wsp/direct_sessions.py'
+      - 'tests/test_direct_synthesis.py'
+      - 'scripts/verify_direct_synthesis.py'
+      - 'scripts/run_direct_synthesis_controls.py'
+      - 'experiments/submissions/chatgpt-gpt6-2026-11-05/**'
+      - 'experiments/reports/2026-11-05-gpt6-direct-synthesis.json'
+      - 'results/direct_synthesis_random_controls.json'
+      - '.github/workflows/direct-synthesis.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install package without optional model dependencies
+        run: python -m pip install -e .
+      - name: Unit tests for synthesis contracts, budgets and scoring
+        run: python -m unittest discover -s tests -p 'test_direct_synthesis.py' -v
+      - name: Re-evaluate immutable first submissions
+        run: python scripts/verify_direct_synthesis.py
+      - name: Reproduce basic random controls
+        run: |
+          python scripts/run_direct_synthesis_controls.py
+          git diff --exit-code -- results/direct_synthesis_random_controls.json

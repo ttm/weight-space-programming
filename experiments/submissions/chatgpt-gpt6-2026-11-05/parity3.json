@@ -1,0 +1,47 @@
+{
+  "explanation": "For bit-sum s, the successive ReLU hinges at s=0,1,2 give g(s)=ReLU(s)-2ReLU(s-1)+2ReLU(s-2). For s=0,1,2,3, g is 0,1,0,1, so g-0.5 classifies odd parity.",
+  "network": {
+    "layers": [
+      {
+        "activation": "relu",
+        "bias": [
+          0,
+          -1,
+          -2
+        ],
+        "weights": [
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ]
+      },
+      {
+        "activation": "linear",
+        "bias": [
+          -0.5
+        ],
+        "weights": [
+          [
+            1,
+            -2,
+            2
+          ]
+        ]
+      }
+    ]
+  },
+  "schema_version": 1,
+  "task": "parity3"
+}

@@ -1,0 +1,339 @@
+{
+  "failed": 1,
+  "limitations": [
+    "Public task definitions and oracles were available to the participant",
+    "Same assistant authored benchmark and candidate weights",
+    "No reliable isolation of internal reasoning or external tool access",
+    "Zero probe use in initial submissions, not proof of tool restrictions",
+    "Tests are deterministic development tasks, not unseen or preregistered trials"
+  ],
+  "manifest_sha256": "e3b456ed44655d1ab787a2818424d7e8fed5fc34682069e84d4eef8582c972b0",
+  "participant": {
+    "api_model_id": null,
+    "backend_build_hash": null,
+    "backend_model_snapshot": null,
+    "client_version": null,
+    "display_name": "GPT-6",
+    "full_platform_system_prompt_archived": false,
+    "generation_method": "Hand-derived numeric weights typed as Python literals and serialized to static JSON. No gradient descent or numeric search used to choose the submitted weights.",
+    "hidden_reasoning_transcript_archived": false,
+    "isolation": "none; same participant designed, read, and implemented public task definitions",
+    "model_family": "GPT-6",
+    "provenance": "The identity GPT-6 is available from session instructions; no internal build identifier, model weight hash or exact inference configuration is available to the assistant.",
+    "reasoning_capable": true,
+    "reasoning_effort_explanation": "Not exposed to this assistant; no verified claim of High/Extra High setting",
+    "reasoning_effort_selected": null,
+    "sampling_seed": null,
+    "sampling_temperature": null,
+    "subscription_plan": null,
+    "surface": "ChatGPT text conversation",
+    "tools_accessible": [
+      "GitHub connector",
+      "container terminal",
+      "Python execution",
+      "public web search"
+    ],
+    "tools_used_in_this_workflow": [
+      "GitHub connector for repository inspection",
+      "container terminal for artifact construction and testing"
+    ]
+  },
+  "passed": 9,
+  "records": [
+    {
+      "artifact": "parity3.json",
+      "condition": "B-E",
+      "error": null,
+      "evaluation": {
+        "kind": "binary",
+        "pass": true,
+        "splits": {
+          "test": {
+            "metric": "accuracy",
+            "n": 8,
+            "passed": true,
+            "value": 1.0
+          }
+        },
+        "task": "parity3"
+      },
+      "pass": true,
+      "sha256": "6a3ecfcfa087c1f34ca63435ae41783294fdc1fbdbda1dc18e5b91150b4fa833",
+      "size_bytes": 809,
+      "task": "parity3"
+    },
+    {
+      "artifact": "exactly2of4.json",
+      "condition": "B-W",
+      "error": null,
+      "evaluation": {
+        "kind": "binary",
+        "pass": true,
+        "splits": {
+          "test": {
+            "metric": "accuracy",
+            "n": 16,
+            "passed": true,
+            "value": 1.0
+          }
+        },
+        "task": "exactly2of4"
+      },
+      "pass": true,
+      "sha256": "d7ee0eb08ef6de75637ff3f6a38399878373d2786c96f2f94007372913d1920c",
+      "size_bytes": 684,
+      "task": "exactly2of4"
+    },
+    {
+      "artifact": "select3.json",
+      "condition": "P-W",
+      "error": null,
+      "evaluation": {
+        "kind": "binary",
+        "pass": true,
+        "splits": {
+          "test": {
+            "metric": "accuracy",
+            "n": 8,
+            "passed": true,
+            "value": 1.0
+          }
+        },
+        "task": "select3"
+      },
+      "pass": true,
+      "sha256": "cbcea8eaffddd92fc2990eb84bcfd413b542bfc963057814a1b779c249ed3f1e",
+      "size_bytes": 536,
+      "task": "select3"
+    },
+    {
+      "artifact": "slanted_diamond2.json",
+      "condition": "B-E",
+      "error": null,
+      "evaluation": {
+        "kind": "binary",
+        "pass": true,
+        "splits": {
+          "edge": {
+            "metric": "accuracy",
+            "n": 5,
+            "passed": true,
+            "value": 1.0
+          },
+          "ood": {
+            "metric": "accuracy",
+            "n": 512,
+            "passed": true,
+            "value": 1.0
+          },
+          "test": {
+            "metric": "accuracy",
+            "n": 512,
+            "passed": true,
+            "value": 1.0
+          }
+        },
+        "task": "slanted_diamond2"
+      },
+      "pass": true,
+      "sha256": "2f5adc1632ea31dd296d2fd421b1a863991d5cebb0ec34d2122007e36f3611d0",
+      "size_bytes": 886,
+      "task": "slanted_diamond2"
+    },
+    {
+      "artifact": "hat1.json",
+      "condition": "P-E",
+      "error": null,
+      "evaluation": {
+        "kind": "regression",
+        "pass": true,
+        "splits": {
+          "edge": {
+            "metric": "max_abs_error",
+            "mse": 0.0,
+            "n": 9,
+            "passed": true,
+            "value": 0.0
+          },
+          "ood": {
+            "metric": "max_abs_error",
+            "mse": 0.0,
+            "n": 512,
+            "passed": true,
+            "value": 0.0
+          },
+          "test": {
+            "metric": "max_abs_error",
+            "mse": 0.0,
+            "n": 512,
+            "passed": true,
+            "value": 0.0
+          }
+        },
+        "task": "hat1"
+      },
+      "pass": true,
+      "sha256": "856c9c9562a882b2820518358e88b59b821891a3493a7d49ac0e37c2400f2cbe",
+      "size_bytes": 676,
+      "task": "hat1"
+    },
+    {
+      "artifact": "clip2.json",
+      "condition": "B-W",
+      "error": null,
+      "evaluation": {
+        "kind": "regression",
+        "pass": true,
+        "splits": {
+          "edge": {
+            "metric": "max_abs_error",
+            "mse": 0.0,
+            "n": 5,
+            "passed": true,
+            "value": 0.0
+          },
+          "ood": {
+            "metric": "max_abs_error",
+            "mse": 8.011868568650901e-32,
+            "n": 512,
+            "passed": true,
+            "value": 3.552713678800501e-15
+          },
+          "test": {
+            "metric": "max_abs_error",
+            "mse": 3.158525108795067e-32,
+            "n": 512,
+            "passed": true,
+            "value": 8.881784197001252e-16
+          }
+        },
+        "task": "clip2"
+      },
+      "pass": true,
+      "sha256": "a673a781564cd56fc720e33955f1021f36518c155342a394e992b3de6740dbef",
+      "size_bytes": 510,
+      "task": "clip2"
+    },
+    {
+      "artifact": "shifted_absdiff2.json",
+      "condition": "P-E",
+      "error": null,
+      "evaluation": {
+        "kind": "regression",
+        "pass": true,
+        "splits": {
+          "edge": {
+            "metric": "max_abs_error",
+            "mse": 0.0,
+            "n": 4,
+            "passed": true,
+            "value": 0.0
+          },
+          "ood": {
+            "metric": "max_abs_error",
+            "mse": 1.8488927466117464e-32,
+            "n": 512,
+            "passed": true,
+            "value": 1.7763568394002505e-15
+          },
+          "test": {
+            "metric": "max_abs_error",
+            "mse": 3.370377402677663e-33,
+            "n": 512,
+            "passed": true,
+            "value": 4.440892098500626e-16
+          }
+        },
+        "task": "shifted_absdiff2"
+      },
+      "pass": true,
+      "sha256": "e9992a181be8e03fa468c93c22c3face659a56d21273772eca169daab98814fc",
+      "size_bytes": 604,
+      "task": "shifted_absdiff2"
+    },
+    {
+      "artifact": "threeway_controller1.json",
+      "condition": "P-W",
+      "error": null,
+      "evaluation": {
+        "kind": "multiclass",
+        "pass": true,
+        "splits": {
+          "edge": {
+            "metric": "accuracy",
+            "n": 9,
+            "passed": true,
+            "value": 1.0
+          },
+          "ood": {
+            "metric": "accuracy",
+            "n": 512,
+            "passed": true,
+            "value": 1.0
+          },
+          "test": {
+            "metric": "accuracy",
+            "n": 512,
+            "passed": true,
+            "value": 1.0
+          }
+        },
+        "task": "threeway_controller1"
+      },
+      "pass": true,
+      "sha256": "828b83e1d7c6bc50a52c9b4e978822eafccb0d05c7fb5d4ab1053b82dbbe3a18",
+      "size_bytes": 372,
+      "task": "threeway_controller1"
+    },
+    {
+      "artifact": "two_hats1.json",
+      "condition": "B-E",
+      "error": null,
+      "evaluation": {
+        "kind": "regression",
+        "pass": true,
+        "splits": {
+          "edge": {
+            "metric": "max_abs_error",
+            "mse": 0.0,
+            "n": 10,
+            "passed": true,
+            "value": 0.0
+          },
+          "ood": {
+            "metric": "max_abs_error",
+            "mse": 0.0,
+            "n": 512,
+            "passed": true,
+            "value": 0.0
+          },
+          "test": {
+            "metric": "max_abs_error",
+            "mse": 0.0,
+            "n": 512,
+            "passed": true,
+            "value": 0.0
+          }
+        },
+        "task": "two_hats1"
+      },
+      "pass": true,
+      "sha256": "804eab70a0c973142f742195975231d14c14c807b882aaf3c4b4dade32ebecac",
+      "size_bytes": 933,
+      "task": "two_hats1"
+    },
+    {
+      "artifact": "xor2_impossible.json",
+      "condition": "B-E",
+      "error": "ValueError: Explanation is required for this task",
+      "evaluation": null,
+      "pass": false,
+      "sha256": "6fd04aaa7e0a8ebd675b35eed07f80130711e3322b1c5500f30a1f7baa1b3129",
+      "size_bytes": 338,
+      "task": "xor2_impossible"
+    }
+  ],
+  "schema_version": 1,
+  "status": "EXPLORATORY_SELF_SUBMISSIONS_NOT_BLIND_INDEPENDENT_TRIALS",
+  "tasks": 10
+}

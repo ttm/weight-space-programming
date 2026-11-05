@@ -1,0 +1,38 @@
+{
+  "explanation": "ReLU(x-y-1)+ReLU(-x+y+1) equals |x-y-1| for every pair of real inputs.",
+  "network": {
+    "layers": [
+      {
+        "activation": "relu",
+        "bias": [
+          -1,
+          1
+        ],
+        "weights": [
+          [
+            1,
+            -1
+          ],
+          [
+            -1,
+            1
+          ]
+        ]
+      },
+      {
+        "activation": "linear",
+        "bias": [
+          0
+        ],
+        "weights": [
+          [
+            1,
+            1
+          ]
+        ]
+      }
+    ]
+  },
+  "schema_version": 1,
+  "task": "shifted_absdiff2"
+}

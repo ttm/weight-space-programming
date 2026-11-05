@@ -1,0 +1,50 @@
+{
+  "explanation": "The first two ReLUs sum to |2x-y-0.5| and the next two to |x+2y+0.25|. The scalar logit is 2.25 minus their sum, strictly positive only inside the desired open diamond.",
+  "network": {
+    "layers": [
+      {
+        "activation": "relu",
+        "bias": [
+          -0.5,
+          0.5,
+          0.25,
+          -0.25
+        ],
+        "weights": [
+          [
+            2,
+            -1
+          ],
+          [
+            -2,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            -1,
+            -2
+          ]
+        ]
+      },
+      {
+        "activation": "linear",
+        "bias": [
+          2.25
+        ],
+        "weights": [
+          [
+            -1,
+            -1,
+            -1,
+            -1
+          ]
+        ]
+      }
+    ]
+  },
+  "schema_version": 1,
+  "task": "slanted_diamond2"
+}

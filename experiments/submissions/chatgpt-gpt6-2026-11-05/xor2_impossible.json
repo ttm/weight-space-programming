@@ -1,0 +1,6 @@
+{
+  "reason": "Write the affine logit as w0*x0+w1*x1+b. XOR requires b<=0, w0+b>0, w1+b>0, and w0+w1+b<=0. Summing the middle inequalities gives w0+w1+b > -b >=0, contradicting the last inequality. Hence no one-layer affine threshold network solves XOR.",
+  "schema_version": 1,
+  "status": "unsatisfiable",
+  "task": "xor2_impossible"
+}

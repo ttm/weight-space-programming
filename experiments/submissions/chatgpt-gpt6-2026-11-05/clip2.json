@@ -1,0 +1,37 @@
+{
+  "network": {
+    "layers": [
+      {
+        "activation": "relu",
+        "bias": [
+          1.25,
+          -1.75
+        ],
+        "weights": [
+          [
+            3,
+            -2
+          ],
+          [
+            3,
+            -2
+          ]
+        ]
+      },
+      {
+        "activation": "linear",
+        "bias": [
+          -1
+        ],
+        "weights": [
+          [
+            1,
+            -1
+          ]
+        ]
+      }
+    ]
+  },
+  "schema_version": 1,
+  "task": "clip2"
+}

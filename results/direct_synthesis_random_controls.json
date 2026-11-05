@@ -1,0 +1,54 @@
+{
+  "distribution": "independent N(0,1) for every scalar weight and bias",
+  "limitations": "No training or symbolic information; weak sanity baseline and not a matched-resource comparison to GPT-6.",
+  "n_per_task": 100,
+  "rows": [
+    {
+      "attempts": 100,
+      "exact_successes": 0,
+      "task": "parity3"
+    },
+    {
+      "attempts": 100,
+      "exact_successes": 0,
+      "task": "exactly2of4"
+    },
+    {
+      "attempts": 100,
+      "exact_successes": 0,
+      "task": "select3"
+    },
+    {
+      "attempts": 100,
+      "exact_successes": 0,
+      "task": "slanted_diamond2"
+    },
+    {
+      "attempts": 100,
+      "exact_successes": 0,
+      "task": "hat1"
+    },
+    {
+      "attempts": 100,
+      "exact_successes": 0,
+      "task": "clip2"
+    },
+    {
+      "attempts": 100,
+      "exact_successes": 0,
+      "task": "shifted_absdiff2"
+    },
+    {
+      "attempts": 100,
+      "exact_successes": 0,
+      "task": "threeway_controller1"
+    },
+    {
+      "attempts": 100,
+      "exact_successes": 0,
+      "task": "two_hats1"
+    }
+  ],
+  "schema_version": 1,
+  "status": "NAIVE_ARCHITECTURE_MATCHED_RANDOM_CONTROL_NOT_COMPUTE_MATCHED"
+}

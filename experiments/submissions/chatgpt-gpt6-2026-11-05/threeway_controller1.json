@@ -1,0 +1,27 @@
+{
+  "network": {
+    "layers": [
+      {
+        "activation": "linear",
+        "bias": [
+          0,
+          -0.75,
+          -1.5
+        ],
+        "weights": [
+          [
+            0
+          ],
+          [
+            -1
+          ],
+          [
+            1
+          ]
+        ]
+      }
+    ]
+  },
+  "schema_version": 1,
+  "task": "threeway_controller1"
+}

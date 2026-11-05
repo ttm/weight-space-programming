@@ -1,0 +1,39 @@
+{
+  "network": {
+    "layers": [
+      {
+        "activation": "relu",
+        "bias": [
+          0,
+          -1
+        ],
+        "weights": [
+          [
+            -1,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ]
+        ]
+      },
+      {
+        "activation": "linear",
+        "bias": [
+          -0.5
+        ],
+        "weights": [
+          [
+            1,
+            1
+          ]
+        ]
+      }
+    ]
+  },
+  "schema_version": 1,
+  "task": "select3"
+}

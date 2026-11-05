@@ -1,0 +1,73 @@
+{
+  "actual_validation_probes_per_task": {
+    "clip2": 0,
+    "exactly2of4": 0,
+    "hat1": 0,
+    "parity3": 0,
+    "select3": 0,
+    "shifted_absdiff2": 0,
+    "slanted_diamond2": 0,
+    "threeway_controller1": 0,
+    "two_hats1": 0,
+    "xor2_impossible": 0
+  },
+  "date_utc": "2026-11-05",
+  "first_artifact_written_utc_observed": "2026-11-05T14:24:21Z",
+  "initial_submission_freeze": "All candidate tensors proposed before first execution of the evaluator. Subsequent repairs, if any, must be separate artifacts and reported distinctly.",
+  "participant": {
+    "api_model_id": null,
+    "backend_build_hash": null,
+    "backend_model_snapshot": null,
+    "client_version": null,
+    "display_name": "GPT-6",
+    "full_platform_system_prompt_archived": false,
+    "generation_method": "Hand-derived numeric weights typed as Python literals and serialized to static JSON. No gradient descent or numeric search used to choose the submitted weights.",
+    "hidden_reasoning_transcript_archived": false,
+    "isolation": "none; same participant designed, read, and implemented public task definitions",
+    "model_family": "GPT-6",
+    "provenance": "The identity GPT-6 is available from session instructions; no internal build identifier, model weight hash or exact inference configuration is available to the assistant.",
+    "reasoning_capable": true,
+    "reasoning_effort_explanation": "Not exposed to this assistant; no verified claim of High/Extra High setting",
+    "reasoning_effort_selected": null,
+    "sampling_seed": null,
+    "sampling_temperature": null,
+    "subscription_plan": null,
+    "surface": "ChatGPT text conversation",
+    "tools_accessible": [
+      "GitHub connector",
+      "container terminal",
+      "Python execution",
+      "public web search"
+    ],
+    "tools_used_in_this_workflow": [
+      "GitHub connector for repository inspection",
+      "container terminal for artifact construction and testing"
+    ]
+  },
+  "participant_authored_benchmark": true,
+  "participant_had_access_to_task_oracle": true,
+  "qualifications": [
+    "Author-designed tasks can create serious selection and hindsight biases",
+    "Tasks are small and analytically tractable",
+    "Benchmark source/oracles and repository were available in same session",
+    "ChatGPT tool access was not restricted; assertions of internal no-tools impossible",
+    "May not use these data as independent observations of population-level model success"
+  ],
+  "schema_version": 1,
+  "statistical_status": "EXPLORATORY_DEVELOPMENT_SELF_STUDY_NOT_BLIND",
+  "study": "direct-synthesis-public-development-v1",
+  "task_definitions_public": true,
+  "tasks": [
+    "parity3",
+    "exactly2of4",
+    "select3",
+    "slanted_diamond2",
+    "hat1",
+    "clip2",
+    "shifted_absdiff2",
+    "threeway_controller1",
+    "two_hats1",
+    "xor2_impossible"
+  ],
+  "timestamp_provenance": "Reported from local filesystem mtime observed in this session; not a signed backend inference timestamp"
+}
