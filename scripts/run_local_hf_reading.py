@@ -13,7 +13,8 @@ import time
 
 from wsp.generated import make_task
 from wsp.weight_reading import generate_bank, binary_table
-from scripts.run_local_hf_pilot import MODEL_ID, MODEL_REVISION
+MODEL_ID='Qwen/Qwen3-0.6B'
+MODEL_REVISION='c1899de289a04d12100db370d81485cdf75e47ca'
 
 
 def challenges() -> list[dict]:

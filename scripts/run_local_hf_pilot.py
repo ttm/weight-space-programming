@@ -31,6 +31,21 @@ def score_raw(task, raw: str) -> dict:
         entry['result']=evaluate_generated(task,candidate)
     except (ValueError,TypeError,KeyError,OverflowError) as exc:
         entry['error']=type(exc).__name__+': '+str(exc)
+    if entry['error'] is not None:
+        # Secondary, explicitly post-hoc diagnostic only. Never replaces strict score.
+        entry['posthoc_extracted_json'] = None
+        left, right = raw.find('{'), raw.rfind('}')
+        if 0 <= left < right:
+            candidate_text = raw[left:right+1]
+            try:
+                alternative = _decode_candidate(candidate_text)
+                if alternative.get('schema_version') != 1 or 'explanation' in alternative:
+                    raise ValueError('Secondary artifact has wrong schema/explanation rule')
+                check_network(alternative.get('network'), task.architecture)
+                secondary_score = evaluate_generated(task, alternative)
+                entry['posthoc_extracted_json'] = {'score':secondary_score,'would_pass':secondary_score['all_passed']}
+            except (ValueError, TypeError, KeyError, OverflowError):
+                pass
     return entry
 
 

@@ -1,2 +1,3 @@
 One-time matched-topology, paired gauge-transformation LLM weight-reading smoke test.
 Public checkpoint pinned. No external model API key, model probes or execution tools.
+Rerun after preserving hidden-directory GitHub Actions artifacts and fixing the reading CLI import.

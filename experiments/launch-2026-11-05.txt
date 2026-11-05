@@ -1,3 +1,4 @@
 One-time open-model exploratory smoke test trigger.
 No API key required; pinned public Qwen/Qwen3-0.6B CPU inference on four generated tasks.
 This is development evidence only. Do not treat as a registered independent scientific evaluation.
+Rerun after preserving hidden-directory GitHub Actions artifacts and fixing the reading CLI import.
