@@ -105,3 +105,7 @@ The tests are deterministic, and every result is inspectable. **They are not a s
 **Can a model translate a behavioral specification into *numerical network parameters*, or diagnose and edit existing parameters, with a measurable advantage over known symbolic construction, random search, gradient methods, or conventional program synthesis?**
 
 To answer this scientifically, we will need hidden tasks, sealed evaluation, architecture-matched baselines, repeated independent samples, and recorded model/tool access. A local example solved exactly is only the beginning.
+
+## License
+
+The code and data (everything except the documentation) are released under the [MIT License](LICENSE). The documentation, `README.md` and `docs/`, is © 2026 Renato Fabbri and licensed under [CC BY 4.0](docs/LICENSE).
