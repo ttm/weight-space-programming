@@ -3,7 +3,7 @@ export PYTHONPATH=src
 # Committed results use the public seeds, whatever the caller's environment holds.
 unexport WSP_SEED_SALT
 
-.PHONY: test benchmark stress repair results check research-results provenance-results model-replay balanced-results
+.PHONY: test benchmark stress repair results check research-results provenance-results model-replay balanced-results direct-synthesis-replay
 
 test:
 	$(PYTHON) -m unittest discover -s tests -v
@@ -45,5 +45,9 @@ model-replay:
 	  if test -f "$$report"; then $(PYTHON) scripts/verify_constrained_reading.py "$$report"; fi; \
 	done
 
-check: test results model-replay
+
+direct-synthesis-replay:
+	$(PYTHON) scripts/verify_direct_synthesis.py
+
+check: test results model-replay direct-synthesis-replay
 	@git diff --exit-code -- results/ || { echo "results/ no longer matches committed files; commit intended changes." >&2; exit 1; }

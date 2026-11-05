@@ -70,3 +70,15 @@ Establish invariance criteria over equivalence classes `W ~ W'` iff their functi
 ## Decisions before L3, not blockers for P1
 
 A budget and credentials for genuinely stronger hosted models, access to a sealed evaluator, choice of external preregistration, and an intended paper venue. These are not necessary to validate the current open-weight pilot. Do not retroactively count previous development conversations or prompt-tuned runs as preregistered blind trials.
+
+
+### P2 development checkpoint: first ChatGPT GPT-6 subject (2026-11-05)
+
+The initial *public, developer-authored* synthesis bank is now implemented in `wsp.direct_synthesis`: ten fixed-topology tasks (nine constructively realizable and one impossibility negative control), four feedback/explanation assignments, independent analytic oracles, complete Boolean truth tables, continuous OOD/boundary checks, numeric validation and strict accounting for rejected JSON. `wsp.direct_sessions` provides local budget/one-final-submission bookkeeping (not isolation).
+
+The ChatGPT GPT-6 first-submission artifacts were manually derived as numerical tensors and then locally evaluated, with **9/10 strict passes**. One logically correct affine-XOR impossibility proof omitted an explicitly required `explanation` field and is preserved as a failed first attempt. Nine realizable tasks each had 0/100 exact random N(0,1) controls. All candidate bytes, digests, model-identity **knowns and unknowns**, and the evaluator replay are archived; see [DIRECT_SYNTHESIS.md](DIRECT_SYNTHESIS.md).
+
+**Evidence level:** L0 engineering + L1 self-selected exploratory assistant observations only, *not L2 independent replication or L3 preregistration*. The task designer was also the GPT-6 subject; tool isolation, exact model snapshot/build and reasoning effort could not be authenticated. No independent blinded evaluation or causal comparison between explanation/feedback arms occurred: all ten first submissions used zero validation probes.
+
+**Next P2 gate:** Freeze prompts and evaluator, arrange independently generated unseen tasks whose solutions remain hidden from the model, use a model interface with audited tool permissions and provider model ID, obtain repeated attempts, and compare to symbolic construction and trained systems under explicit (separate) resource budgets. Do not count these first self-submissions as the required independent tasks.
+

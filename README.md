@@ -159,3 +159,19 @@ To separate response-format compliance from function inference, the [post-hoc co
 ### Constrained-output follow-up: verified negative result
 
 The pinned Qwen2.5-1.5B-Instruct model was evaluated on the **same four balanced functions / eight network presentations** with a post-hoc restricted decoding method that mechanically forced each of 16 output tokens to be either `0` or `1`. The workflow successfully completed and archived [all eight raw predictions](experiments/reports/2026-11-05-constrained-reading.json). All eight predictions were `0000000000000000`, hence **8/8 format-valid, 0/8 exact, 0/4 both-exact equivalent pairs, 50% bit accuracy**. Its mean conditional-binary-token Brier score was **0.39443402**, compared with **0.25** for an uninformative probability of 0.5 on each bit. Despite 4/4 matched-pair agreement, **every agreement was trivial constant-output collapse**. These observations do not generalize to more capable models, unseen families or actual trained-network interpretation. The constrained approach is explicitly responsive to the first invalid-JSON results, not a preregistered confirmation.
+
+
+## GPT-6 ChatGPT as first direct-weight synthesis subject (exploratory)
+
+A public [direct-weight benchmark](docs/DIRECT_SYNTHESIS.md) now specifies ten exact-topology tasks across Boolean logic, nonlinear regression, geometric classification, multiclass control and affine-XOR impossibility. Tasks independently assign one of four conditions: zero versus up to three validation probes, crossed with explanation required versus weights-only. The local session runner enforces probe quotas and one final submission, **but is not a sealed evaluator**.
+
+The first ChatGPT GPT-6 submissions are archived byte for byte in [experiments/submissions/chatgpt-gpt6-2026-11-05](experiments/submissions/chatgpt-gpt6-2026-11-05/manifest.json). Their [replayed report](experiments/reports/2026-11-05-gpt6-direct-synthesis.json) records **9/10 strict passes**. The remaining affine-XOR impossibility response contains a correct proof but missed the mandated separate explanation field, so its first attempt is a **failure**, not a retroactively corrected success. No validation probes were used, including for budgeted tasks.
+
+The authoring model also designed and inspected these public task definitions and had tool access. The score **does not** measure blinded or independent model competence. See [model identity and unknown build/settings](docs/MODEL_PROVENANCE_GPT6.md). For the no-inference integrity replay run:
+
+```bash
+python scripts/verify_direct_synthesis.py
+python -m wsp.direct_synthesis list
+python -m wsp.direct_synthesis prompt two_hats1
+```
+

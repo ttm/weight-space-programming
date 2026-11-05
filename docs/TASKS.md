@@ -71,3 +71,20 @@ This ledger records measurable acceptance criteria, not promised scientific outc
 - **Engineering verified** means deterministic tests and mathematical reference witnesses pass.
 - **Exploratory model observation** means an actual model generated logged outputs, without a preregistered population-level inference.
 - **Confirmatory result** requires a frozen design, independent model sampling, sealed evaluation and preregistered statistical analysis.
+
+
+## 2a. GPT-6 first-subject direct synthesis development benchmark (completed engineering)
+
+- [x] Ten heterogeneous public fixed-topology tasks: logic, regression, geometry, control, and impossible affine XOR.
+- [x] Four assigned conditions crossing blind/budgeted and explanation-required/forbidden.
+- [x] Standalone CLI for public task specifications and exact numerical evaluation.
+- [x] Local session bookkeeping for probe quotas, malformed submissions, frozen architectures, and one final decision.
+- [x] First GPT-6 numerical candidate per task archived exactly, including the failed formatting case.
+- [x] Strict results replay: **9/10** first candidates pass; invalid format remains in the denominator.
+- [x] First-subject manifest with model identity, interface, observed file timestamp, and unknown build/reasoning settings explicitly null.
+- [x] Naive same-topology N(0,1) random controls (0/100 exact for each realizable task), labeled weak and unmatched.
+- [x] CI tests covering format, task oracles, topology, budgets, repeatability and finalization.
+- [ ] Validate independent participants on externally supplied fresh tasks they did not design.
+- [ ] Seal reference implementations and numeric test inputs from participants; benchmark is currently public.
+- [ ] Freeze and preregister prompts, repeats, models, analysis and resources for confirmatory claims.
+

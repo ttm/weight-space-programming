@@ -104,3 +104,17 @@ An **explicitly post-hoc** follow-up was run after the invalid-JSON failures. Mo
 | Brier for uninformative fixed probability 0.5 | 0.25 |
 
 Every model response was `0000000000000000`, despite balanced true functions. The mean `P(1)` from the binary-restricted token logits was about 0.135, showing a marked bias toward zero. Raw per-bit restricted-token probabilities and prompts are archived in [the exact report](../experiments/reports/2026-11-05-constrained-reading.json) and validated independently by `scripts/verify_constrained_reading.py`. The result is a clearer negative observation for this small model, not a general impossibility result for weight-space interpretation; the design changed after the initial failed experiment and includes just four underlying functions. See [CONSTRAINED_READING.md](CONSTRAINED_READING.md).
+
+
+## 2026-11-05: first GPT-6 ChatGPT direct-weight self-study
+
+**Experiment class:** exploratory self-study with no observer/model isolation; code/weights independently replayable. [Methods](DIRECT_SYNTHESIS.md) · [model provenance](MODEL_PROVENANCE_GPT6.md) · [artifact report](../experiments/reports/2026-11-05-gpt6-direct-synthesis.json).
+
+- Nine numeric constructions passed complete finite or continuous/OOD/edge checks with fixed layer dimensions and activations.
+- The tenth, `xor2_impossible`, supplied a mathematically valid proof of affine XOR impossibility but omitted its required `explanation` field. **Strict initial score: 9/10**, no post-hoc correction.
+- Naive architecture-matched N(0,1) random controls produced **0/100 exact successes per each of nine solvable tasks**. These are deliberately weak controls, *not matched-compute evidence of GPT-6 advantage*.
+- Each task was assigned blind or budgeted (3 probes), and explanation-required or forbidden; *all initial submissions used zero validation probes*. This does not estimate benefits from feedback or explanations.
+- The assistant itself designed and read the benchmark and could inspect evaluator code and use external tools. The model build hash and reasoning effort are not available. This is **not** a blind or independent assessment, not a preregistered run, and not a measure of generalization to unseen task families.
+
+Verify without inference using `python scripts/verify_direct_synthesis.py`. The strict first-submission result is frozen in the report and test fixture; variants must be logged as separate subsequent trials.
+
