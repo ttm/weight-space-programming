@@ -10,5 +10,15 @@
       "from": -1.5,
       "to": -0.5
     }
-  ]
+  ],
+  "provenance": {
+    "creator_type": "unknown",
+    "model": null,
+    "reasoning_effort": null,
+    "access_route": null,
+    "generated_at": null,
+    "tools_used": null,
+    "prompt_reference": null,
+    "evidence": "repair patch origin not independently confirmed as of 2026-11-05"
+  }
 }

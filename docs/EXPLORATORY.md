@@ -42,3 +42,7 @@ For a first exploratory pilot, use one model, 5-10 independently generated tasks
 ## Planned confirmatory design
 
 Preregister primary outcomes and stopping rules in `docs/PREREGISTRATION.md` **before** drawing confirmatory tasks. Preserve both full oracle test scores and resource vectors (prompt/completion tokens, wall-clock, feedback calls, training FLOPs where estimated, cost). A single scalar normalizing LLM compute to optimizer passes is unjustified. Include symbolic-program compiler, explicit gradient training, random search, hill climbing and negative-controls for insufficient architectures.
+
+## Development artifact provenance
+
+`python scripts/index_provenance.py` regenerates the auditable `results/provenance_index.json` and rejects incomplete structured metadata (except the deliberately minimal weights-only fixture). `wsp start` additionally accepts `--reasoning-effort`, `--access-route` and `--tools-used-json` for session provenance. See [PROVENANCE.md](PROVENANCE.md); the historical model information is reported, not independently authenticated.

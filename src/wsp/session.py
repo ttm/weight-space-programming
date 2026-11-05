@@ -30,7 +30,8 @@ def _now() -> str:
 
 
 def start(path: Path, task: str, mode: str, explanation: str, budget: int = 3, *,
-          participant: str | None = None, model: str | None = None, prompt_file: Path | None = None, architecture: dict | None = None) -> dict:
+          participant: str | None = None, model: str | None = None, prompt_file: Path | None = None, architecture: dict | None = None, reasoning_effort: str | None = None,
+          access_route: str | None = None, tools_used: list[str] | None = None) -> dict:
     if path.exists():
         raise FileExistsError(f"Session exists: {path}")
     if task not in TASKS or mode not in MODES or explanation not in EXPLANATIONS or budget < 0:
@@ -42,9 +43,14 @@ def start(path: Path, task: str, mode: str, explanation: str, budget: int = 3, *
             raise ValueError("Architecture input/output dimensions mismatch task")
     if mode == "blind": budget = 0
     if mode == "open": budget = -1
+    if tools_used is not None and (not isinstance(tools_used, list) or
+            any(not isinstance(v, str) or not v.strip() for v in tools_used)):
+        raise ValueError("tools_used must be a list of nonempty strings or None")
     provenance = {"wsp_version": __version__, "participant": participant, "model": model,
                   "prompt_file": None if prompt_file is None else str(prompt_file),
                   "prompt_sha256": None if prompt_file is None else sha256(Path(prompt_file).read_bytes()).hexdigest()}
+    provenance.update({"reasoning_effort": reasoning_effort, "access_route": access_route,
+                       "tools_used": tools_used})
     session = {"schema_version": 1, "task": task, "mode": mode, "explanation": explanation,
                "budget": budget, "probes": [], "finalized": False, "created_at": _now(),
                "provenance": provenance}

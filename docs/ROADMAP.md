@@ -24,7 +24,7 @@ The files themselves record this only loosely. Their `author` field says "GPT-6 
 
 | Step | Work | Needs | Status |
 |---|---|---|---|
-| 0 | Record which model made each network | – | next |
+| 0 | Record which model made each network | – | structured provenance and hash index completed; original transcript/model snapshot unknown |
 | 1 | Random-search baseline | – | implemented for development tasks; final confirmatory comparisons pending |
 | 2 | Hill-climbing and gradient-training baselines | 1 | both implemented for development; tuned, compute-matched baselines pending |
 | 3 | Task generator | 1 and 2, for difficulty levels | four realizable development families implemented; sealed difficulty strata pending |
@@ -40,11 +40,11 @@ Every network and patch in the repository should say who made it, in structured 
 
 - Add a `provenance` object to candidate and patch files: model name, reasoning setting, access route (for example "ChatGPT Plus plan, chat interface"), generation date, tools used, and a reference to the prompt or transcript. Unknown values are `null`, never guessed.
 - Backfill the existing files with the facts above, and confirm the origin of `repairs/xor2_bias_fix.json`. `fixtures/xor2_weights_only.json` stays minimal on purpose; its provenance is recorded here.
-- `wsp benchmark` copies `provenance` into `results/`, as it already does with `author` and `method`.
-- Give `wsp start` the same fields. It has `--participant`, `--model` and `--prompt-file`; it also needs the reasoning setting, access route and tools, so sessions and repository files describe a model the same way.
+- `python scripts/index_provenance.py` records the exact artifact hashes and structured metadata in `results/provenance_index.json`; ordinary benchmark reports remain backward-compatible. The benchmark can additionally embed provenance in a later schema revision.
+- Give `wsp start` the same fields. It now supports `--participant`, `--model`, `--prompt-file`, `--reasoning-effort`, `--access-route` and `--tools-used-json` so experimenters can record those session details.
 - In trials, provenance comes from the session, which the runner writes. What a participant writes about itself inside its submission is self-reported (PROTOCOL §9) and isn't trusted.
 
-Done when every file in `examples/`, `fixtures/` and `repairs/` states its origin or says it is unknown, `results/` carries it, and a test fails for a new file in those folders without it.
+Done for the structured provenance/index requirement: 13/14 artifacts have complete fields, the deliberate minimal weight-only fixture is documented as an exception, the index is committed, and tests reject incomplete metadata. Original prompt/transcript and exact model snapshot remain unknown and must not be fabricated.
 
 ### Step 1: random-search baseline
 
@@ -99,6 +99,8 @@ Done when the preregistration is committed before the first pilot session and th
 Draw the experiment tasks from secret seeds, run the participants, analyze exactly as preregistered, and report in RESULTS.md, including failure and rejected-JSON rates. A null or negative result is reported the same way.
 
 ## Implementation checkpoint: November 5, 2026
+
+- **Provenance:** 13/14 development artifacts now have structured origin claims and exact SHA-256 index entries; the one weights-only fixture is intentionally metadata-free. The patch origin is unknown; original model version/transcript details are not authenticated. The session CLI can capture reasoning effort, access route and tools used. See [PROVENANCE.md](PROVENANCE.md).
 
 - **Architecture:** a supplied contract is now enforced by the ordinary session evaluator. Generated-model trials always lock exact depth, width and activations.
 - **Task construction:** four deterministic families have constructively realizable witness networks. A development CI job checks 128 witnesses; the families remain public and elementary.

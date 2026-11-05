@@ -94,3 +94,5 @@ Separate prompt scripts for tasks are intentionally not hard-coded into the eval
 ## 9. Provenance and reproducibility
 
 The baseline records in `results/` were generated using deterministic Python code in this repository. No gradient steps were used. The directly specified values in `examples/` and `fixtures/` were written by ChatGPT 6 with high reasoning, in a chat session on a ChatGPT Plus plan, and then executed and tested locally; [ROADMAP.md](ROADMAP.md#provenance-of-the-existing-artifacts) records what else is and isn't known. They are not registered blind trials, and a label such as `method=direct_weights` is **self-reported provenance**, not cryptographic proof. The randomly seeded controls and task oracles are open source by design.
+
+The development artifact origins and exact byte hashes are now indexed in [PROVENANCE.md](PROVENANCE.md) and `results/provenance_index.json`. This is metadata completeness, not cryptographic authorship proof.

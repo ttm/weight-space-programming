@@ -114,13 +114,14 @@ python3 -m wsp.pilot --participant random_stub --seeds 1 --repeats 1 --output .r
 python3 -m wsp.pilot --participant oracle_stub --seeds 1 --repeats 1 --output .runs/oracle.json
 python3 -m wsp.weight_reading --count 8 --seed 2 --bank .runs/reading.json --key .runs/reading-key.json
 python3 scripts/run_development.py
+python3 scripts/index_provenance.py
 ```
 
 Ordinary `wsp start` accepts `--architecture-file architecture.json` to lock depth, widths and activations. Without that option, the original permissive development behavior remains. Generated pilot trials always lock architecture.
 
 For actual model calls, explicitly opt into the manual [exploratory GitHub Action](.github/workflows/research-pilot.yml), configure an API key in the repository's `OPENAI_API_KEY` secret, and supply a model ID. Normal CI makes no paid calls; a ChatGPT subscription is separate from API billing.
 
-See [gradient baseline methodology](docs/GRADIENT.md), [exploratory methods](docs/EXPLORATORY.md), [weight-space equivalence](docs/THEORY.md), and the [roadmap](docs/ROADMAP.md). `make check` regenerates the development control summary in `results/development_research.json`.
+See [artifact provenance](docs/PROVENANCE.md), [gradient baseline methodology](docs/GRADIENT.md), [exploratory methods](docs/EXPLORATORY.md), [weight-space equivalence](docs/THEORY.md), and the [roadmap](docs/ROADMAP.md). `make check` regenerates the development control summary in `results/development_research.json`.
 
 ## Research question
 

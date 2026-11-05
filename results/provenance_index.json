@@ -1,0 +1,224 @@
+{
+  "artifacts": [
+    {
+      "path": "examples/absdiff2.json",
+      "provenance": {
+        "access_route": "ChatGPT Plus chat interface",
+        "creator_type": "llm",
+        "evidence": "repository owner report recorded 2026-11-05",
+        "generated_at": null,
+        "model": "GPT-6",
+        "prompt_reference": null,
+        "reasoning_effort": "high",
+        "tools_used": null
+      },
+      "sha256": "9b1cd89258441715c0f611d69b20569260eb460e93f35f8ff15f620c48fe7030",
+      "status": "reported_metadata_not_attestation",
+      "task": "absdiff2"
+    },
+    {
+      "path": "examples/and2.json",
+      "provenance": {
+        "access_route": "ChatGPT Plus chat interface",
+        "creator_type": "llm",
+        "evidence": "repository owner report recorded 2026-11-05",
+        "generated_at": null,
+        "model": "GPT-6",
+        "prompt_reference": null,
+        "reasoning_effort": "high",
+        "tools_used": null
+      },
+      "sha256": "66a7d99f95f10b1cdc9263550ef1f93886922874dae0f19a0e0684f654abd335",
+      "status": "reported_metadata_not_attestation",
+      "task": "and2"
+    },
+    {
+      "path": "examples/compare2.json",
+      "provenance": {
+        "access_route": "ChatGPT Plus chat interface",
+        "creator_type": "llm",
+        "evidence": "repository owner report recorded 2026-11-05",
+        "generated_at": null,
+        "model": "GPT-6",
+        "prompt_reference": null,
+        "reasoning_effort": "high",
+        "tools_used": null
+      },
+      "sha256": "559db5a9d646742303d14cf1f156d0fcdd88a423f82706ae223a7fd2d48ea4e8",
+      "status": "reported_metadata_not_attestation",
+      "task": "compare2"
+    },
+    {
+      "path": "examples/diamond2.json",
+      "provenance": {
+        "access_route": "ChatGPT Plus chat interface",
+        "creator_type": "llm",
+        "evidence": "repository owner report recorded 2026-11-05",
+        "generated_at": null,
+        "model": "GPT-6",
+        "prompt_reference": null,
+        "reasoning_effort": "high",
+        "tools_used": null
+      },
+      "sha256": "3555a1a94ed9a9a02a7c4290d362af456f11de2e1c89afcbd8a21764426586a7",
+      "status": "reported_metadata_not_attestation",
+      "task": "diamond2"
+    },
+    {
+      "path": "examples/interval1.json",
+      "provenance": {
+        "access_route": "ChatGPT Plus chat interface",
+        "creator_type": "llm",
+        "evidence": "repository owner report recorded 2026-11-05",
+        "generated_at": null,
+        "model": "GPT-6",
+        "prompt_reference": null,
+        "reasoning_effort": "high",
+        "tools_used": null
+      },
+      "sha256": "bf5e056cb85d310a0b11deab1f12772a586619ff6e5e596138a630f678bfe5e9",
+      "status": "reported_metadata_not_attestation",
+      "task": "interval1"
+    },
+    {
+      "path": "examples/majority5.json",
+      "provenance": {
+        "access_route": "ChatGPT Plus chat interface",
+        "creator_type": "llm",
+        "evidence": "repository owner report recorded 2026-11-05",
+        "generated_at": null,
+        "model": "GPT-6",
+        "prompt_reference": null,
+        "reasoning_effort": "high",
+        "tools_used": null
+      },
+      "sha256": "616bcba6e082f6b11938a0fd94a19943c6ab1b41f1d5fee534d5c065b00e708d",
+      "status": "reported_metadata_not_attestation",
+      "task": "majority5"
+    },
+    {
+      "path": "examples/max2.json",
+      "provenance": {
+        "access_route": "ChatGPT Plus chat interface",
+        "creator_type": "llm",
+        "evidence": "repository owner report recorded 2026-11-05",
+        "generated_at": null,
+        "model": "GPT-6",
+        "prompt_reference": null,
+        "reasoning_effort": "high",
+        "tools_used": null
+      },
+      "sha256": "2f1018804bf7fa6d91ae9935c10f4e10ba7b6da236b3aa7206084467e997e85c",
+      "status": "reported_metadata_not_attestation",
+      "task": "max2"
+    },
+    {
+      "path": "examples/parity3.json",
+      "provenance": {
+        "access_route": "ChatGPT Plus chat interface",
+        "creator_type": "llm",
+        "evidence": "repository owner report recorded 2026-11-05",
+        "generated_at": null,
+        "model": "GPT-6",
+        "prompt_reference": null,
+        "reasoning_effort": "high",
+        "tools_used": null
+      },
+      "sha256": "c87e1cde983611aad993191cb3545bfd692687c1b711c5af94f3702039dc3212",
+      "status": "reported_metadata_not_attestation",
+      "task": "parity3"
+    },
+    {
+      "path": "examples/thermostat1.json",
+      "provenance": {
+        "access_route": "ChatGPT Plus chat interface",
+        "creator_type": "llm",
+        "evidence": "repository owner report recorded 2026-11-05",
+        "generated_at": null,
+        "model": "GPT-6",
+        "prompt_reference": null,
+        "reasoning_effort": "high",
+        "tools_used": null
+      },
+      "sha256": "a8824e64f2a8868a1cf72dc48a9afb115bda00b5ccb9d86b78abcafdfaff4c9c",
+      "status": "reported_metadata_not_attestation",
+      "task": "thermostat1"
+    },
+    {
+      "path": "examples/xor2.json",
+      "provenance": {
+        "access_route": "ChatGPT Plus chat interface",
+        "creator_type": "llm",
+        "evidence": "repository owner report recorded 2026-11-05",
+        "generated_at": null,
+        "model": "GPT-6",
+        "prompt_reference": null,
+        "reasoning_effort": "high",
+        "tools_used": null
+      },
+      "sha256": "5a72e5b34a35a57be59649d088603960c1f189d75878a19af19a55adf776ccab",
+      "status": "reported_metadata_not_attestation",
+      "task": "xor2"
+    },
+    {
+      "path": "examples/xor2_linear_failure.json",
+      "provenance": {
+        "access_route": "ChatGPT Plus chat interface",
+        "creator_type": "llm",
+        "evidence": "repository owner report recorded 2026-11-05",
+        "generated_at": null,
+        "model": "GPT-6",
+        "prompt_reference": null,
+        "reasoning_effort": "high",
+        "tools_used": null
+      },
+      "sha256": "addd9f7e4cdc4d49a6afbcc8afac9b33080c5c8c2a5d55e065478c1f18e8cbd0",
+      "status": "reported_metadata_not_attestation",
+      "task": "xor2"
+    },
+    {
+      "path": "fixtures/xor2_corrupted.json",
+      "provenance": {
+        "access_route": "ChatGPT Plus chat interface",
+        "creator_type": "llm",
+        "evidence": "repository owner report recorded 2026-11-05",
+        "generated_at": null,
+        "model": "GPT-6",
+        "prompt_reference": null,
+        "reasoning_effort": "high",
+        "tools_used": null
+      },
+      "sha256": "25bd7022f44539d7be1f578eb6ffde09ed8b3816393abc28ef440faab249b7c6",
+      "status": "reported_metadata_not_attestation",
+      "task": "xor2"
+    },
+    {
+      "path": "fixtures/xor2_weights_only.json",
+      "provenance": null,
+      "sha256": "a5fc0a31a117a06d4f62204f02539efd65f89c3ad74f8b9966e5c7a7e865a780",
+      "status": "exception_minimal_weight_only",
+      "task": "xor2"
+    },
+    {
+      "path": "repairs/xor2_bias_fix.json",
+      "provenance": {
+        "access_route": null,
+        "creator_type": "unknown",
+        "evidence": "repair patch origin not independently confirmed as of 2026-11-05",
+        "generated_at": null,
+        "model": null,
+        "prompt_reference": null,
+        "reasoning_effort": null,
+        "tools_used": null
+      },
+      "sha256": "94583f59c1689914f4ed5dc83fd1ba1723c381c5274fa8985072b0098b501435",
+      "status": "reported_metadata_not_attestation",
+      "task": "xor2"
+    }
+  ],
+  "exception": "fixtures/xor2_weights_only.json",
+  "schema_version": 1,
+  "status": "AUDIT_METADATA_NOT_AUTHOR_AUTHENTICATION",
+  "structured": 13,
+  "total": 14
+}

@@ -36,5 +36,15 @@
         "activation": "linear"
       }
     ]
+  },
+  "provenance": {
+    "creator_type": "llm",
+    "model": "GPT-6",
+    "reasoning_effort": "high",
+    "access_route": "ChatGPT Plus chat interface",
+    "generated_at": null,
+    "tools_used": null,
+    "prompt_reference": null,
+    "evidence": "repository owner report recorded 2026-11-05"
   }
 }

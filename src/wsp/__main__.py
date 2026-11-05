@@ -47,6 +47,9 @@ def main() -> None:
     st = sub.add_parser("stress"); st.add_argument("candidate"); st.add_argument("--output")
     se = sub.add_parser("start"); se.add_argument("task", choices=TASKS); se.add_argument("--session", required=True); se.add_argument("--mode", choices=["blind", "budgeted", "open"], default="blind"); se.add_argument("--explanation", choices=["required", "optional", "forbidden"], default="optional"); se.add_argument("--budget", type=int, default=3)
     se.add_argument("--architecture-file", help="JSON topology contract: fixed depth, widths and activations")
+    se.add_argument("--reasoning-effort", help="Model reasoning setting, if known")
+    se.add_argument("--access-route", help="API, chat, or other model interface")
+    se.add_argument("--tools-used-json", help="JSON list of tools accessible to participant, if known")
     se.add_argument("--participant", help="who or what writes the candidates"); se.add_argument("--model", help="model name and version"); se.add_argument("--prompt-file", help="prompt given to the participant; stored as a SHA-256 hash")
     pr = sub.add_parser("probe"); pr.add_argument("candidate"); pr.add_argument("--session", required=True)
     fi = sub.add_parser("finalize"); fi.add_argument("candidate"); fi.add_argument("--session", required=True)
@@ -81,7 +84,9 @@ def main() -> None:
             _print(start(Path(args.session), args.task, args.mode, args.explanation, args.budget,
                          participant=args.participant, model=args.model,
                          prompt_file=Path(args.prompt_file) if args.prompt_file else None,
-                         architecture=json.loads(Path(args.architecture_file).read_text()) if args.architecture_file else None))
+                         architecture=json.loads(Path(args.architecture_file).read_text()) if args.architecture_file else None,
+                         reasoning_effort=args.reasoning_effort, access_route=args.access_route,
+                         tools_used=json.loads(args.tools_used_json) if args.tools_used_json else None))
         elif args.command == "probe":
             _print(probe(Path(args.session), Path(args.candidate)))
         elif args.command == "finalize":
