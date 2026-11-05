@@ -40,7 +40,7 @@ The session file is a reproducible log, **not a security boundary**. For actual 
 - **Real-valued tasks:** validation has 64 seeded samples within [-2,2] per dimension; test has 512 different seeded samples; OOD has 512 samples within [-10,10]; edge includes explicit exact boundaries or ties.
 - **Binary:** sign of final scalar (`>0`) gives class 1, including output exactly zero as class 0.
 - **Multiclass:** argmax with lowest-index tie-break; thermostat labels are [hold,cool,heat].
-- **Regression:** mean squared error, with `<= 1e-12` passing threshold. The tolerance is stringent for these exactly representable toy functions.
+- **Regression:** passes when the largest absolute error is at most `1e-6`, which implies mean squared error `<= 1e-12`; both are reported. A bound on MSE alone would let a single test point be off by about 2.3e-5. The tolerance is stringent for these exactly representable toy functions.
 - **Robustness:** record task score after quantization, independent additive weight noise and function-preserving parameter transformations.
 - **Comparison:** pair final scores with weight-count, prompt tokens, time, validation probes and successful repairs per changed parameter.
 

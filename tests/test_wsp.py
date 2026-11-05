@@ -34,6 +34,19 @@ class HandcraftedTests(unittest.TestCase):
         self.assertEqual(result["splits"]["test"]["value"], .75)
         self.assertFalse(result["all_passed"])
 
+    def test_regression_judged_by_largest_error(self):
+        # One test point off by 1e-5 keeps MSE under 1e-12; the largest error must still fail it.
+        candidate = load_candidate(ROOT / "examples/absdiff2.json")
+        xs = sorted(x[0] for x, _ in samples("absdiff2", "test"))
+        threshold = (xs[-1] + xs[-2]) / 2  # only the largest first input exceeds it
+        hidden, output = candidate["network"]["layers"]
+        hidden["weights"].append([1, 0]); hidden["bias"].append(-threshold)
+        output["weights"][0].append(1e-5 / (xs[-1] - threshold))
+        split = evaluate(candidate, ("test",))["splits"]["test"]
+        self.assertLess(split["value"], 1e-12)
+        self.assertAlmostEqual(split["max_abs_error"], 1e-5)
+        self.assertFalse(split["passed"])
+
     def test_invalid_shapes_and_values(self):
         self.assertRaises(ValueError, validate_network, {"layers": [{"weights": [[float("nan")]], "bias": [0], "activation": "linear"}]})
         self.assertRaises(ValueError, validate_network, {"layers": [{"weights": [[1], [1, 2]], "bias": [0, 0], "activation": "linear"}]})

@@ -8,6 +8,10 @@ import random
 from .network import forward, predict, validate_network
 from .tasks import TASKS, samples
 
+# Largest absolute error a passing regression output may have. It implies MSE <= 1e-12, whereas
+# a bound on MSE alone would let one of 512 test points be off by about 2.3e-5.
+REGRESSION_TOLERANCE = 1e-6
+
 
 def evaluate(candidate: dict, splits=("test", "ood", "edge")) -> dict:
     task_name = candidate["task"]
@@ -20,13 +24,16 @@ def evaluate(candidate: dict, splits=("test", "ood", "edge")) -> dict:
             continue
         actual = [predict(candidate["network"], x, task.kind) for x, _ in pairs]
         expected = [y for _, y in pairs]
+        extra = {}
         if task.kind == "regression":
-            metric, value = "mse", math.fsum((a - y) ** 2 for a, y in zip(actual, expected)) / len(pairs)
-            passed = value <= 1e-12
+            errors = [abs(a - y) for a, y in zip(actual, expected)]
+            metric, value = "mse", math.fsum(e * e for e in errors) / len(pairs)
+            extra["max_abs_error"] = max(errors)
+            passed = extra["max_abs_error"] <= REGRESSION_TOLERANCE
         else:
             metric, value = "accuracy", sum(a == y for a, y in zip(actual, expected)) / len(pairs)
             passed = value == 1.0
-        outcomes[split] = {"n": len(pairs), "metric": metric, "value": value, "passed": passed}
+        outcomes[split] = {"n": len(pairs), "metric": metric, "value": value, "passed": passed, **extra}
     return {"task": task_name, "parameters": params, "splits": outcomes,
             "all_passed": bool(outcomes) and all(s["passed"] for s in outcomes.values())}
 

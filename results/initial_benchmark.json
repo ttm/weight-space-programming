@@ -8,18 +8,21 @@
         "parameters": 9,
         "splits": {
           "edge": {
+            "max_abs_error": 0.0,
             "metric": "mse",
             "n": 3,
             "passed": true,
             "value": 0.0
           },
           "ood": {
+            "max_abs_error": 0.0,
             "metric": "mse",
             "n": 512,
             "passed": true,
             "value": 0.0
           },
           "test": {
+            "max_abs_error": 0.0,
             "metric": "mse",
             "n": 512,
             "passed": true,
@@ -292,18 +295,21 @@
         "parameters": 13,
         "splits": {
           "edge": {
+            "max_abs_error": 0.0,
             "metric": "mse",
             "n": 3,
             "passed": true,
             "value": 0.0
           },
           "ood": {
+            "max_abs_error": 1.7763568394e-15,
             "metric": "mse",
             "n": 512,
             "passed": true,
             "value": 5.23852944873e-32
           },
           "test": {
+            "max_abs_error": 0.0,
             "metric": "mse",
             "n": 512,
             "passed": true,
