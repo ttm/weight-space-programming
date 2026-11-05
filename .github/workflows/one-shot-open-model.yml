@@ -1,0 +1,39 @@
+name: One-time open-model inference smoke test
+
+on:
+  push:
+    paths: ['experiments/launch-2026-11-05.txt']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  offline-model-pilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install library and CPU-only inference dependencies
+        run: |
+          python -m pip install -e .
+          python -m pip install --index-url https://download.pytorch.org/whl/cpu 'torch==2.6.0'
+          python -m pip install 'transformers==4.57.1' 'safetensors>=0.4,<1'
+      - name: Dry-run prompt, topology, witness and scoring
+        run: python scripts/run_local_hf_pilot.py --dry-run --output .runs/dry-run.json
+      - name: Run zero-feedback, weights-only real model submissions
+        env:
+          HF_HUB_DISABLE_TELEMETRY: '1'
+          TOKENIZERS_PARALLELISM: 'false'
+        run: python scripts/run_local_hf_pilot.py --max-new-tokens 640 --output .runs/model-smoke.json
+      - name: Persist development raw responses and results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: open-model-smoke
+          path: .runs/*.json
+          if-no-files-found: warn
+          retention-days: 30

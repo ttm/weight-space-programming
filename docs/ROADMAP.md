@@ -100,6 +100,8 @@ Draw the experiment tasks from secret seeds, run the participants, analyze exact
 
 ## Implementation checkpoint: November 5, 2026
 
+- **Optional genuine inference smoke test:** a one-time GitHub Actions CPU job uses the pinned public Qwen3-0.6B checkpoint on four generated tasks with zero feedback. This is exploratory only and its outcome is not known until the Action finishes; see [OPEN_MODEL_SMOKE.md](OPEN_MODEL_SMOKE.md).
+
 - **Provenance:** 13/14 development artifacts now have structured origin claims and exact SHA-256 index entries; the one weights-only fixture is intentionally metadata-free. The patch origin is unknown; original model version/transcript details are not authenticated. The session CLI can capture reasoning effort, access route and tools used. See [PROVENANCE.md](PROVENANCE.md).
 
 - **Architecture:** a supplied contract is now enforced by the ordinary session evaluator. Generated-model trials always lock exact depth, width and activations.
