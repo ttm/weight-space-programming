@@ -8,6 +8,7 @@ from pathlib import Path
 
 from wsp.baselines import compare
 from wsp.generated import FAMILIES, make_task, evaluate_generated
+from wsp.gradient import compare as gradient_compare
 from wsp.pilot import run_pilot
 from wsp.weight_reading import generate_bank
 
@@ -21,6 +22,7 @@ def main():
             checked += 1
 
     baselines = compare(seeds=4,budgets=(1,3,10))
+    gradient = gradient_compare(seeds=2,steps=(100,500,3000))
     oracle = run_pilot(participant="oracle_stub",seeds=1,repeats=1)
     random_control = run_pilot(participant="random_stub",seeds=1,repeats=1)
     bank,key = generate_bank(count=16,seed=0)
@@ -31,11 +33,13 @@ def main():
     report = {"schema_version":1,"status":"DEVELOPMENT_CONTROLS_NOT_LLM_TRIALS",
               "families":list(FAMILIES), "constructive_witnesses_verified":checked,
               "baselines":baselines["summary"],
+              "gradient_baseline": [{"steps":row["steps"],"trials":row["trials"],
+                                     "exact_successes":row["exact_successes"]} for row in gradient["summary"]],
               "stub_oracle_summary":oracle["summary"],"stub_random_summary":random_control["summary"],
               "matched_topology_reading_bank_size":len(bank["challenges"]),
               "reading_bank_gauge_preserves_behavior":all_preserved,
               "reading_bank_canonical_fingerprint_preserved":all_canonical,
-              "notes":["Not blinded model generations", "No payment or provider calls", "Only integers and booleans are committed for cross-platform reproducibility"]}
+              "notes":["Not blinded model generations", "No payment or provider calls", "Gradient training uses oracle-labeled train inputs and separate budgets; it is NOT compute-matched to LLM inference", "Only integers and booleans are committed for cross-platform reproducibility"]}
     output=Path("results/development_research.json")
     output.parent.mkdir(parents=True,exist_ok=True)
     output.write_text(json.dumps(report,sort_keys=True,indent=2)+"\n",encoding="utf8")

@@ -44,10 +44,28 @@
     "l1ball2",
     "threshold4"
   ],
+  "gradient_baseline": [
+    {
+      "exact_successes": 0,
+      "steps": 100,
+      "trials": 8
+    },
+    {
+      "exact_successes": 0,
+      "steps": 500,
+      "trials": 8
+    },
+    {
+      "exact_successes": 2,
+      "steps": 3000,
+      "trials": 8
+    }
+  ],
   "matched_topology_reading_bank_size": 16,
   "notes": [
     "Not blinded model generations",
     "No payment or provider calls",
+    "Gradient training uses oracle-labeled train inputs and separate budgets; it is NOT compute-matched to LLM inference",
     "Only integers and booleans are committed for cross-platform reproducibility"
   ],
   "reading_bank_canonical_fingerprint_preserved": true,

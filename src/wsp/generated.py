@@ -129,7 +129,7 @@ def _sample_seed(task: GeneratedTask, split: str, salt: str) -> int:
 
 
 def examples(task: GeneratedTask, split: str, *, salt: str = "") -> list[tuple[list[float], int | float]]:
-    if split not in ("validation", "test", "ood", "edge"):
+    if split not in ("train", "validation", "test", "ood", "edge"):
         raise ValueError("Invalid split")
     if task.family in ("dnf4", "threshold4"):
         xs = [list(xs) for xs in product((0., 1.), repeat=4)]

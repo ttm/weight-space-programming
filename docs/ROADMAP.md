@@ -26,7 +26,7 @@ The files themselves record this only loosely. Their `author` field says "GPT-6 
 |---|---|---|---|
 | 0 | Record which model made each network | – | next |
 | 1 | Random-search baseline | – | implemented for development tasks; final confirmatory comparisons pending |
-| 2 | Hill-climbing and gradient-training baselines | 1 | hill climbing implemented; gradient training pending |
+| 2 | Hill-climbing and gradient-training baselines | 1 | both implemented for development; tuned, compute-matched baselines pending |
 | 3 | Task generator | 1 and 2, for difficulty levels | four realizable development families implemented; sealed difficulty strata pending |
 | 4 | Participant runner | 0; 3 for real runs | stub runner and opt-in OpenAI API adapter implemented; sealed execution pending |
 | 5 | Preregistration and analysis | 1–4 | planned |
@@ -102,12 +102,12 @@ Draw the experiment tasks from secret seeds, run the participants, analyze exact
 
 - **Architecture:** a supplied contract is now enforced by the ordinary session evaluator. Generated-model trials always lock exact depth, width and activations.
 - **Task construction:** four deterministic families have constructively realizable witness networks. A development CI job checks 128 witnesses; the families remain public and elementary.
-- **Baselines:** budgeted random search and hill climbing are implemented for generated tasks. Gradient training remains open.
+- **Baselines:** budgeted random search and hill climbing are implemented for generated tasks. A pure-Python supervised Adam baseline and finite-difference gradient checks are now implemented; tuned, matched-compute comparisons remain open.
 - **Participants:** deterministic oracle/random stubs exercise all feedback/explanation conditions. An opt-in OpenAI Responses API participant and manual GitHub Action are available, but no paid model run has been made.
 - **Interpretation:** 16 matched-topology development challenges preserve behavior and a *restricted* canonical fingerprint under positive ReLU rescaling and hidden permutations. This is not a complete canonicalization of neural functions.
 - **Documents:** see [EXPLORATORY.md](EXPLORATORY.md) and [THEORY.md](THEORY.md).
 
-Remaining prerequisites for confirmatory evidence include securely separated evaluator/participant, registered model trials, freeze of prompts and model versions, serious matched training/compiler baselines, gradient training and preregistration. Passing stubs do not demonstrate LLM competence.
+Remaining prerequisites for confirmatory evidence include securely separated evaluator/participant, registered model trials, freeze of prompts and model versions, serious matched training/compiler baselines, tuned gradient baselines and preregistration. Passing stubs do not demonstrate LLM competence.
 
 ## After the first pilot
 

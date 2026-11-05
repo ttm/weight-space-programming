@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this experimental laboratory, cite the repository and exact commit you evaluated."
+title: "Weight-Space Programming: A Reproducible Laboratory"
+type: software
+authors:
+  - family-names: Fabbri
+    given-names: Renato
+repository-code: https://github.com/ttm/weight-space-programming
+url: https://github.com/ttm/weight-space-programming
+license: MIT
+version: 0.2.0
+date-released: 2026-11-05
+keywords:
+  - neural networks
+  - weight-space programming
+  - interpretability
+  - benchmark
+  - reproducible research

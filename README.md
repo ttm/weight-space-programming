@@ -103,12 +103,13 @@ The tests are deterministic, and every result is inspectable. **They are not a s
 
 ## Generated-task, model-pilot and weight-reading extensions
 
-Four seeded, constructively realizable task families, exact architecture matching, random/hill-climbing controls, a factorial participant runner and ReLU gauge-invariance reading challenges are now available. **The controls are not independent LLM evaluations.**
+Four seeded, constructively realizable task families, exact architecture matching, random/hill-climbing and supervised Adam training controls, a factorial participant runner and ReLU gauge-invariance reading challenges are now available. **The controls are not independent LLM evaluations.**
 
 ```bash
 python3 -m wsp.generated --family dnf4 --seed 202
 python3 -m wsp.generated --family dnf4 --seed 202 --reference  # development only
 python3 -m wsp.baselines --seeds 4 --budgets 1 3 10
+python3 -m wsp.gradient --seeds 2 --steps 100 500 3000
 python3 -m wsp.pilot --participant random_stub --seeds 1 --repeats 1 --output .runs/random.json
 python3 -m wsp.pilot --participant oracle_stub --seeds 1 --repeats 1 --output .runs/oracle.json
 python3 -m wsp.weight_reading --count 8 --seed 2 --bank .runs/reading.json --key .runs/reading-key.json
@@ -119,7 +120,7 @@ Ordinary `wsp start` accepts `--architecture-file architecture.json` to lock dep
 
 For actual model calls, explicitly opt into the manual [exploratory GitHub Action](.github/workflows/research-pilot.yml), configure an API key in the repository's `OPENAI_API_KEY` secret, and supply a model ID. Normal CI makes no paid calls; a ChatGPT subscription is separate from API billing.
 
-See [exploratory methods](docs/EXPLORATORY.md), [weight-space equivalence](docs/THEORY.md), and the [roadmap](docs/ROADMAP.md). `make check` regenerates the development control summary in `results/development_research.json`.
+See [gradient baseline methodology](docs/GRADIENT.md), [exploratory methods](docs/EXPLORATORY.md), [weight-space equivalence](docs/THEORY.md), and the [roadmap](docs/ROADMAP.md). `make check` regenerates the development control summary in `results/development_research.json`.
 
 ## Research question
 

@@ -66,3 +66,9 @@ Reproducible machine-readable summary: `results/development_research.json`, rege
 - 16 same-topology DNF weight-reading tasks pass the exact finite truth-table equivalence and limited canonicalization fingerprint tests after positive ReLU rescaling/permutation.
 
 No scientific claim about general LLM weight-space reasoning follows from these development controls. See [EXPLORATORY](EXPLORATORY.md) and [THEORY](THEORY.md).
+
+## 8. Pure-Python gradient baseline (development)
+
+A conventional supervised Adam baseline, implemented with reverse-mode derivatives and validated against numerical finite differences, uses the same generated-task architectures. On eight tasks (two seeds per family), it passes all held-out splits **0/8** after 100 update pairs, **0/8** after 500, and **2/8** after 3,000. Partial test accuracy for Boolean families improves in several cases. The symbolic reference compiler remains 8/8 by construction.
+
+This comparison is not compute- or information-matched: Adam receives labeled training examples and the LLM participant sees a symbolic behavioral specification. Its zero exact successes at lower budgets cannot establish superiority of direct weights. See [GRADIENT.md](GRADIENT.md) and the generated `results/development_research.json` summary.

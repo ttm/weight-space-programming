@@ -48,7 +48,7 @@ No confidence interval over the 512 samples should be construed as uncertainty a
 
 ## 5. Baselines and ablations
 
-Use at least: (a) random weights of the same network shape (implemented), (b) symbolic exact synthesis or hand-coded circuits (implemented for ten examples), (c) gradient-trained network of identical architecture/budget (future), (d) black-box zeroth-order search with equal forward-pass quota (future), (e) conventional code generation and compilation to a neural circuit (future), (f) LLM prompted for code rather than weights (future).
+Use at least: (a) random weights of the same network shape (implemented), (b) symbolic exact synthesis or hand-coded circuits (implemented for ten examples), (c) gradient-trained network of identical architecture (prototype supervised Adam implemented; compute-matched study pending), (d) black-box zeroth-order search with equal forward-pass quota (future), (e) conventional code generation and compilation to a neural circuit (future), (f) LLM prompted for code rather than weights (future).
 
 For repair, compare random single-parameter edits, sign changes, magnitude sweeps, gradient-based local updates and a properly trained alternative under matched evaluation budgets. **A sparse edit that fixes a deliberately introduced error does not establish repair ability on real trained systems.**
 
