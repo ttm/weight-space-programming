@@ -1,0 +1,3 @@
+Explicit one-shot launch of the balanced, eight-network, 1.5B open-weight reading pilot on 2026-11-05.
+This marker is intentionally created once; ordinary tests do not download models or use API credits.
+Protocol: docs/BALANCED_READING.md. Report outputs: experiments/reports/2026-11-05-balanced-reading-*.json.

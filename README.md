@@ -134,3 +134,18 @@ To answer this scientifically, we will need hidden tasks, sealed evaluation, arc
 ## License
 
 The code and data (everything except the documentation) are released under the [MIT License](LICENSE). The documentation, `README.md` and `docs/`, is © 2026 Renato Fabbri and licensed under [CC BY 4.0](docs/LICENSE).
+
+## Balanced function-reading study (November 2026)
+
+The next exploratory H2/H5 study uses four **balanced** four-bit function families (parity, pairwise XOR, multiplexer, nontrivial threshold), each represented by an original and a mathematically equivalent ReLU network. Every truth table has 8 positive and 8 negative outputs, so a constant guess yields **50%** per-bit accuracy and **zero exact functions**, even when the guesses agree across every equivalent pair. The primary metric is **both presentations exactly correct**, counted per independent function, not per network.
+
+Run the free, deterministic reference and failure controls:
+
+```bash
+python scripts/run_balanced_controls.py
+python scripts/run_balanced_reading.py --participant oracle --output .runs/oracle.json
+python scripts/run_balanced_reading.py --participant zero --output .runs/zero.json
+python scripts/verify_balanced_reading.py .runs/oracle.json .runs/zero.json
+```
+
+The explicitly launched [one-shot GitHub Action](.github/workflows/one-shot-balanced-reading.yml) uses pinned Qwen2.5-1.5B-Instruct for eight genuine model predictions under two frozen prompt instructions, with no paid API key. Model inferences, if completed, are **exploratory** and cannot be conflated with constructive reference checks or statistical evidence of general skill. See [protocol](docs/BALANCED_READING.md), [implementation tasks](docs/TASKS.md) and [evidence-led roadmap](docs/ROADMAP.md).

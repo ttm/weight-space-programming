@@ -1,0 +1,30 @@
+{
+  "constant_zero": {
+    "exact": 0,
+    "mean_bit_accuracy": 0.5,
+    "pairs_agree": 8,
+    "pairs_both_exact": 0,
+    "pairs_trivial_agreement": 8
+  },
+  "families": [
+    "parity4",
+    "xor_pair",
+    "mux3",
+    "threshold4"
+  ],
+  "n_functions": 8,
+  "n_networks": 16,
+  "oracle": {
+    "exact": 16,
+    "mean_bit_accuracy": 1.0,
+    "pairs_both_exact": 8
+  },
+  "per_family": 2,
+  "positive_outputs_per_network": [
+    8
+  ],
+  "schema_version": 1,
+  "seed": 20261105,
+  "status": "DEVELOPMENT_CONTROLS_NOT_MODEL_INFERENCE",
+  "unique_architectures": 1
+}

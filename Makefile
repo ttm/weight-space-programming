@@ -3,7 +3,7 @@ export PYTHONPATH=src
 # Committed results use the public seeds, whatever the caller's environment holds.
 unexport WSP_SEED_SALT
 
-.PHONY: test benchmark stress repair results check research-results provenance-results model-replay
+.PHONY: test benchmark stress repair results check research-results provenance-results model-replay balanced-results
 
 test:
 	$(PYTHON) -m unittest discover -s tests -v
@@ -21,17 +21,21 @@ repair:
 research-results:
 	$(PYTHON) scripts/run_development.py
 
-# Validate and index the exact byte-level origins of development artifacts.
 provenance-results:
 	$(PYTHON) scripts/index_provenance.py
 
-# Regenerate every committed result.
-results: benchmark stress repair research-results provenance-results
+balanced-results:
+	$(PYTHON) scripts/run_balanced_controls.py
 
-# Validate archived model outputs without new inference; no API credentials or extra dependencies.
+# Regenerate every committed result.
+results: benchmark stress repair research-results provenance-results balanced-results
+
+# Replay archived model results without new inference or API credentials.
 model-replay:
 	$(PYTHON) scripts/verify_model_reports.py
+	@for report in experiments/reports/*-balanced-reading-*.json; do \
+	  if test -f "$$report"; then $(PYTHON) scripts/verify_balanced_reading.py "$$report"; fi; \
+	done
 
-# Unit tests, exact regenerated results, and replay archived model outputs.
 check: test results model-replay
-	@git diff --exit-code -- results/ || { echo "results/ no longer matches the committed files; commit them if the change is intended." >&2; exit 1; }
+	@git diff --exit-code -- results/ || { echo "results/ no longer matches committed files; commit intended changes." >&2; exit 1; }

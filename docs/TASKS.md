@@ -14,12 +14,12 @@ This ledger records measurable acceptance criteria, not promised scientific outc
 
 ## 1. Balanced weight-reading study (H2/H5)
 
-- [ ] Construct 4 families of 4-bit Boolean classifiers with common `4-ReLU(4)-linear(1)` topology.
-- [ ] Verify an exact 8/8 class balance for every generated truth table across many seeds.
-- [ ] Generate and conceal original vs equivalent weight permutations and positive rescalings.
-- [ ] Prove equality of all 16 outputs and equality of restricted canonical fingerprints on all pairs.
-- [ ] Build parser and scorer: exact truth table, format compliance, per-bit accuracy, paired *both-exact*, trivial agreement.
-- [ ] Test oracle control at 100% and all-zero control at 0% exact / 50% bit accuracy.
+- [x] Construct 4 families of 4-bit Boolean classifiers with common `4-ReLU(4)-linear(1)` topology.
+- [x] Verify an exact 8/8 class balance for every generated truth table across many seeds.
+- [x] Generate and conceal original vs equivalent weight permutations and positive rescalings.
+- [x] Prove equality of all 16 outputs and equality of restricted canonical fingerprints on all pairs.
+- [x] Build parser and scorer: exact truth table, format compliance, per-bit accuracy, paired *both-exact*, trivial agreement.
+- [x] Test oracle control at 100% and all-zero control at 0% exact / 50% bit accuracy.
 - [ ] Execute an explicit, no-paid-API, one-shot pinned model pilot through CI.
 - [ ] Archive raw responses and verify their hashes without re-running inference.
 - [ ] Write balanced-study interpretation, including the independent-function sample size and negative findings.
