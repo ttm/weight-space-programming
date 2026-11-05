@@ -1,0 +1,898 @@
+{
+  "answer_key_unsealed_after_run": {
+    "answers": {
+      "br_16a27e732c9f65": {
+        "family": "xor_pair",
+        "group": "4f566ef56a1d7fbf",
+        "ones": 8,
+        "reference_fingerprint": "0da177c69ac442a4cb96594c1a732dab86e67c8bccce9b1721387bc1206a1db9",
+        "reference_seed": 20261105,
+        "truth_table": "0101010110101010",
+        "variant": "original"
+      },
+      "br_32eebcb6bf56e0": {
+        "family": "parity4",
+        "group": "6d1e7747ad6a337b",
+        "ones": 8,
+        "reference_fingerprint": "deddd258b91993607f02afea100ac8b5f8b1af72246156b5096b80ccff73b8bf",
+        "reference_seed": 20261105,
+        "truth_table": "1001011001101001",
+        "variant": "gauge"
+      },
+      "br_520ed5726f1a8c": {
+        "family": "mux3",
+        "group": "c04b3073614329f7",
+        "ones": 8,
+        "reference_fingerprint": "38a18668311244808acf336851d7797ca57c4c254b7c23de03728d3abb955ddd",
+        "reference_seed": 20261105,
+        "truth_table": "0101001101010011",
+        "variant": "gauge"
+      },
+      "br_6d951da01995bb": {
+        "family": "xor_pair",
+        "group": "4f566ef56a1d7fbf",
+        "ones": 8,
+        "reference_fingerprint": "0da177c69ac442a4cb96594c1a732dab86e67c8bccce9b1721387bc1206a1db9",
+        "reference_seed": 20261105,
+        "truth_table": "0101010110101010",
+        "variant": "gauge"
+      },
+      "br_a61b24fdf1c70f": {
+        "family": "mux3",
+        "group": "c04b3073614329f7",
+        "ones": 8,
+        "reference_fingerprint": "38a18668311244808acf336851d7797ca57c4c254b7c23de03728d3abb955ddd",
+        "reference_seed": 20261105,
+        "truth_table": "0101001101010011",
+        "variant": "original"
+      },
+      "br_c85747507f1bb2": {
+        "family": "threshold4",
+        "group": "29884731c9acd774",
+        "ones": 8,
+        "reference_fingerprint": "8757797fdbe7da68565ce88d5ed3581966f94e042dbdaf6fd534efc24e9171c5",
+        "reference_seed": 20261105,
+        "truth_table": "1100111100001100",
+        "variant": "original"
+      },
+      "br_cc904d6d1dbf2c": {
+        "family": "threshold4",
+        "group": "29884731c9acd774",
+        "ones": 8,
+        "reference_fingerprint": "8757797fdbe7da68565ce88d5ed3581966f94e042dbdaf6fd534efc24e9171c5",
+        "reference_seed": 20261105,
+        "truth_table": "1100111100001100",
+        "variant": "gauge"
+      },
+      "br_ed0c9bdb71c41b": {
+        "family": "parity4",
+        "group": "6d1e7747ad6a337b",
+        "ones": 8,
+        "reference_fingerprint": "deddd258b91993607f02afea100ac8b5f8b1af72246156b5096b80ccff73b8bf",
+        "reference_seed": 20261105,
+        "truth_table": "1001011001101001",
+        "variant": "original"
+      }
+    },
+    "schema_version": 1,
+    "status": "PRIVATE_REFERENCE_DO_NOT_PROMPT"
+  },
+  "condition": "direct",
+  "feedback_probes": 0,
+  "limitations": [
+    "Public deterministic generator and source code; no sealed task families",
+    "Small non-randomized pilot; no confidence intervals or population-level claims",
+    "Paired networks share the same true function and are not independent samples",
+    "The oracle control is code execution, not language-model comprehension"
+  ],
+  "max_new_tokens": 128,
+  "model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "model_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "participant": "model",
+  "per_family": 1,
+  "public_bank": {
+    "items": [
+      {
+        "architecture": {
+          "layers": [
+            {
+              "activation": "relu",
+              "inputs": 4,
+              "outputs": 4
+            },
+            {
+              "activation": "linear",
+              "inputs": 4,
+              "outputs": 1
+            }
+          ]
+        },
+        "id": "br_32eebcb6bf56e0",
+        "input_semantics": "four binary inputs x0,x1,x2,x3; lexicographic 0000..1111",
+        "network": {
+          "layers": [
+            {
+              "activation": "relu",
+              "bias": [
+                0.0,
+                -3.0,
+                -1.0,
+                -1.0
+              ],
+              "weights": [
+                [
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0
+                ],
+                [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                [
+                  0.5,
+                  0.5,
+                  0.5,
+                  0.5
+                ]
+              ]
+            },
+            {
+              "activation": "linear",
+              "bias": [
+                0.5
+              ],
+              "weights": [
+                [
+                  -0.25,
+                  2.0,
+                  2.0,
+                  -4.0
+                ]
+              ]
+            }
+          ]
+        },
+        "output_semantics": "class 1 iff final scalar > 0; otherwise 0"
+      },
+      {
+        "architecture": {
+          "layers": [
+            {
+              "activation": "relu",
+              "inputs": 4,
+              "outputs": 4
+            },
+            {
+              "activation": "linear",
+              "inputs": 4,
+              "outputs": 1
+            }
+          ]
+        },
+        "id": "br_520ed5726f1a8c",
+        "input_semantics": "four binary inputs x0,x1,x2,x3; lexicographic 0000..1111",
+        "network": {
+          "layers": [
+            {
+              "activation": "relu",
+              "bias": [
+                -4.0,
+                0.125,
+                -2.0,
+                0.0
+              ],
+              "weights": [
+                [
+                  0.0,
+                  4.0,
+                  4.0,
+                  0.0
+                ],
+                [
+                  0.5,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.0,
+                  2.0,
+                  0.0,
+                  2.0
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  4.0
+                ]
+              ]
+            },
+            {
+              "activation": "linear",
+              "bias": [
+                -0.5
+              ],
+              "weights": [
+                [
+                  0.25,
+                  0.0,
+                  -0.5,
+                  0.25
+                ]
+              ]
+            }
+          ]
+        },
+        "output_semantics": "class 1 iff final scalar > 0; otherwise 0"
+      },
+      {
+        "architecture": {
+          "layers": [
+            {
+              "activation": "relu",
+              "inputs": 4,
+              "outputs": 4
+            },
+            {
+              "activation": "linear",
+              "inputs": 4,
+              "outputs": 1
+            }
+          ]
+        },
+        "id": "br_16a27e732c9f65",
+        "input_semantics": "four binary inputs x0,x1,x2,x3; lexicographic 0000..1111",
+        "network": {
+          "layers": [
+            {
+              "activation": "relu",
+              "bias": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "weights": [
+                [
+                  1.0,
+                  0.0,
+                  0.0,
+                  -1.0
+                ],
+                [
+                  -1.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                [
+                  0.0,
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                [
+                  0.0,
+                  -1.0,
+                  0.0,
+                  0.0
+                ]
+              ]
+            },
+            {
+              "activation": "linear",
+              "bias": [
+                -0.5
+              ],
+              "weights": [
+                [
+                  1.0,
+                  1.0,
+                  0.0,
+                  0.0
+                ]
+              ]
+            }
+          ]
+        },
+        "output_semantics": "class 1 iff final scalar > 0; otherwise 0"
+      },
+      {
+        "architecture": {
+          "layers": [
+            {
+              "activation": "relu",
+              "inputs": 4,
+              "outputs": 4
+            },
+            {
+              "activation": "linear",
+              "inputs": 4,
+              "outputs": 1
+            }
+          ]
+        },
+        "id": "br_cc904d6d1dbf2c",
+        "input_semantics": "four binary inputs x0,x1,x2,x3; lexicographic 0000..1111",
+        "network": {
+          "layers": [
+            {
+              "activation": "relu",
+              "bias": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "weights": [
+                [
+                  0.0,
+                  0.0,
+                  0.5,
+                  0.0
+                ],
+                [
+                  0.25,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  4.0
+                ],
+                [
+                  0.0,
+                  0.25,
+                  0.0,
+                  0.0
+                ]
+              ]
+            },
+            {
+              "activation": "linear",
+              "bias": [
+                1.5
+              ],
+              "weights": [
+                [
+                  -10.0,
+                  -20.0,
+                  0.5,
+                  20.0
+                ]
+              ]
+            }
+          ]
+        },
+        "output_semantics": "class 1 iff final scalar > 0; otherwise 0"
+      },
+      {
+        "architecture": {
+          "layers": [
+            {
+              "activation": "relu",
+              "inputs": 4,
+              "outputs": 4
+            },
+            {
+              "activation": "linear",
+              "inputs": 4,
+              "outputs": 1
+            }
+          ]
+        },
+        "id": "br_a61b24fdf1c70f",
+        "input_semantics": "four binary inputs x0,x1,x2,x3; lexicographic 0000..1111",
+        "network": {
+          "layers": [
+            {
+              "activation": "relu",
+              "bias": [
+                0.0,
+                -1.0,
+                -1.0,
+                0.25
+              ],
+              "weights": [
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                [
+                  0.0,
+                  1.0,
+                  1.0,
+                  0.0
+                ],
+                [
+                  0.0,
+                  1.0,
+                  0.0,
+                  1.0
+                ],
+                [
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ]
+            },
+            {
+              "activation": "linear",
+              "bias": [
+                -0.5
+              ],
+              "weights": [
+                [
+                  1.0,
+                  1.0,
+                  -1.0,
+                  0.0
+                ]
+              ]
+            }
+          ]
+        },
+        "output_semantics": "class 1 iff final scalar > 0; otherwise 0"
+      },
+      {
+        "architecture": {
+          "layers": [
+            {
+              "activation": "relu",
+              "inputs": 4,
+              "outputs": 4
+            },
+            {
+              "activation": "linear",
+              "inputs": 4,
+              "outputs": 1
+            }
+          ]
+        },
+        "id": "br_c85747507f1bb2",
+        "input_semantics": "four binary inputs x0,x1,x2,x3; lexicographic 0000..1111",
+        "network": {
+          "layers": [
+            {
+              "activation": "relu",
+              "bias": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "weights": [
+                [
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.0,
+                  1.0,
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.0,
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ]
+            },
+            {
+              "activation": "linear",
+              "bias": [
+                1.5
+              ],
+              "weights": [
+                [
+                  -5.0,
+                  5.0,
+                  -5.0,
+                  2.0
+                ]
+              ]
+            }
+          ]
+        },
+        "output_semantics": "class 1 iff final scalar > 0; otherwise 0"
+      },
+      {
+        "architecture": {
+          "layers": [
+            {
+              "activation": "relu",
+              "inputs": 4,
+              "outputs": 4
+            },
+            {
+              "activation": "linear",
+              "inputs": 4,
+              "outputs": 1
+            }
+          ]
+        },
+        "id": "br_ed0c9bdb71c41b",
+        "input_semantics": "four binary inputs x0,x1,x2,x3; lexicographic 0000..1111",
+        "network": {
+          "layers": [
+            {
+              "activation": "relu",
+              "bias": [
+                0.0,
+                -1.0,
+                -2.0,
+                -3.0
+              ],
+              "weights": [
+                [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ]
+              ]
+            },
+            {
+              "activation": "linear",
+              "bias": [
+                0.5
+              ],
+              "weights": [
+                [
+                  -1.0,
+                  2.0,
+                  -2.0,
+                  2.0
+                ]
+              ]
+            }
+          ]
+        },
+        "output_semantics": "class 1 iff final scalar > 0; otherwise 0"
+      },
+      {
+        "architecture": {
+          "layers": [
+            {
+              "activation": "relu",
+              "inputs": 4,
+              "outputs": 4
+            },
+            {
+              "activation": "linear",
+              "inputs": 4,
+              "outputs": 1
+            }
+          ]
+        },
+        "id": "br_6d951da01995bb",
+        "input_semantics": "four binary inputs x0,x1,x2,x3; lexicographic 0000..1111",
+        "network": {
+          "layers": [
+            {
+              "activation": "relu",
+              "bias": [
+                0.0,
+                0.0,
+                0.5,
+                0.0
+              ],
+              "weights": [
+                [
+                  -1.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                [
+                  0.25,
+                  0.0,
+                  0.0,
+                  -0.25
+                ],
+                [
+                  0.0,
+                  -0.5,
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.25,
+                  0.0
+                ]
+              ]
+            },
+            {
+              "activation": "linear",
+              "bias": [
+                -0.5
+              ],
+              "weights": [
+                [
+                  1.0,
+                  4.0,
+                  0.0,
+                  0.0
+                ]
+              ]
+            }
+          ]
+        },
+        "output_semantics": "class 1 iff final scalar > 0; otherwise 0"
+      }
+    ],
+    "schema_version": 1,
+    "seed": 20261105,
+    "status": "exploratory_not_sealed",
+    "topology": "4 -> ReLU(4) -> linear(1)"
+  },
+  "records": [
+    {
+      "elapsed_seconds": 10.8436,
+      "error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+      "id": "br_32eebcb6bf56e0",
+      "output_tokens": 93,
+      "parsed": null,
+      "prompt": "Read the weights of a two-layer neural network; do NOT write new weights.\nx=(x0,x1,x2,x3) comprises exactly four binary bits. For hidden j, h_j=max(0, b1[j] + sum(W1[j][k]*x[k] for k=0..3)). Final z=b2[0] + sum(W2[0][j]*h_j for j=0..3). The predicted bit is 1 iff z>0, otherwise 0.\nPredict outputs in strict lexicographic input order: 0000 0001 0010 0011 0100 0101 0110 0111 1000 1001 1010 1011 1100 1101 1110 1111.\nReturn ONLY one JSON object with ONE key named truth_table whose value is a string of exactly 16 characters, each 0 or 1. Do not use markdown or additional keys.\nCompute all 16 results directly from the arrays. Do not describe your reasoning.\nW1=[[4.0,4.0,4.0,4.0],[1.0,1.0,1.0,1.0],[1.0,1.0,1.0,1.0],[0.5,0.5,0.5,0.5]]\nb1=[0.0,-3.0,-1.0,-1.0]\nW2=[[-0.25,2.0,2.0,-4.0]]\nb2=[0.5]\n",
+      "prompt_sha256": "a1448c2eae92de677220a1129ea37a87589045ccd017dd7a22a932f584d3d390",
+      "raw": "```json\n{\n  \"truth_table\": \"0000 0001 0010 0011 0100 0101 0110 0111 1000 1001 1010 1011 1100 1101 1110 1111\"\n}\n```",
+      "raw_sha256": "ba17982c56a5f55afe901cd57de368c5cf7d01a376c791fb8c3aa6557df53528"
+    },
+    {
+      "elapsed_seconds": 10.9773,
+      "error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+      "id": "br_520ed5726f1a8c",
+      "output_tokens": 93,
+      "parsed": null,
+      "prompt": "Read the weights of a two-layer neural network; do NOT write new weights.\nx=(x0,x1,x2,x3) comprises exactly four binary bits. For hidden j, h_j=max(0, b1[j] + sum(W1[j][k]*x[k] for k=0..3)). Final z=b2[0] + sum(W2[0][j]*h_j for j=0..3). The predicted bit is 1 iff z>0, otherwise 0.\nPredict outputs in strict lexicographic input order: 0000 0001 0010 0011 0100 0101 0110 0111 1000 1001 1010 1011 1100 1101 1110 1111.\nReturn ONLY one JSON object with ONE key named truth_table whose value is a string of exactly 16 characters, each 0 or 1. Do not use markdown or additional keys.\nCompute all 16 results directly from the arrays. Do not describe your reasoning.\nW1=[[0.0,4.0,4.0,0.0],[0.5,0.0,0.0,0.0],[0.0,2.0,0.0,2.0],[0.0,0.0,0.0,4.0]]\nb1=[-4.0,0.125,-2.0,0.0]\nW2=[[0.25,0.0,-0.5,0.25]]\nb2=[-0.5]\n",
+      "prompt_sha256": "9bb19666bdbf8ebef4846541dd05136f48a245db5f8b52cf6e11ad4391f723b6",
+      "raw": "```json\n{\n  \"truth_table\": \"0000 0001 0010 0011 0100 0101 0110 0111 1000 1001 1010 1011 1100 1101 1110 1111\"\n}\n```",
+      "raw_sha256": "ba17982c56a5f55afe901cd57de368c5cf7d01a376c791fb8c3aa6557df53528"
+    },
+    {
+      "elapsed_seconds": 10.686,
+      "error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+      "id": "br_16a27e732c9f65",
+      "output_tokens": 93,
+      "parsed": null,
+      "prompt": "Read the weights of a two-layer neural network; do NOT write new weights.\nx=(x0,x1,x2,x3) comprises exactly four binary bits. For hidden j, h_j=max(0, b1[j] + sum(W1[j][k]*x[k] for k=0..3)). Final z=b2[0] + sum(W2[0][j]*h_j for j=0..3). The predicted bit is 1 iff z>0, otherwise 0.\nPredict outputs in strict lexicographic input order: 0000 0001 0010 0011 0100 0101 0110 0111 1000 1001 1010 1011 1100 1101 1110 1111.\nReturn ONLY one JSON object with ONE key named truth_table whose value is a string of exactly 16 characters, each 0 or 1. Do not use markdown or additional keys.\nCompute all 16 results directly from the arrays. Do not describe your reasoning.\nW1=[[1.0,0.0,0.0,-1.0],[-1.0,0.0,0.0,1.0],[0.0,0.0,1.0,0.0],[0.0,-1.0,0.0,0.0]]\nb1=[0.0,0.0,0.0,1.0]\nW2=[[1.0,1.0,0.0,0.0]]\nb2=[-0.5]\n",
+      "prompt_sha256": "29d278498d6dd58e0c3d724934501ce2392f213a1b88686ad979a229d524362e",
+      "raw": "```json\n{\n  \"truth_table\": \"0000 0001 0010 0011 0100 0101 0110 0111 1000 1001 1010 1011 1100 1101 1110 1111\"\n}\n```",
+      "raw_sha256": "ba17982c56a5f55afe901cd57de368c5cf7d01a376c791fb8c3aa6557df53528"
+    },
+    {
+      "elapsed_seconds": 10.7017,
+      "error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+      "id": "br_cc904d6d1dbf2c",
+      "output_tokens": 93,
+      "parsed": null,
+      "prompt": "Read the weights of a two-layer neural network; do NOT write new weights.\nx=(x0,x1,x2,x3) comprises exactly four binary bits. For hidden j, h_j=max(0, b1[j] + sum(W1[j][k]*x[k] for k=0..3)). Final z=b2[0] + sum(W2[0][j]*h_j for j=0..3). The predicted bit is 1 iff z>0, otherwise 0.\nPredict outputs in strict lexicographic input order: 0000 0001 0010 0011 0100 0101 0110 0111 1000 1001 1010 1011 1100 1101 1110 1111.\nReturn ONLY one JSON object with ONE key named truth_table whose value is a string of exactly 16 characters, each 0 or 1. Do not use markdown or additional keys.\nCompute all 16 results directly from the arrays. Do not describe your reasoning.\nW1=[[0.0,0.0,0.5,0.0],[0.25,0.0,0.0,0.0],[0.0,0.0,0.0,4.0],[0.0,0.25,0.0,0.0]]\nb1=[0.0,0.0,0.0,0.0]\nW2=[[-10.0,-20.0,0.5,20.0]]\nb2=[1.5]\n",
+      "prompt_sha256": "30d3c194b50fb23a065234263dfe7f8bd21e881370ff30ea5ec905b048a44408",
+      "raw": "```json\n{\n  \"truth_table\": \"0000 0001 0010 0011 0100 0101 0110 0111 1000 1001 1010 1011 1100 1101 1110 1111\"\n}\n```",
+      "raw_sha256": "ba17982c56a5f55afe901cd57de368c5cf7d01a376c791fb8c3aa6557df53528"
+    },
+    {
+      "elapsed_seconds": 10.7876,
+      "error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+      "id": "br_a61b24fdf1c70f",
+      "output_tokens": 93,
+      "parsed": null,
+      "prompt": "Read the weights of a two-layer neural network; do NOT write new weights.\nx=(x0,x1,x2,x3) comprises exactly four binary bits. For hidden j, h_j=max(0, b1[j] + sum(W1[j][k]*x[k] for k=0..3)). Final z=b2[0] + sum(W2[0][j]*h_j for j=0..3). The predicted bit is 1 iff z>0, otherwise 0.\nPredict outputs in strict lexicographic input order: 0000 0001 0010 0011 0100 0101 0110 0111 1000 1001 1010 1011 1100 1101 1110 1111.\nReturn ONLY one JSON object with ONE key named truth_table whose value is a string of exactly 16 characters, each 0 or 1. Do not use markdown or additional keys.\nCompute all 16 results directly from the arrays. Do not describe your reasoning.\nW1=[[0.0,0.0,0.0,1.0],[0.0,1.0,1.0,0.0],[0.0,1.0,0.0,1.0],[1.0,0.0,0.0,0.0]]\nb1=[0.0,-1.0,-1.0,0.25]\nW2=[[1.0,1.0,-1.0,0.0]]\nb2=[-0.5]\n",
+      "prompt_sha256": "5367370c5478364c2a8ff572a9459d4300cd86de66bb90fa7fd1647cf68864aa",
+      "raw": "```json\n{\n  \"truth_table\": \"0000 0001 0010 0011 0100 0101 0110 0111 1000 1001 1010 1011 1100 1101 1110 1111\"\n}\n```",
+      "raw_sha256": "ba17982c56a5f55afe901cd57de368c5cf7d01a376c791fb8c3aa6557df53528"
+    },
+    {
+      "elapsed_seconds": 10.7989,
+      "error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+      "id": "br_c85747507f1bb2",
+      "output_tokens": 93,
+      "parsed": null,
+      "prompt": "Read the weights of a two-layer neural network; do NOT write new weights.\nx=(x0,x1,x2,x3) comprises exactly four binary bits. For hidden j, h_j=max(0, b1[j] + sum(W1[j][k]*x[k] for k=0..3)). Final z=b2[0] + sum(W2[0][j]*h_j for j=0..3). The predicted bit is 1 iff z>0, otherwise 0.\nPredict outputs in strict lexicographic input order: 0000 0001 0010 0011 0100 0101 0110 0111 1000 1001 1010 1011 1100 1101 1110 1111.\nReturn ONLY one JSON object with ONE key named truth_table whose value is a string of exactly 16 characters, each 0 or 1. Do not use markdown or additional keys.\nCompute all 16 results directly from the arrays. Do not describe your reasoning.\nW1=[[1.0,0.0,0.0,0.0],[0.0,1.0,0.0,0.0],[0.0,0.0,1.0,0.0],[0.0,0.0,0.0,1.0]]\nb1=[0.0,0.0,0.0,0.0]\nW2=[[-5.0,5.0,-5.0,2.0]]\nb2=[1.5]\n",
+      "prompt_sha256": "1f2004479e66cf5c0f54bd2dc0ed7e2503a3c56149367f7caed6ad687cf8d594",
+      "raw": "```json\n{\n  \"truth_table\": \"0000 0001 0010 0011 0100 0101 0110 0111 1000 1001 1010 1011 1100 1101 1110 1111\"\n}\n```",
+      "raw_sha256": "ba17982c56a5f55afe901cd57de368c5cf7d01a376c791fb8c3aa6557df53528"
+    },
+    {
+      "elapsed_seconds": 10.8552,
+      "error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+      "id": "br_ed0c9bdb71c41b",
+      "output_tokens": 93,
+      "parsed": null,
+      "prompt": "Read the weights of a two-layer neural network; do NOT write new weights.\nx=(x0,x1,x2,x3) comprises exactly four binary bits. For hidden j, h_j=max(0, b1[j] + sum(W1[j][k]*x[k] for k=0..3)). Final z=b2[0] + sum(W2[0][j]*h_j for j=0..3). The predicted bit is 1 iff z>0, otherwise 0.\nPredict outputs in strict lexicographic input order: 0000 0001 0010 0011 0100 0101 0110 0111 1000 1001 1010 1011 1100 1101 1110 1111.\nReturn ONLY one JSON object with ONE key named truth_table whose value is a string of exactly 16 characters, each 0 or 1. Do not use markdown or additional keys.\nCompute all 16 results directly from the arrays. Do not describe your reasoning.\nW1=[[1.0,1.0,1.0,1.0],[1.0,1.0,1.0,1.0],[1.0,1.0,1.0,1.0],[1.0,1.0,1.0,1.0]]\nb1=[0.0,-1.0,-2.0,-3.0]\nW2=[[-1.0,2.0,-2.0,2.0]]\nb2=[0.5]\n",
+      "prompt_sha256": "773e0fda087b4e10fee07cf4647b9be3272297156d91d7eeabe4c2b78a63fbbd",
+      "raw": "```json\n{\n  \"truth_table\": \"0000 0001 0010 0011 0100 0101 0110 0111 1000 1001 1010 1011 1100 1101 1110 1111\"\n}\n```",
+      "raw_sha256": "ba17982c56a5f55afe901cd57de368c5cf7d01a376c791fb8c3aa6557df53528"
+    },
+    {
+      "elapsed_seconds": 10.8708,
+      "error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+      "id": "br_6d951da01995bb",
+      "output_tokens": 93,
+      "parsed": null,
+      "prompt": "Read the weights of a two-layer neural network; do NOT write new weights.\nx=(x0,x1,x2,x3) comprises exactly four binary bits. For hidden j, h_j=max(0, b1[j] + sum(W1[j][k]*x[k] for k=0..3)). Final z=b2[0] + sum(W2[0][j]*h_j for j=0..3). The predicted bit is 1 iff z>0, otherwise 0.\nPredict outputs in strict lexicographic input order: 0000 0001 0010 0011 0100 0101 0110 0111 1000 1001 1010 1011 1100 1101 1110 1111.\nReturn ONLY one JSON object with ONE key named truth_table whose value is a string of exactly 16 characters, each 0 or 1. Do not use markdown or additional keys.\nCompute all 16 results directly from the arrays. Do not describe your reasoning.\nW1=[[-1.0,0.0,0.0,1.0],[0.25,0.0,0.0,-0.25],[0.0,-0.5,0.0,0.0],[0.0,0.0,0.25,0.0]]\nb1=[0.0,0.0,0.5,0.0]\nW2=[[1.0,4.0,0.0,0.0]]\nb2=[-0.5]\n",
+      "prompt_sha256": "809176bb192db683c4e16e759dfaa5051c1fc56c42611a2a0037a611c74abed5",
+      "raw": "```json\n{\n  \"truth_table\": \"0000 0001 0010 0011 0100 0101 0110 0111 1000 1001 1010 1011 1100 1101 1110 1111\"\n}\n```",
+      "raw_sha256": "ba17982c56a5f55afe901cd57de368c5cf7d01a376c791fb8c3aa6557df53528"
+    }
+  ],
+  "sampling": "greedy",
+  "schema_version": 1,
+  "seed": 20261105,
+  "status": "EXPLORATORY_NOT_SEALED_NOT_PREREGISTERED",
+  "summary": {
+    "all_zero_baseline": {
+      "exact": 0,
+      "mean_bit_accuracy": 0.5,
+      "pairs_agree": 4,
+      "pairs_both_exact": 0
+    },
+    "constant_predictions": 0,
+    "exact": 0,
+    "mean_bit_accuracy": 0.0,
+    "n_functions": 4,
+    "n_networks": 8,
+    "pairs": [
+      {
+        "agree": false,
+        "both_exact": false,
+        "group": "29884731c9acd774",
+        "trivial_agreement": false
+      },
+      {
+        "agree": false,
+        "both_exact": false,
+        "group": "4f566ef56a1d7fbf",
+        "trivial_agreement": false
+      },
+      {
+        "agree": false,
+        "both_exact": false,
+        "group": "6d1e7747ad6a337b",
+        "trivial_agreement": false
+      },
+      {
+        "agree": false,
+        "both_exact": false,
+        "group": "c04b3073614329f7",
+        "trivial_agreement": false
+      }
+    ],
+    "pairs_agree": 0,
+    "pairs_both_exact": 0,
+    "pairs_trivial_agreement": 0,
+    "rows": [
+      {
+        "bit_accuracy": 0.0,
+        "constant_prediction": false,
+        "exact": false,
+        "family": "xor_pair",
+        "group": "4f566ef56a1d7fbf",
+        "id": "br_16a27e732c9f65",
+        "valid": false,
+        "variant": "original"
+      },
+      {
+        "bit_accuracy": 0.0,
+        "constant_prediction": false,
+        "exact": false,
+        "family": "parity4",
+        "group": "6d1e7747ad6a337b",
+        "id": "br_32eebcb6bf56e0",
+        "valid": false,
+        "variant": "gauge"
+      },
+      {
+        "bit_accuracy": 0.0,
+        "constant_prediction": false,
+        "exact": false,
+        "family": "mux3",
+        "group": "c04b3073614329f7",
+        "id": "br_520ed5726f1a8c",
+        "valid": false,
+        "variant": "gauge"
+      },
+      {
+        "bit_accuracy": 0.0,
+        "constant_prediction": false,
+        "exact": false,
+        "family": "xor_pair",
+        "group": "4f566ef56a1d7fbf",
+        "id": "br_6d951da01995bb",
+        "valid": false,
+        "variant": "gauge"
+      },
+      {
+        "bit_accuracy": 0.0,
+        "constant_prediction": false,
+        "exact": false,
+        "family": "mux3",
+        "group": "c04b3073614329f7",
+        "id": "br_a61b24fdf1c70f",
+        "valid": false,
+        "variant": "original"
+      },
+      {
+        "bit_accuracy": 0.0,
+        "constant_prediction": false,
+        "exact": false,
+        "family": "threshold4",
+        "group": "29884731c9acd774",
+        "id": "br_c85747507f1bb2",
+        "valid": false,
+        "variant": "original"
+      },
+      {
+        "bit_accuracy": 0.0,
+        "constant_prediction": false,
+        "exact": false,
+        "family": "threshold4",
+        "group": "29884731c9acd774",
+        "id": "br_cc904d6d1dbf2c",
+        "valid": false,
+        "variant": "gauge"
+      },
+      {
+        "bit_accuracy": 0.0,
+        "constant_prediction": false,
+        "exact": false,
+        "family": "parity4",
+        "group": "6d1e7747ad6a337b",
+        "id": "br_ed0c9bdb71c41b",
+        "valid": false,
+        "variant": "original"
+      }
+    ],
+    "valid": 0
+  },
+  "task_generator": "wsp.balanced_reading.v1",
+  "tools_available_to_model": []
+}
