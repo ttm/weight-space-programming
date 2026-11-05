@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from hashlib import sha256
 import json
 from pathlib import Path
 import tempfile
@@ -90,15 +91,41 @@ class HandcraftedTests(unittest.TestCase):
 
     def test_explanation_constraint(self):
         with tempfile.TemporaryDirectory() as d:
-            path = Path(d) / "s.json"
             cand = ROOT / "examples/xor2.json"
-            start(path, "xor2", "blind", "forbidden")
-            with self.assertRaises(ValueError): finalize(path, cand)
+            start(Path(d) / "a.json", "xor2", "blind", "forbidden")
+            with self.assertRaises(ValueError): finalize(Path(d) / "a.json", cand)
             data = load_candidate(cand)
             del data["explanation"]
             candidate_path = Path(d) / "candidate.json"
             candidate_path.write_text(json.dumps(data))
-            self.assertTrue(finalize(path, candidate_path)["all_passed"])
+            start(Path(d) / "b.json", "xor2", "blind", "forbidden")
+            self.assertTrue(finalize(Path(d) / "b.json", candidate_path)["all_passed"])
+
+    def test_rejected_submissions_count(self):
+        with tempfile.TemporaryDirectory() as d:
+            path, bad, good = Path(d) / "s.json", Path(d) / "bad.json", ROOT / "examples/xor2.json"
+            bad.write_text("{not json")
+            start(path, "xor2", "budgeted", "optional", budget=2)
+            with self.assertRaises(ValueError): probe(path, bad)  # uses one of the two probes
+            self.assertTrue(probe(path, good)["all_passed"])
+            with self.assertRaises(ValueError): probe(path, good)  # budget used up, nothing recorded
+            with self.assertRaises(ValueError): finalize(path, bad)  # the failed final submission
+            with self.assertRaises(ValueError): finalize(path, good)  # no second chance
+            session = json.loads(path.read_text())
+            self.assertEqual([p["error"] is not None for p in session["probes"]], [True, False])
+            self.assertEqual(session["probes"][1]["sha256"], sha256(good.read_bytes()).hexdigest())
+            self.assertTrue(session["finalized"])
+            self.assertIsNone(session["final"]["result"])
+            self.assertIn("JSONDecodeError", session["final"]["error"])
+
+    def test_start_records_provenance(self):
+        with tempfile.TemporaryDirectory() as d:
+            prompt = Path(d) / "prompt.txt"
+            prompt.write_bytes(b"Return only weights.")
+            session = start(Path(d) / "s.json", "xor2", "blind", "optional",
+                            participant="pilot-01", model="example-model-1", prompt_file=prompt)
+            self.assertEqual(session["provenance"]["model"], "example-model-1")
+            self.assertEqual(session["provenance"]["prompt_sha256"], sha256(b"Return only weights.").hexdigest())
 
 
 if __name__ == "__main__":

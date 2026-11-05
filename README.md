@@ -50,7 +50,7 @@ python3 -m wsp probe fixtures/xor2_weights_only.json --session .runs/xor-budget.
 python3 -m wsp finalize fixtures/xor2_weights_only.json --session .runs/xor-budget.json
 ```
 
-A `blind` session rejects `probe` altogether. `finalize` records a digest of the candidate, the score, and a timestamp, and rejects repeated finalization. **The `evaluate` command is an unrestricted developer tool**; preventing participants from bypassing the blind setup requires a separate execution service, inaccessible test-set seeds, and permissions or an audit mechanism. See [protocol](docs/PROTOCOL.md).
+A `blind` session rejects `probe` altogether. `finalize` records a digest of the candidate, the score, and a timestamp, and rejects repeated finalization. A rejected candidate (invalid JSON, wrong shapes, a broken explanation rule) still counts: it uses up a probe, or becomes the failed final submission. `start` can also record who writes the candidates, with `--participant`, `--model` and `--prompt-file` (stored as a SHA-256 hash). **The `evaluate` command is an unrestricted developer tool**; preventing participants from bypassing the blind setup requires a separate execution service, inaccessible test-set seeds, and permissions or an audit mechanism. See [protocol](docs/PROTOCOL.md).
 
 ## Candidate format
 

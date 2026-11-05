@@ -19,7 +19,7 @@ A useful distinction: analytic construction of ReLU circuits and compilation fro
 | Parameter budget | 10, 100, 1,000, 10,000+ | Scaling and sparse-edit behavior |
 | Output format | explanation plus weights; weights only; patch only; diagnosis only | Information content of response |
 
-**Important:** The repository currently enforces only feedback modes and explanation presence/absence. The other axes are planned study factors, not implemented tool restrictions. "Blind" means zero calls through the session's `probe`; a local participant can inspect the source code and test oracles, so no genuinely secret test set exists.
+**Important:** The repository currently enforces only feedback modes, explanation presence/absence, and counting rejected submissions as attempts. The other axes are planned study factors, not implemented tool restrictions. "Blind" means zero calls through the session's `probe`; a local participant can inspect the source code and test oracles, so no genuinely secret test set exists.
 
 ## 3. Session lifecycle
 

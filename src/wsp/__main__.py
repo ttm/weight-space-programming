@@ -46,6 +46,7 @@ def main() -> None:
     rp = sub.add_parser("repair"); rp.add_argument("candidate"); rp.add_argument("patch"); rp.add_argument("--output"); rp.add_argument("--candidate-output")
     st = sub.add_parser("stress"); st.add_argument("candidate"); st.add_argument("--output")
     se = sub.add_parser("start"); se.add_argument("task", choices=TASKS); se.add_argument("--session", required=True); se.add_argument("--mode", choices=["blind", "budgeted", "open"], default="blind"); se.add_argument("--explanation", choices=["required", "optional", "forbidden"], default="optional"); se.add_argument("--budget", type=int, default=3)
+    se.add_argument("--participant", help="who or what writes the candidates"); se.add_argument("--model", help="model name and version"); se.add_argument("--prompt-file", help="prompt given to the participant; stored as a SHA-256 hash")
     pr = sub.add_parser("probe"); pr.add_argument("candidate"); pr.add_argument("--session", required=True)
     fi = sub.add_parser("finalize"); fi.add_argument("candidate"); fi.add_argument("--session", required=True)
     args = parser.parse_args()
@@ -76,7 +77,9 @@ def main() -> None:
             if not records: raise ValueError("No candidate .json files found")
             _print({"schema_version": 1, "note": "Deterministic local benchmark; not an independent blind evaluation", "records": records}, args.output)
         elif args.command == "start":
-            _print(start(Path(args.session), args.task, args.mode, args.explanation, args.budget))
+            _print(start(Path(args.session), args.task, args.mode, args.explanation, args.budget,
+                         participant=args.participant, model=args.model,
+                         prompt_file=Path(args.prompt_file) if args.prompt_file else None))
         elif args.command == "probe":
             _print(probe(Path(args.session), Path(args.candidate)))
         elif args.command == "finalize":

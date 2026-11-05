@@ -60,14 +60,17 @@ def forward(network: dict, inputs: list[float]) -> list[float]:
     return values
 
 
-def load_candidate(path: str | Path) -> dict:
-    with open(path, encoding="utf8") as f:
-        candidate = json.load(f)
+def parse_candidate(data: bytes | str) -> dict:
+    candidate = json.loads(data)
     if not isinstance(candidate, dict) or candidate.get("schema_version") != 1:
         raise ValueError("Candidate requires schema_version=1")
     if not isinstance(candidate.get("task"), str):
         raise ValueError("Candidate requires task ID")
     return candidate
+
+
+def load_candidate(path: str | Path) -> dict:
+    return parse_candidate(Path(path).read_bytes())
 
 
 def predict(network: dict, inputs: list[float], kind: str) -> float | int:
