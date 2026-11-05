@@ -3,7 +3,7 @@ export PYTHONPATH=src
 # Committed results use the public seeds, whatever the caller's environment holds.
 unexport WSP_SEED_SALT
 
-.PHONY: test benchmark stress repair
+.PHONY: test benchmark stress repair results check
 
 test:
 	$(PYTHON) -m unittest discover -s tests -v
@@ -16,3 +16,10 @@ stress:
 
 repair:
 	$(PYTHON) -m wsp repair fixtures/xor2_corrupted.json repairs/xor2_bias_fix.json --output results/xor2_repair.json
+
+# Regenerate every committed result.
+results: benchmark stress repair
+
+# Unit tests, then fail unless regenerating results/ reproduces the committed files exactly.
+check: test results
+	@git diff --exit-code -- results/ || { echo "results/ no longer matches the committed files; commit them if the change is intended." >&2; exit 1; }

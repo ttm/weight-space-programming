@@ -20,20 +20,25 @@ The constructions are **analytic circuit synthesis expressed as neural weights**
 Requires Python 3.10+; **no external dependencies** for the core experiments.
 
 ```bash
+make check   # unit tests, then regenerate results/ and fail unless it matches the committed files exactly
+```
+
+Reports round floats to 12 significant digits, which absorbs last-bit differences between platforms' math libraries, so regenerating `results/` reproduces the committed files byte for byte. CI runs `make check` on Linux and macOS. `make results` only regenerates the files; the Makefile holds the exact commands.
+
+To use the command-line tool directly:
+
+```bash
 python3 -m pip install -e .
 python3 -m wsp list
 python3 -m wsp describe xor2
 python3 -m wsp evaluate examples/xor2.json
 python3 -m wsp evaluate examples/xor2_linear_failure.json
-python3 -m wsp benchmark --directory examples --output results/initial_benchmark.json
-python3 -m wsp stress examples/xor2.json --output results/xor2_stress.json
-python3 -m wsp repair fixtures/xor2_corrupted.json repairs/xor2_bias_fix.json --output results/xor2_repair.json
-python3 -m unittest discover -s tests -v
+python3 -m wsp benchmark --directory examples
+python3 -m wsp stress examples/xor2.json
+python3 -m wsp repair fixtures/xor2_corrupted.json repairs/xor2_bias_fix.json
 ```
 
 Without installation, prefix commands with `PYTHONPATH=src` (on Unix-based shells).
-
-Reports round floats to 12 significant digits, which absorbs last-bit differences between platforms' math libraries: regenerating `results/` reproduces the committed files byte for byte, and CI checks this with `git diff --exit-code results/`.
 
 ## Run controlled generation conditions
 
