@@ -1,0 +1,1029 @@
+{
+  "answer_key_unsealed_after_run": {
+    "answers": {
+      "br_16a27e732c9f65": {
+        "family": "xor_pair",
+        "group": "4f566ef56a1d7fbf",
+        "ones": 8,
+        "reference_fingerprint": "0da177c69ac442a4cb96594c1a732dab86e67c8bccce9b1721387bc1206a1db9",
+        "reference_seed": 20261105,
+        "truth_table": "0101010110101010",
+        "variant": "original"
+      },
+      "br_32eebcb6bf56e0": {
+        "family": "parity4",
+        "group": "6d1e7747ad6a337b",
+        "ones": 8,
+        "reference_fingerprint": "deddd258b91993607f02afea100ac8b5f8b1af72246156b5096b80ccff73b8bf",
+        "reference_seed": 20261105,
+        "truth_table": "1001011001101001",
+        "variant": "gauge"
+      },
+      "br_520ed5726f1a8c": {
+        "family": "mux3",
+        "group": "c04b3073614329f7",
+        "ones": 8,
+        "reference_fingerprint": "38a18668311244808acf336851d7797ca57c4c254b7c23de03728d3abb955ddd",
+        "reference_seed": 20261105,
+        "truth_table": "0101001101010011",
+        "variant": "gauge"
+      },
+      "br_6d951da01995bb": {
+        "family": "xor_pair",
+        "group": "4f566ef56a1d7fbf",
+        "ones": 8,
+        "reference_fingerprint": "0da177c69ac442a4cb96594c1a732dab86e67c8bccce9b1721387bc1206a1db9",
+        "reference_seed": 20261105,
+        "truth_table": "0101010110101010",
+        "variant": "gauge"
+      },
+      "br_a61b24fdf1c70f": {
+        "family": "mux3",
+        "group": "c04b3073614329f7",
+        "ones": 8,
+        "reference_fingerprint": "38a18668311244808acf336851d7797ca57c4c254b7c23de03728d3abb955ddd",
+        "reference_seed": 20261105,
+        "truth_table": "0101001101010011",
+        "variant": "original"
+      },
+      "br_c85747507f1bb2": {
+        "family": "threshold4",
+        "group": "29884731c9acd774",
+        "ones": 8,
+        "reference_fingerprint": "8757797fdbe7da68565ce88d5ed3581966f94e042dbdaf6fd534efc24e9171c5",
+        "reference_seed": 20261105,
+        "truth_table": "1100111100001100",
+        "variant": "original"
+      },
+      "br_cc904d6d1dbf2c": {
+        "family": "threshold4",
+        "group": "29884731c9acd774",
+        "ones": 8,
+        "reference_fingerprint": "8757797fdbe7da68565ce88d5ed3581966f94e042dbdaf6fd534efc24e9171c5",
+        "reference_seed": 20261105,
+        "truth_table": "1100111100001100",
+        "variant": "gauge"
+      },
+      "br_ed0c9bdb71c41b": {
+        "family": "parity4",
+        "group": "6d1e7747ad6a337b",
+        "ones": 8,
+        "reference_fingerprint": "deddd258b91993607f02afea100ac8b5f8b1af72246156b5096b80ccff73b8bf",
+        "reference_seed": 20261105,
+        "truth_table": "1001011001101001",
+        "variant": "original"
+      }
+    },
+    "schema_version": 1,
+    "status": "PRIVATE_REFERENCE_DO_NOT_PROMPT"
+  },
+  "feedback_probes": 0,
+  "limitations": [
+    "Exploratory follow-up designed after observing invalid JSON responses in the prior experiment",
+    "Restricting the output vocabulary changes the inference problem and does not establish free-form WSP",
+    "Conditional binary-token probabilities differ from unrestricted model probabilities",
+    "Four underlying functions, paired dependent views, public task family, no preregistration"
+  ],
+  "max_new_tokens": 16,
+  "model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "model_binary_token_ids": [
+    15,
+    16
+  ],
+  "model_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "participant": "model",
+  "per_family": 1,
+  "public_bank": {
+    "items": [
+      {
+        "architecture": {
+          "layers": [
+            {
+              "activation": "relu",
+              "inputs": 4,
+              "outputs": 4
+            },
+            {
+              "activation": "linear",
+              "inputs": 4,
+              "outputs": 1
+            }
+          ]
+        },
+        "id": "br_32eebcb6bf56e0",
+        "input_semantics": "four binary inputs x0,x1,x2,x3; lexicographic 0000..1111",
+        "network": {
+          "layers": [
+            {
+              "activation": "relu",
+              "bias": [
+                0.0,
+                -3.0,
+                -1.0,
+                -1.0
+              ],
+              "weights": [
+                [
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0
+                ],
+                [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                [
+                  0.5,
+                  0.5,
+                  0.5,
+                  0.5
+                ]
+              ]
+            },
+            {
+              "activation": "linear",
+              "bias": [
+                0.5
+              ],
+              "weights": [
+                [
+                  -0.25,
+                  2.0,
+                  2.0,
+                  -4.0
+                ]
+              ]
+            }
+          ]
+        },
+        "output_semantics": "class 1 iff final scalar > 0; otherwise 0"
+      },
+      {
+        "architecture": {
+          "layers": [
+            {
+              "activation": "relu",
+              "inputs": 4,
+              "outputs": 4
+            },
+            {
+              "activation": "linear",
+              "inputs": 4,
+              "outputs": 1
+            }
+          ]
+        },
+        "id": "br_520ed5726f1a8c",
+        "input_semantics": "four binary inputs x0,x1,x2,x3; lexicographic 0000..1111",
+        "network": {
+          "layers": [
+            {
+              "activation": "relu",
+              "bias": [
+                -4.0,
+                0.125,
+                -2.0,
+                0.0
+              ],
+              "weights": [
+                [
+                  0.0,
+                  4.0,
+                  4.0,
+                  0.0
+                ],
+                [
+                  0.5,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.0,
+                  2.0,
+                  0.0,
+                  2.0
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  4.0
+                ]
+              ]
+            },
+            {
+              "activation": "linear",
+              "bias": [
+                -0.5
+              ],
+              "weights": [
+                [
+                  0.25,
+                  0.0,
+                  -0.5,
+                  0.25
+                ]
+              ]
+            }
+          ]
+        },
+        "output_semantics": "class 1 iff final scalar > 0; otherwise 0"
+      },
+      {
+        "architecture": {
+          "layers": [
+            {
+              "activation": "relu",
+              "inputs": 4,
+              "outputs": 4
+            },
+            {
+              "activation": "linear",
+              "inputs": 4,
+              "outputs": 1
+            }
+          ]
+        },
+        "id": "br_16a27e732c9f65",
+        "input_semantics": "four binary inputs x0,x1,x2,x3; lexicographic 0000..1111",
+        "network": {
+          "layers": [
+            {
+              "activation": "relu",
+              "bias": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "weights": [
+                [
+                  1.0,
+                  0.0,
+                  0.0,
+                  -1.0
+                ],
+                [
+                  -1.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                [
+                  0.0,
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                [
+                  0.0,
+                  -1.0,
+                  0.0,
+                  0.0
+                ]
+              ]
+            },
+            {
+              "activation": "linear",
+              "bias": [
+                -0.5
+              ],
+              "weights": [
+                [
+                  1.0,
+                  1.0,
+                  0.0,
+                  0.0
+                ]
+              ]
+            }
+          ]
+        },
+        "output_semantics": "class 1 iff final scalar > 0; otherwise 0"
+      },
+      {
+        "architecture": {
+          "layers": [
+            {
+              "activation": "relu",
+              "inputs": 4,
+              "outputs": 4
+            },
+            {
+              "activation": "linear",
+              "inputs": 4,
+              "outputs": 1
+            }
+          ]
+        },
+        "id": "br_cc904d6d1dbf2c",
+        "input_semantics": "four binary inputs x0,x1,x2,x3; lexicographic 0000..1111",
+        "network": {
+          "layers": [
+            {
+              "activation": "relu",
+              "bias": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "weights": [
+                [
+                  0.0,
+                  0.0,
+                  0.5,
+                  0.0
+                ],
+                [
+                  0.25,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  4.0
+                ],
+                [
+                  0.0,
+                  0.25,
+                  0.0,
+                  0.0
+                ]
+              ]
+            },
+            {
+              "activation": "linear",
+              "bias": [
+                1.5
+              ],
+              "weights": [
+                [
+                  -10.0,
+                  -20.0,
+                  0.5,
+                  20.0
+                ]
+              ]
+            }
+          ]
+        },
+        "output_semantics": "class 1 iff final scalar > 0; otherwise 0"
+      },
+      {
+        "architecture": {
+          "layers": [
+            {
+              "activation": "relu",
+              "inputs": 4,
+              "outputs": 4
+            },
+            {
+              "activation": "linear",
+              "inputs": 4,
+              "outputs": 1
+            }
+          ]
+        },
+        "id": "br_a61b24fdf1c70f",
+        "input_semantics": "four binary inputs x0,x1,x2,x3; lexicographic 0000..1111",
+        "network": {
+          "layers": [
+            {
+              "activation": "relu",
+              "bias": [
+                0.0,
+                -1.0,
+                -1.0,
+                0.25
+              ],
+              "weights": [
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                [
+                  0.0,
+                  1.0,
+                  1.0,
+                  0.0
+                ],
+                [
+                  0.0,
+                  1.0,
+                  0.0,
+                  1.0
+                ],
+                [
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ]
+            },
+            {
+              "activation": "linear",
+              "bias": [
+                -0.5
+              ],
+              "weights": [
+                [
+                  1.0,
+                  1.0,
+                  -1.0,
+                  0.0
+                ]
+              ]
+            }
+          ]
+        },
+        "output_semantics": "class 1 iff final scalar > 0; otherwise 0"
+      },
+      {
+        "architecture": {
+          "layers": [
+            {
+              "activation": "relu",
+              "inputs": 4,
+              "outputs": 4
+            },
+            {
+              "activation": "linear",
+              "inputs": 4,
+              "outputs": 1
+            }
+          ]
+        },
+        "id": "br_c85747507f1bb2",
+        "input_semantics": "four binary inputs x0,x1,x2,x3; lexicographic 0000..1111",
+        "network": {
+          "layers": [
+            {
+              "activation": "relu",
+              "bias": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "weights": [
+                [
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.0,
+                  1.0,
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.0,
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ]
+            },
+            {
+              "activation": "linear",
+              "bias": [
+                1.5
+              ],
+              "weights": [
+                [
+                  -5.0,
+                  5.0,
+                  -5.0,
+                  2.0
+                ]
+              ]
+            }
+          ]
+        },
+        "output_semantics": "class 1 iff final scalar > 0; otherwise 0"
+      },
+      {
+        "architecture": {
+          "layers": [
+            {
+              "activation": "relu",
+              "inputs": 4,
+              "outputs": 4
+            },
+            {
+              "activation": "linear",
+              "inputs": 4,
+              "outputs": 1
+            }
+          ]
+        },
+        "id": "br_ed0c9bdb71c41b",
+        "input_semantics": "four binary inputs x0,x1,x2,x3; lexicographic 0000..1111",
+        "network": {
+          "layers": [
+            {
+              "activation": "relu",
+              "bias": [
+                0.0,
+                -1.0,
+                -2.0,
+                -3.0
+              ],
+              "weights": [
+                [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ]
+              ]
+            },
+            {
+              "activation": "linear",
+              "bias": [
+                0.5
+              ],
+              "weights": [
+                [
+                  -1.0,
+                  2.0,
+                  -2.0,
+                  2.0
+                ]
+              ]
+            }
+          ]
+        },
+        "output_semantics": "class 1 iff final scalar > 0; otherwise 0"
+      },
+      {
+        "architecture": {
+          "layers": [
+            {
+              "activation": "relu",
+              "inputs": 4,
+              "outputs": 4
+            },
+            {
+              "activation": "linear",
+              "inputs": 4,
+              "outputs": 1
+            }
+          ]
+        },
+        "id": "br_6d951da01995bb",
+        "input_semantics": "four binary inputs x0,x1,x2,x3; lexicographic 0000..1111",
+        "network": {
+          "layers": [
+            {
+              "activation": "relu",
+              "bias": [
+                0.0,
+                0.0,
+                0.5,
+                0.0
+              ],
+              "weights": [
+                [
+                  -1.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                [
+                  0.25,
+                  0.0,
+                  0.0,
+                  -0.25
+                ],
+                [
+                  0.0,
+                  -0.5,
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.25,
+                  0.0
+                ]
+              ]
+            },
+            {
+              "activation": "linear",
+              "bias": [
+                -0.5
+              ],
+              "weights": [
+                [
+                  1.0,
+                  4.0,
+                  0.0,
+                  0.0
+                ]
+              ]
+            }
+          ]
+        },
+        "output_semantics": "class 1 iff final scalar > 0; otherwise 0"
+      }
+    ],
+    "schema_version": 1,
+    "seed": 20261105,
+    "status": "exploratory_not_sealed",
+    "topology": "4 -> ReLU(4) -> linear(1)"
+  },
+  "records": [
+    {
+      "elapsed_seconds": 3.5495,
+      "id": "br_32eebcb6bf56e0",
+      "output_tokens": 16,
+      "probability_of_one_conditional_binary_tokens": [
+        0.47162154,
+        0.38828093,
+        0.24298856,
+        0.31099838,
+        0.11451253,
+        0.06826586,
+        0.06826596,
+        0.04443904,
+        0.04443904,
+        0.02297737,
+        0.04443897,
+        0.03201258,
+        0.0398557,
+        0.04952218,
+        0.06826596,
+        0.28718567
+      ],
+      "prompt": "You will predict the Boolean output of a neural network for 16 inputs. You are NOT given desired outputs. Use only the weights below.\nInputs x0,x1,x2,x3 are bits. For each j=0..3, h_j=max(0,b1[j]+sum(W1[j][k]*x[k] for k=0..3)). Output z=b2[0]+sum(W2[0][j]*h_j for j=0..3). Return bit 1 iff z is strictly positive; otherwise return 0.\nConsider all x in integer order 0 to 15, with x0 the MOST significant bit and x3 the least significant bit. Give exactly the resulting 16 output bits in this order, without labels, examples, input patterns, commentary, markdown or punctuation.\nW1=[[4.0,4.0,4.0,4.0],[1.0,1.0,1.0,1.0],[1.0,1.0,1.0,1.0],[0.5,0.5,0.5,0.5]]\nb1=[0.0,-3.0,-1.0,-1.0]\nW2=[[-0.25,2.0,2.0,-4.0]]\nb2=[0.5]",
+      "prompt_sha256": "8f5726a3278d4cf868df983064e11a510cde5acb054283499bd92f2a561cbe28",
+      "raw": "0000000000000000",
+      "raw_sha256": "fcdb4b423f4e5283afa249d762ef6aef150e91fccd810d43e5e719d14512dec7"
+    },
+    {
+      "elapsed_seconds": 3.5725,
+      "id": "br_520ed5726f1a8c",
+      "output_tokens": 16,
+      "probability_of_one_conditional_binary_tokens": [
+        0.44342485,
+        0.38828093,
+        0.22270015,
+        0.26449636,
+        0.09340695,
+        0.06138315,
+        0.06138315,
+        0.04952218,
+        0.0398557,
+        0.01839204,
+        0.03985563,
+        0.03201253,
+        0.03572747,
+        0.0398557,
+        0.06826596,
+        0.24298891
+      ],
+      "prompt": "You will predict the Boolean output of a neural network for 16 inputs. You are NOT given desired outputs. Use only the weights below.\nInputs x0,x1,x2,x3 are bits. For each j=0..3, h_j=max(0,b1[j]+sum(W1[j][k]*x[k] for k=0..3)). Output z=b2[0]+sum(W2[0][j]*h_j for j=0..3). Return bit 1 iff z is strictly positive; otherwise return 0.\nConsider all x in integer order 0 to 15, with x0 the MOST significant bit and x3 the least significant bit. Give exactly the resulting 16 output bits in this order, without labels, examples, input patterns, commentary, markdown or punctuation.\nW1=[[0.0,4.0,4.0,0.0],[0.5,0.0,0.0,0.0],[0.0,2.0,0.0,2.0],[0.0,0.0,0.0,4.0]]\nb1=[-4.0,0.125,-2.0,0.0]\nW2=[[0.25,0.0,-0.5,0.25]]\nb2=[-0.5]",
+      "prompt_sha256": "e439948921b071fe217740bb880fcd29a2ddd36fbe435984d59bd29b47560f68",
+      "raw": "0000000000000000",
+      "raw_sha256": "fcdb4b423f4e5283afa249d762ef6aef150e91fccd810d43e5e719d14512dec7"
+    },
+    {
+      "elapsed_seconds": 3.5177,
+      "id": "br_16a27e732c9f65",
+      "output_tokens": 16,
+      "probability_of_one_conditional_binary_tokens": [
+        0.41558841,
+        0.36165687,
+        0.22270015,
+        0.24298891,
+        0.08421844,
+        0.04443904,
+        0.0495221,
+        0.03572747,
+        0.03201258,
+        0.01470801,
+        0.0398557,
+        0.02867248,
+        0.0495221,
+        0.04443897,
+        0.07585818,
+        0.36165687
+      ],
+      "prompt": "You will predict the Boolean output of a neural network for 16 inputs. You are NOT given desired outputs. Use only the weights below.\nInputs x0,x1,x2,x3 are bits. For each j=0..3, h_j=max(0,b1[j]+sum(W1[j][k]*x[k] for k=0..3)). Output z=b2[0]+sum(W2[0][j]*h_j for j=0..3). Return bit 1 iff z is strictly positive; otherwise return 0.\nConsider all x in integer order 0 to 15, with x0 the MOST significant bit and x3 the least significant bit. Give exactly the resulting 16 output bits in this order, without labels, examples, input patterns, commentary, markdown or punctuation.\nW1=[[1.0,0.0,0.0,-1.0],[-1.0,0.0,0.0,1.0],[0.0,0.0,1.0,0.0],[0.0,-1.0,0.0,0.0]]\nb1=[0.0,0.0,0.0,1.0]\nW2=[[1.0,1.0,0.0,0.0]]\nb2=[-0.5]",
+      "prompt_sha256": "bcc8313cef8fe023bc1f113aae7e30b49e7e355779043d6a83b069e56aa60aa3",
+      "raw": "0000000000000000",
+      "raw_sha256": "fcdb4b423f4e5283afa249d762ef6aef150e91fccd810d43e5e719d14512dec7"
+    },
+    {
+      "elapsed_seconds": 3.4519,
+      "id": "br_cc904d6d1dbf2c",
+      "output_tokens": 16,
+      "probability_of_one_conditional_binary_tokens": [
+        0.36165643,
+        0.36165643,
+        0.20365001,
+        0.26449674,
+        0.10348468,
+        0.06826586,
+        0.06826596,
+        0.04952218,
+        0.04443897,
+        0.02567158,
+        0.0495221,
+        0.04443897,
+        0.04443897,
+        0.0495221,
+        0.07585818,
+        0.24298856
+      ],
+      "prompt": "You will predict the Boolean output of a neural network for 16 inputs. You are NOT given desired outputs. Use only the weights below.\nInputs x0,x1,x2,x3 are bits. For each j=0..3, h_j=max(0,b1[j]+sum(W1[j][k]*x[k] for k=0..3)). Output z=b2[0]+sum(W2[0][j]*h_j for j=0..3). Return bit 1 iff z is strictly positive; otherwise return 0.\nConsider all x in integer order 0 to 15, with x0 the MOST significant bit and x3 the least significant bit. Give exactly the resulting 16 output bits in this order, without labels, examples, input patterns, commentary, markdown or punctuation.\nW1=[[0.0,0.0,0.5,0.0],[0.25,0.0,0.0,0.0],[0.0,0.0,0.0,4.0],[0.0,0.25,0.0,0.0]]\nb1=[0.0,0.0,0.0,0.0]\nW2=[[-10.0,-20.0,0.5,20.0]]\nb2=[1.5]",
+      "prompt_sha256": "0331e3a791713576537837cb528cd9828569ad5a4c0e997997c2d7151fb7145e",
+      "raw": "0000000000000000",
+      "raw_sha256": "fcdb4b423f4e5283afa249d762ef6aef150e91fccd810d43e5e719d14512dec7"
+    },
+    {
+      "elapsed_seconds": 3.5396,
+      "id": "br_a61b24fdf1c70f",
+      "output_tokens": 16,
+      "probability_of_one_conditional_binary_tokens": [
+        0.41558841,
+        0.38828093,
+        0.26449674,
+        0.28718567,
+        0.10348484,
+        0.06138315,
+        0.06826596,
+        0.04443897,
+        0.04443897,
+        0.02567163,
+        0.06138315,
+        0.0551531,
+        0.10348484,
+        0.09340695,
+        0.11451253,
+        0.41558841
+      ],
+      "prompt": "You will predict the Boolean output of a neural network for 16 inputs. You are NOT given desired outputs. Use only the weights below.\nInputs x0,x1,x2,x3 are bits. For each j=0..3, h_j=max(0,b1[j]+sum(W1[j][k]*x[k] for k=0..3)). Output z=b2[0]+sum(W2[0][j]*h_j for j=0..3). Return bit 1 iff z is strictly positive; otherwise return 0.\nConsider all x in integer order 0 to 15, with x0 the MOST significant bit and x3 the least significant bit. Give exactly the resulting 16 output bits in this order, without labels, examples, input patterns, commentary, markdown or punctuation.\nW1=[[0.0,0.0,0.0,1.0],[0.0,1.0,1.0,0.0],[0.0,1.0,0.0,1.0],[1.0,0.0,0.0,0.0]]\nb1=[0.0,-1.0,-1.0,0.25]\nW2=[[1.0,1.0,-1.0,0.0]]\nb2=[-0.5]",
+      "prompt_sha256": "7153bf0f1f64fb9ce467c1527cd05d60d66e6314c41b44221d72d8253a0d681d",
+      "raw": "0000000000000000",
+      "raw_sha256": "fcdb4b423f4e5283afa249d762ef6aef150e91fccd810d43e5e719d14512dec7"
+    },
+    {
+      "elapsed_seconds": 3.4912,
+      "id": "br_c85747507f1bb2",
+      "output_tokens": 16,
+      "probability_of_one_conditional_binary_tokens": [
+        0.41558841,
+        0.33585566,
+        0.22270015,
+        0.26449636,
+        0.09340711,
+        0.06138315,
+        0.06138315,
+        0.04443897,
+        0.03572747,
+        0.02055995,
+        0.03572747,
+        0.02867242,
+        0.03572747,
+        0.03572741,
+        0.06138315,
+        0.31099883
+      ],
+      "prompt": "You will predict the Boolean output of a neural network for 16 inputs. You are NOT given desired outputs. Use only the weights below.\nInputs x0,x1,x2,x3 are bits. For each j=0..3, h_j=max(0,b1[j]+sum(W1[j][k]*x[k] for k=0..3)). Output z=b2[0]+sum(W2[0][j]*h_j for j=0..3). Return bit 1 iff z is strictly positive; otherwise return 0.\nConsider all x in integer order 0 to 15, with x0 the MOST significant bit and x3 the least significant bit. Give exactly the resulting 16 output bits in this order, without labels, examples, input patterns, commentary, markdown or punctuation.\nW1=[[1.0,0.0,0.0,0.0],[0.0,1.0,0.0,0.0],[0.0,0.0,1.0,0.0],[0.0,0.0,0.0,1.0]]\nb1=[0.0,0.0,0.0,0.0]\nW2=[[-5.0,5.0,-5.0,2.0]]\nb2=[1.5]",
+      "prompt_sha256": "18f975a4126ff8c44035949089a2a52a5c06f18d9eaf17fd3ee75e1dc1fe9b90",
+      "raw": "0000000000000000",
+      "raw_sha256": "fcdb4b423f4e5283afa249d762ef6aef150e91fccd810d43e5e719d14512dec7"
+    },
+    {
+      "elapsed_seconds": 3.4982,
+      "id": "br_ed0c9bdb71c41b",
+      "output_tokens": 16,
+      "probability_of_one_conditional_binary_tokens": [
+        0.44342533,
+        0.36165643,
+        0.24298856,
+        0.28718609,
+        0.09340711,
+        0.0551532,
+        0.0551532,
+        0.0398557,
+        0.03572741,
+        0.01644895,
+        0.02867242,
+        0.02297737,
+        0.02867248,
+        0.03572747,
+        0.0551531,
+        0.31099883
+      ],
+      "prompt": "You will predict the Boolean output of a neural network for 16 inputs. You are NOT given desired outputs. Use only the weights below.\nInputs x0,x1,x2,x3 are bits. For each j=0..3, h_j=max(0,b1[j]+sum(W1[j][k]*x[k] for k=0..3)). Output z=b2[0]+sum(W2[0][j]*h_j for j=0..3). Return bit 1 iff z is strictly positive; otherwise return 0.\nConsider all x in integer order 0 to 15, with x0 the MOST significant bit and x3 the least significant bit. Give exactly the resulting 16 output bits in this order, without labels, examples, input patterns, commentary, markdown or punctuation.\nW1=[[1.0,1.0,1.0,1.0],[1.0,1.0,1.0,1.0],[1.0,1.0,1.0,1.0],[1.0,1.0,1.0,1.0]]\nb1=[0.0,-1.0,-2.0,-3.0]\nW2=[[-1.0,2.0,-2.0,2.0]]\nb2=[0.5]",
+      "prompt_sha256": "dc0e9881b7527d5e82193b4e77c3af716e8cebbf3aab0f86c9395144a1eb2c26",
+      "raw": "0000000000000000",
+      "raw_sha256": "fcdb4b423f4e5283afa249d762ef6aef150e91fccd810d43e5e719d14512dec7"
+    },
+    {
+      "elapsed_seconds": 3.5034,
+      "id": "br_6d951da01995bb",
+      "output_tokens": 16,
+      "probability_of_one_conditional_binary_tokens": [
+        0.38828045,
+        0.36165643,
+        0.22270015,
+        0.26449636,
+        0.10348468,
+        0.06138315,
+        0.06138315,
+        0.04443904,
+        0.03572747,
+        0.02055995,
+        0.0398557,
+        0.03201258,
+        0.03572747,
+        0.03572747,
+        0.06826596,
+        0.26449636
+      ],
+      "prompt": "You will predict the Boolean output of a neural network for 16 inputs. You are NOT given desired outputs. Use only the weights below.\nInputs x0,x1,x2,x3 are bits. For each j=0..3, h_j=max(0,b1[j]+sum(W1[j][k]*x[k] for k=0..3)). Output z=b2[0]+sum(W2[0][j]*h_j for j=0..3). Return bit 1 iff z is strictly positive; otherwise return 0.\nConsider all x in integer order 0 to 15, with x0 the MOST significant bit and x3 the least significant bit. Give exactly the resulting 16 output bits in this order, without labels, examples, input patterns, commentary, markdown or punctuation.\nW1=[[-1.0,0.0,0.0,1.0],[0.25,0.0,0.0,-0.25],[0.0,-0.5,0.0,0.0],[0.0,0.0,0.25,0.0]]\nb1=[0.0,0.0,0.5,0.0]\nW2=[[1.0,4.0,0.0,0.0]]\nb2=[-0.5]",
+      "prompt_sha256": "842d0ac1e217520bccb5aaf6c40c4c55253b058054e2c07005caad256db41a9e",
+      "raw": "0000000000000000",
+      "raw_sha256": "fcdb4b423f4e5283afa249d762ef6aef150e91fccd810d43e5e719d14512dec7"
+    }
+  ],
+  "sampling": "greedy_restricted_to_tokens_for_0_and_1",
+  "schema_version": 1,
+  "seed": 20261105,
+  "status": "EXPLORATORY_POSTHOC_CONSTRAINED_DECODING_AFTER_INVALID_JSON",
+  "summary": {
+    "all_zero_baseline": {
+      "exact": 0,
+      "mean_bit_accuracy": 0.5,
+      "pairs_agree": 4,
+      "pairs_both_exact": 0
+    },
+    "conditional_binary_token_brier": 0.39443402,
+    "constant_predictions": 8,
+    "exact": 0,
+    "mean_bit_accuracy": 0.5,
+    "n_functions": 4,
+    "n_networks": 8,
+    "pairs": [
+      {
+        "agree": true,
+        "both_exact": false,
+        "group": "29884731c9acd774",
+        "trivial_agreement": true
+      },
+      {
+        "agree": true,
+        "both_exact": false,
+        "group": "4f566ef56a1d7fbf",
+        "trivial_agreement": true
+      },
+      {
+        "agree": true,
+        "both_exact": false,
+        "group": "6d1e7747ad6a337b",
+        "trivial_agreement": true
+      },
+      {
+        "agree": true,
+        "both_exact": false,
+        "group": "c04b3073614329f7",
+        "trivial_agreement": true
+      }
+    ],
+    "pairs_agree": 4,
+    "pairs_both_exact": 0,
+    "pairs_trivial_agreement": 4,
+    "rows": [
+      {
+        "bit_accuracy": 0.5,
+        "constant_prediction": true,
+        "exact": false,
+        "family": "xor_pair",
+        "group": "4f566ef56a1d7fbf",
+        "id": "br_16a27e732c9f65",
+        "valid": true,
+        "variant": "original"
+      },
+      {
+        "bit_accuracy": 0.5,
+        "constant_prediction": true,
+        "exact": false,
+        "family": "parity4",
+        "group": "6d1e7747ad6a337b",
+        "id": "br_32eebcb6bf56e0",
+        "valid": true,
+        "variant": "gauge"
+      },
+      {
+        "bit_accuracy": 0.5,
+        "constant_prediction": true,
+        "exact": false,
+        "family": "mux3",
+        "group": "c04b3073614329f7",
+        "id": "br_520ed5726f1a8c",
+        "valid": true,
+        "variant": "gauge"
+      },
+      {
+        "bit_accuracy": 0.5,
+        "constant_prediction": true,
+        "exact": false,
+        "family": "xor_pair",
+        "group": "4f566ef56a1d7fbf",
+        "id": "br_6d951da01995bb",
+        "valid": true,
+        "variant": "gauge"
+      },
+      {
+        "bit_accuracy": 0.5,
+        "constant_prediction": true,
+        "exact": false,
+        "family": "mux3",
+        "group": "c04b3073614329f7",
+        "id": "br_a61b24fdf1c70f",
+        "valid": true,
+        "variant": "original"
+      },
+      {
+        "bit_accuracy": 0.5,
+        "constant_prediction": true,
+        "exact": false,
+        "family": "threshold4",
+        "group": "29884731c9acd774",
+        "id": "br_c85747507f1bb2",
+        "valid": true,
+        "variant": "original"
+      },
+      {
+        "bit_accuracy": 0.5,
+        "constant_prediction": true,
+        "exact": false,
+        "family": "threshold4",
+        "group": "29884731c9acd774",
+        "id": "br_cc904d6d1dbf2c",
+        "valid": true,
+        "variant": "gauge"
+      },
+      {
+        "bit_accuracy": 0.5,
+        "constant_prediction": true,
+        "exact": false,
+        "family": "parity4",
+        "group": "6d1e7747ad6a337b",
+        "id": "br_ed0c9bdb71c41b",
+        "valid": true,
+        "variant": "original"
+      }
+    ],
+    "valid": 8
+  },
+  "tools_available_to_model": []
+}
