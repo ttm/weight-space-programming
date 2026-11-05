@@ -1,0 +1,7 @@
+{
+  "explanation": "Fix x2=0. Then the 3-bit parity function reduces to XOR(x0,x1), which is not linearly separable. Indeed the affine threshold on (0,0) requires b<=0, on (1,0),(0,1) requires w0+b>0 and w1+b>0, and on (1,1) requires w0+w1+b<=0, contradicting w0+w1+b>0.",
+  "reason": "Fix x2=0. Then the 3-bit parity function reduces to XOR(x0,x1), which is not linearly separable. Indeed the affine threshold on (0,0) requires b<=0, on (1,0),(0,1) requires w0+b>0 and w1+b>0, and on (1,1) requires w0+w1+b<=0, contradicting w0+w1+b>0.",
+  "schema_version": 2,
+  "status": "unsatisfiable",
+  "task": "parity3_affine_impossible"
+}

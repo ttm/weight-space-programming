@@ -1,0 +1,68 @@
+{
+  "network": {
+    "layers": [
+      {
+        "activation": "relu",
+        "bias": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "weights": [
+          [
+            1,
+            -1,
+            0,
+            0
+          ],
+          [
+            -1,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            -1
+          ],
+          [
+            0,
+            0,
+            -1,
+            1
+          ]
+        ]
+      },
+      {
+        "activation": "relu",
+        "bias": [
+          -1
+        ],
+        "weights": [
+          [
+            1,
+            1,
+            1,
+            1
+          ]
+        ]
+      },
+      {
+        "activation": "linear",
+        "bias": [
+          -0.5
+        ],
+        "weights": [
+          [
+            1
+          ]
+        ]
+      }
+    ]
+  },
+  "schema_version": 2,
+  "task": "xor_pairs_and"
+}

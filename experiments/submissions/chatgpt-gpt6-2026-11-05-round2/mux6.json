@@ -1,0 +1,66 @@
+{
+  "explanation": "Each hidden ReLU is an exact three-literal conjunction of the selected address and selected data bit, producing 1 iff satisfied, and output OR is the positive sign of their sum minus 0.5.",
+  "network": {
+    "layers": [
+      {
+        "activation": "relu",
+        "bias": [
+          0,
+          -1,
+          -1,
+          -2
+        ],
+        "weights": [
+          [
+            -1,
+            -1,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            -1,
+            1,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            -1,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      {
+        "activation": "linear",
+        "bias": [
+          -0.5
+        ],
+        "weights": [
+          [
+            1,
+            1,
+            1,
+            1
+          ]
+        ]
+      }
+    ]
+  },
+  "schema_version": 2,
+  "task": "mux6"
+}

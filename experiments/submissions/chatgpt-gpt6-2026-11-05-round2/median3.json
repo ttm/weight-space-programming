@@ -1,0 +1,141 @@
+{
+  "explanation": "Let lo=min(x,y)=y-ReLU(y-x), hi=max(x,y)=y+ReLU(x-y). Then median(x,y,z)=lo+ReLU(z-lo)-ReLU(z-hi). First layer keeps positive/negative parts; second constructs the two comparisons and nonnegative passthroughs.",
+  "network": {
+    "layers": [
+      {
+        "activation": "relu",
+        "bias": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weights": [
+          [
+            1,
+            -1,
+            0
+          ],
+          [
+            -1,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            -1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            -1,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            -1
+          ]
+        ]
+      },
+      {
+        "activation": "relu",
+        "bias": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weights": [
+          [
+            0,
+            1,
+            0,
+            0,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          [
+            -1,
+            0,
+            0,
+            0,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      {
+        "activation": "linear",
+        "bias": [
+          0
+        ],
+        "weights": [
+          [
+            1,
+            -1,
+            1,
+            -1,
+            -1
+          ]
+        ]
+      }
+    ]
+  },
+  "schema_version": 2,
+  "task": "median3"
+}

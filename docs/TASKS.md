@@ -88,3 +88,14 @@ This ledger records measurable acceptance criteria, not promised scientific outc
 - [ ] Seal reference implementations and numeric test inputs from participants; benchmark is currently public.
 - [ ] Freeze and preregister prompts, repeats, models, analysis and resources for confirmatory claims.
 
+
+## 5. Expanded direct-synthesis round 2 (GPT-6 first participant)
+
+- [x] Publish 14 additional fixed-topology challenges with explicit task/formal output semantics and four feedback/explanation conditions.
+- [x] Submit literal GPT-6 weights for 13 realizable networks plus one affine impossibility proof, without training/optimization.
+- [x] Preserve the **13/14** first-attempt score; keep the numerically unstable annulus original unchanged.
+- [x] Document and evaluate a *separate*, post-hoc annulus repair with negative exterior decision margin; verify 20 additional deterministic seeds.
+- [x] Run 390 Gaussian same-architecture random-control trials (weak sanity baseline only).
+- [x] Export provider-neutral prompts, build v2 trial sessions with attempt/byte hashing and exact topology checks, add independent replay and CI tests.
+- [ ] Collect independent model responses under frozen prompt/schema conditions, recording authentic provider-supplied version and tool availability.
+- [ ] Run an independently administered, sealed, preregistered challenge suite with unseen task families and comparable information/compute budgets.

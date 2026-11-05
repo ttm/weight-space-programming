@@ -1,0 +1,420 @@
+{
+  "failed": 1,
+  "limitations": [
+    "Subject designed visible tasks and supplied weights",
+    "No independent sealed evaluator",
+    "No reliable inference sampling parameters or complete hidden reasoning log",
+    "No gradient or search was used to propose candidate weights",
+    "Public task oracle permits inspection; not a blinded benchmark"
+  ],
+  "manifest_sha256": "baddf172f6241a3f6b80a031d17a47e05e4b0c9ad774d826e93147be2450ded2",
+  "participant": {
+    "access": "ChatGPT application",
+    "blind_trial": false,
+    "build_id": null,
+    "checkpoint_sha": null,
+    "generation_method": "direct analytic assignment and static JSON transcription",
+    "inference_model_id": null,
+    "local_date": "2026-11-05",
+    "provenance_limitations": [
+      "Backend build and exact thinking effort not exposed",
+      "Full hidden reasoning and exact model inference configuration unavailable",
+      "No independent timestamp or subject isolation"
+    ],
+    "reasoning_effort_tier": null,
+    "sampling_seed": null,
+    "sampling_temperature": null,
+    "self_identification": "GPT-6",
+    "surface": "ChatGPT conversation",
+    "task_visibility": "full public task specifications and oracle code were visible to subject",
+    "timezone": "Europe/Rome",
+    "tools_available": [
+      "GitHub connector",
+      "container shell",
+      "Python"
+    ],
+    "tools_used_in_workflow": [
+      "GitHub connector",
+      "container shell"
+    ],
+    "training_or_optimization_of_candidate_parameters": false,
+    "validation_probe_count_per_task": 0
+  },
+  "passed": 13,
+  "rows": [
+    {
+      "condition": "B-E",
+      "error": null,
+      "evaluation": {
+        "kind": "binary",
+        "pass": true,
+        "splits": {
+          "test": {
+            "metric": "accuracy",
+            "n": 32,
+            "passed": true,
+            "value": 1.0
+          }
+        },
+        "task": "parity5"
+      },
+      "nbytes": 1140,
+      "passed": true,
+      "sha256": "129ca3230ddf9a30f1b3c6251b4f535e6d345d5631326c2db616d907a5f3c56f",
+      "task": "parity5"
+    },
+    {
+      "condition": "B-W",
+      "error": null,
+      "evaluation": {
+        "kind": "binary",
+        "pass": true,
+        "splits": {
+          "test": {
+            "metric": "accuracy",
+            "n": 64,
+            "passed": true,
+            "value": 1.0
+          }
+        },
+        "task": "exactly3of6"
+      },
+      "nbytes": 774,
+      "passed": true,
+      "sha256": "4e316fe2a9203f798b9d1f9198b5f81f4392888fbc87e7aaf9d0e5bb3cab13f3",
+      "task": "exactly3of6"
+    },
+    {
+      "condition": "P-W",
+      "error": null,
+      "evaluation": {
+        "kind": "binary",
+        "pass": true,
+        "splits": {
+          "test": {
+            "metric": "accuracy",
+            "n": 16,
+            "passed": true,
+            "value": 1.0
+          }
+        },
+        "task": "xor_pairs_and"
+      },
+      "nbytes": 956,
+      "passed": true,
+      "sha256": "bea3cfab7c4c53ea2ff21e113ca1589c6b20dd29aa48021abf2a3c164528d3a9",
+      "task": "xor_pairs_and"
+    },
+    {
+      "condition": "P-E",
+      "error": null,
+      "evaluation": {
+        "kind": "binary",
+        "pass": true,
+        "splits": {
+          "test": {
+            "metric": "accuracy",
+            "n": 64,
+            "passed": true,
+            "value": 1.0
+          }
+        },
+        "task": "mux6"
+      },
+      "nbytes": 1120,
+      "passed": true,
+      "sha256": "40275296e3eb9f7bc273de037b3ddfcbef5bacfe555e009f61391e847e9b99a2",
+      "task": "mux6"
+    },
+    {
+      "condition": "B-W",
+      "error": null,
+      "evaluation": {
+        "kind": "multilabel",
+        "pass": true,
+        "splits": {
+          "test": {
+            "metric": "accuracy",
+            "n": 8,
+            "passed": true,
+            "value": 1.0
+          }
+        },
+        "task": "full_adder3"
+      },
+      "nbytes": 723,
+      "passed": true,
+      "sha256": "b272b8c160b0b6b57364f4e256f654b1e72a45cf3d6f6f406785ff5307e487bb",
+      "task": "full_adder3"
+    },
+    {
+      "condition": "P-E",
+      "error": null,
+      "evaluation": {
+        "kind": "multilabel",
+        "pass": true,
+        "splits": {
+          "test": {
+            "metric": "accuracy",
+            "n": 16,
+            "passed": true,
+            "value": 1.0
+          }
+        },
+        "task": "compare_two_2bit"
+      },
+      "nbytes": 896,
+      "passed": true,
+      "sha256": "326cff8526270a46d7f9c2d7adc2b30692d7006f8a45f8855c5ab6da809a5668",
+      "task": "compare_two_2bit"
+    },
+    {
+      "condition": "B-E",
+      "error": null,
+      "evaluation": {
+        "kind": "regression",
+        "pass": true,
+        "splits": {
+          "edge": {
+            "metric": "max_abs_error",
+            "n": 9,
+            "passed": true,
+            "value": 0.0
+          },
+          "ood": {
+            "metric": "max_abs_error",
+            "n": 512,
+            "passed": true,
+            "value": 0.0
+          },
+          "test": {
+            "metric": "max_abs_error",
+            "n": 512,
+            "passed": true,
+            "value": 0.0
+          }
+        },
+        "task": "trapezoid1"
+      },
+      "nbytes": 729,
+      "passed": true,
+      "sha256": "5d5249501b13e3fb9c271597b92a31c3705def4e97f3d0f9a0abbdde440e0953",
+      "task": "trapezoid1"
+    },
+    {
+      "condition": "P-W",
+      "error": null,
+      "evaluation": {
+        "kind": "regression",
+        "pass": true,
+        "splits": {
+          "edge": {
+            "metric": "max_abs_error",
+            "n": 6,
+            "passed": true,
+            "value": 0.0
+          },
+          "ood": {
+            "metric": "max_abs_error",
+            "n": 512,
+            "passed": true,
+            "value": 1.7763568394002505e-15
+          },
+          "test": {
+            "metric": "max_abs_error",
+            "n": 512,
+            "passed": true,
+            "value": 8.881784197001252e-16
+          }
+        },
+        "task": "max3"
+      },
+      "nbytes": 1236,
+      "passed": true,
+      "sha256": "7d487ddf324407d1b84114ac3b3fed73814e9f83371fcbc00930799a21a33cc3",
+      "task": "max3"
+    },
+    {
+      "condition": "B-E",
+      "error": null,
+      "evaluation": {
+        "kind": "regression",
+        "pass": true,
+        "splits": {
+          "edge": {
+            "metric": "max_abs_error",
+            "n": 7,
+            "passed": true,
+            "value": 0.0
+          },
+          "ood": {
+            "metric": "max_abs_error",
+            "n": 512,
+            "passed": true,
+            "value": 1.7763568394002505e-15
+          },
+          "test": {
+            "metric": "max_abs_error",
+            "n": 512,
+            "passed": true,
+            "value": 8.881784197001252e-16
+          }
+        },
+        "task": "median3"
+      },
+      "nbytes": 2201,
+      "passed": true,
+      "sha256": "9bbca5d4b3f6696a6000c9b4f1afd23c0760c742610015fb92243599f41736fc",
+      "task": "median3"
+    },
+    {
+      "condition": "B-W",
+      "error": null,
+      "evaluation": {
+        "kind": "binary",
+        "pass": false,
+        "splits": {
+          "edge": {
+            "metric": "accuracy",
+            "n": 8,
+            "passed": true,
+            "value": 1.0
+          },
+          "ood": {
+            "metric": "accuracy",
+            "n": 512,
+            "passed": false,
+            "value": 0.986328125
+          },
+          "test": {
+            "metric": "accuracy",
+            "n": 512,
+            "passed": false,
+            "value": 0.95703125
+          }
+        },
+        "task": "annulus_l1_2"
+      },
+      "nbytes": 1062,
+      "passed": false,
+      "sha256": "f7300a506257ae0d1b3356ad308da79e6e092853a08c4fee2cff8934545b57a2",
+      "task": "annulus_l1_2"
+    },
+    {
+      "condition": "P-W",
+      "error": null,
+      "evaluation": {
+        "kind": "multiclass",
+        "pass": true,
+        "splits": {
+          "edge": {
+            "metric": "accuracy",
+            "n": 7,
+            "passed": true,
+            "value": 1.0
+          },
+          "ood": {
+            "metric": "accuracy",
+            "n": 512,
+            "passed": true,
+            "value": 1.0
+          },
+          "test": {
+            "metric": "accuracy",
+            "n": 512,
+            "passed": true,
+            "value": 1.0
+          }
+        },
+        "task": "rotated_quadrants4"
+      },
+      "nbytes": 492,
+      "passed": true,
+      "sha256": "873ff0fd7585d5c23d81a68d5117fea1f0248558be0100a493075b9ec6c69074",
+      "task": "rotated_quadrants4"
+    },
+    {
+      "condition": "B-W",
+      "error": null,
+      "evaluation": {
+        "kind": "multiclass",
+        "pass": true,
+        "splits": {
+          "edge": {
+            "metric": "accuracy",
+            "n": 12,
+            "passed": true,
+            "value": 1.0
+          },
+          "ood": {
+            "metric": "accuracy",
+            "n": 512,
+            "passed": true,
+            "value": 1.0
+          },
+          "test": {
+            "metric": "accuracy",
+            "n": 512,
+            "passed": true,
+            "value": 1.0
+          }
+        },
+        "task": "fourlevel1"
+      },
+      "nbytes": 409,
+      "passed": true,
+      "sha256": "95d9b88a39947c8f7886c850dedd10e568f878cc9bd7077936fc95fb093b853e",
+      "task": "fourlevel1"
+    },
+    {
+      "condition": "P-E",
+      "error": null,
+      "evaluation": {
+        "kind": "regression",
+        "pass": true,
+        "splits": {
+          "edge": {
+            "metric": "max_abs_error",
+            "n": 6,
+            "passed": true,
+            "value": 0.0
+          },
+          "ood": {
+            "metric": "max_abs_error",
+            "n": 512,
+            "passed": true,
+            "value": 1.7763568394002505e-15
+          },
+          "test": {
+            "metric": "max_abs_error",
+            "n": 512,
+            "passed": true,
+            "value": 1.7763568394002505e-15
+          }
+        },
+        "task": "hinge2"
+      },
+      "nbytes": 670,
+      "passed": true,
+      "sha256": "6dced195fcaf110e9bd2c346eaa60b5c954dc8617c859171cd2dbc0741537cd7",
+      "task": "hinge2"
+    },
+    {
+      "condition": "B-E",
+      "error": null,
+      "evaluation": {
+        "certificate": "submitted, proof not machine verified",
+        "kind": "unsatisfiable",
+        "pass": true,
+        "task": "parity3_affine_impossible"
+      },
+      "nbytes": 631,
+      "passed": true,
+      "sha256": "599536d77ab4914b08a9f12b4413a1ef393294f70ec6e4db3da5155bee173840",
+      "task": "parity3_affine_impossible"
+    }
+  ],
+  "schema_version": 2,
+  "status": "EXPLORATORY_SELF_AUTHORED_NOT_BLINDED",
+  "tasks": 14
+}

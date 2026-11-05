@@ -82,3 +82,11 @@ The ChatGPT GPT-6 first-submission artifacts were manually derived as numerical 
 
 **Next P2 gate:** Freeze prompts and evaluator, arrange independently generated unseen tasks whose solutions remain hidden from the model, use a model interface with audited tool permissions and provider model ID, obtain repeated attempts, and compare to symbolic construction and trained systems under explicit (separate) resource budgets. Do not count these first self-submissions as the required independent tasks.
 
+
+## GPT-6 self-submission round 2: expanded numeric circuits (2026-11-05)
+
+**Executed, exploratory, NOT blind:** 14 new tasks including five-bit parity, a six-input selector, a full adder and a 2-bit comparator with multiple output logits, exact three-input max/median, a multi-layer L1 annulus, four-class classifiers, and a new affine-parity impossibility challenge. GPT-6 through the ChatGPT application submitted literal weights before the first score was run (subject and benchmark author are the same; no independent authentication). **13/14** first submissions passed the strict contract: 12/13 realizable networks and one accepted but not machine-verified proof certificate. The annulus network failed due to IEEE-754 cancellation giving positive residuals on exterior points. A clearly labeled post-hoc revision passed 20 additional deterministic seeded evaluations but **does not change the first-attempt score**.
+
+An architecture-matched random N(0,1) sanity baseline scored 0/390 exact. Twelve protocol and functional unit tests plus hash-based report replay are available. See [DIRECT_SYNTHESIS_ROUND2.md](DIRECT_SYNTHESIS_ROUND2.md), the original submissions under `experiments/submissions/chatgpt-gpt6-2026-11-05-round2/`, and the provider-neutral `experiments/round2_prompts.jsonl`.
+
+**Next empirical gate:** independent models should receive precisely the exported task specifications, not the answer artifacts or oracle. Every candidate must be locked before scoring, with provider-reported model ID, sampling settings, tool access, prompt/raw-output hashes and all failures retained. Compare models condition-for-condition, including zero-probe and at-most-three-probe arms. These public tasks are useful for model-to-model exploratory comparisons, **not** a substitute for sealed, unseen confirmatory tests.

@@ -1,0 +1,42 @@
+name: Validate second direct-weight synthesis benchmark
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/wsp/direct_challenges_v2.py'
+      - 'src/wsp/direct_sessions_v2.py'
+      - 'scripts/run_round2_controls.py'
+      - 'scripts/verify_gpt6_round2.py'
+      - 'scripts/write_gpt6_round2.py'
+      - 'scripts/export_round2_prompts.py'
+      - 'tests/test_direct_*v2.py'
+      - 'experiments/submissions/chatgpt-gpt6-2026-11-05-round2/**'
+      - 'experiments/revisions/gpt6_round2_annulus_posthoc.json'
+      - 'experiments/reports/2026-11-05-gpt6-direct-synthesis-round2.json'
+      - 'results/direct_synthesis_round2_controls.json'
+      - '.github/workflows/direct-synthesis-round2.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reproducible:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        python-version: ['3.10', '3.12', '3.14']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m pip install -e .
+      - name: Validate original locked submissions and trial protocol
+        run: |
+          python -m unittest discover -s tests -p 'test_direct_*v2.py' -v
+          python scripts/verify_gpt6_round2.py
+      - name: Recompute control counts and ensure no drift
+        run: |
+          python scripts/run_round2_controls.py
+          git diff --exit-code -- results/direct_synthesis_round2_controls.json

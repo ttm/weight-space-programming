@@ -1,0 +1,76 @@
+{
+  "network": {
+    "layers": [
+      {
+        "activation": "relu",
+        "bias": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "weights": [
+          [
+            1,
+            0
+          ],
+          [
+            -1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            -1
+          ]
+        ]
+      },
+      {
+        "activation": "relu",
+        "bias": [
+          -0.5,
+          -1.25,
+          -2
+        ],
+        "weights": [
+          [
+            1,
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1,
+            1
+          ]
+        ]
+      },
+      {
+        "activation": "linear",
+        "bias": [
+          0
+        ],
+        "weights": [
+          [
+            1,
+            -2,
+            1
+          ]
+        ]
+      }
+    ]
+  },
+  "schema_version": 2,
+  "task": "annulus_l1_2"
+}

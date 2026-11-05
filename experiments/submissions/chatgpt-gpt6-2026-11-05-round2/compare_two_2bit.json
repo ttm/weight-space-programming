@@ -1,0 +1,52 @@
+{
+  "explanation": "The hidden units compute positive and negative parts of integer A-B. Their signs identify greater and lesser; equality is the strict positivity of 0.5-|A-B|.",
+  "network": {
+    "layers": [
+      {
+        "activation": "relu",
+        "bias": [
+          0,
+          0
+        ],
+        "weights": [
+          [
+            2,
+            1,
+            -2,
+            -1
+          ],
+          [
+            -2,
+            -1,
+            2,
+            1
+          ]
+        ]
+      },
+      {
+        "activation": "linear",
+        "bias": [
+          -0.5,
+          0.5,
+          -0.5
+        ],
+        "weights": [
+          [
+            1,
+            0
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      }
+    ]
+  },
+  "schema_version": 2,
+  "task": "compare_two_2bit"
+}

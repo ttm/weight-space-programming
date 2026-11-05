@@ -175,3 +175,24 @@ python -m wsp.direct_synthesis list
 python -m wsp.direct_synthesis prompt two_hats1
 ```
 
+
+## Second GPT-6 direct-weight trial and other-model handoff (2026-11-05)
+
+A new public, self-authored development benchmark includes **14 additional tasks**, from Boolean parity, a four-way selector and multioutput full adder to exact max/median functions, multiclass geometry, floating-point-sensitive classification and an impossibility certificate. **13/14 original submissions pass**; the one failed classifier is preserved and its numerical cancellation mechanism is analyzed. A separately labeled post-hoc fix is not counted in the first-attempt score. Architecture-matched Gaussian random controls: **0/390** exact networks. Neither number estimates GPT-6's generalization to sealed, unseen tasks.
+
+- [Method, results, limitations, and reproduction](docs/DIRECT_SYNTHESIS_ROUND2.md)
+- [Original GPT-6 submission files](experiments/submissions/chatgpt-gpt6-2026-11-05-round2/)
+- [Model-neutral JSONL prompts for other AIs](experiments/round2_prompts.jsonl)
+- [Replayable score report](experiments/reports/2026-11-05-gpt6-direct-synthesis-round2.json)
+
+Run:
+
+```bash
+python -m wsp.direct_challenges_v2 list
+python -m wsp.direct_challenges_v2 prompt median3
+python scripts/export_round2_prompts.py --output .runs/round2-prompts.jsonl
+python scripts/verify_gpt6_round2.py
+python scripts/run_round2_controls.py
+```
+
+See `python -m wsp.direct_sessions_v2 --help` for local probe/finalize bookkeeping. **This is not a sealed evaluator.** The existing `make check` and dedicated CI workflow replay the original artifacts and independent controls.

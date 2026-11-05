@@ -1,0 +1,46 @@
+{
+  "explanation": "This is a telescoping hinge expansion with knots -2,-1,1,2; the cumulative slope is 0,+1,0,-1,0.",
+  "network": {
+    "layers": [
+      {
+        "activation": "relu",
+        "bias": [
+          2,
+          1,
+          -1,
+          -2
+        ],
+        "weights": [
+          [
+            1
+          ],
+          [
+            1
+          ],
+          [
+            1
+          ],
+          [
+            1
+          ]
+        ]
+      },
+      {
+        "activation": "linear",
+        "bias": [
+          0
+        ],
+        "weights": [
+          [
+            1,
+            -1,
+            -1,
+            1
+          ]
+        ]
+      }
+    ]
+  },
+  "schema_version": 2,
+  "task": "trapezoid1"
+}

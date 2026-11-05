@@ -1,0 +1,52 @@
+{
+  "network": {
+    "layers": [
+      {
+        "activation": "relu",
+        "bias": [
+          0,
+          -1,
+          -2
+        ],
+        "weights": [
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ]
+      },
+      {
+        "activation": "linear",
+        "bias": [
+          -0.5,
+          -1.5
+        ],
+        "weights": [
+          [
+            1,
+            -2,
+            2
+          ],
+          [
+            1,
+            0,
+            0
+          ]
+        ]
+      }
+    ]
+  },
+  "schema_version": 2,
+  "task": "full_adder3"
+}

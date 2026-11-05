@@ -1,0 +1,38 @@
+{
+  "explanation": "The hidden units are the two affine ReLU hinges. The readout adds the first and half the second, then subtracts the prescribed intercept.",
+  "network": {
+    "layers": [
+      {
+        "activation": "relu",
+        "bias": [
+          1,
+          -0.25
+        ],
+        "weights": [
+          [
+            2,
+            -1
+          ],
+          [
+            -1,
+            3
+          ]
+        ]
+      },
+      {
+        "activation": "linear",
+        "bias": [
+          -1.25
+        ],
+        "weights": [
+          [
+            1,
+            0.5
+          ]
+        ]
+      }
+    ]
+  },
+  "schema_version": 2,
+  "task": "hinge2"
+}

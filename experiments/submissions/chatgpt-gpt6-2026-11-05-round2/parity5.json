@@ -1,0 +1,71 @@
+{
+  "explanation": "For integer s=sum(bits), ReLU(s)-2ReLU(s-1)+2ReLU(s-2)-2ReLU(s-3)+2ReLU(s-4) equals parity(s), and subtracting 0.5 gives the correct sign.",
+  "network": {
+    "layers": [
+      {
+        "activation": "relu",
+        "bias": [
+          0,
+          -1,
+          -2,
+          -3,
+          -4
+        ],
+        "weights": [
+          [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        ]
+      },
+      {
+        "activation": "linear",
+        "bias": [
+          -0.5
+        ],
+        "weights": [
+          [
+            1,
+            -2,
+            2,
+            -2,
+            2
+          ]
+        ]
+      }
+    ]
+  },
+  "schema_version": 2,
+  "task": "parity5"
+}

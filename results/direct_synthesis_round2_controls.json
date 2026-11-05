@@ -1,0 +1,275 @@
+{
+  "annulus_diagnostic": {
+    "additional_salts": [
+      {
+        "first_test_accuracy": 0.94921875,
+        "revision_pass": true,
+        "revision_test_accuracy": 1.0,
+        "salt_index": 0
+      },
+      {
+        "first_test_accuracy": 0.9296875,
+        "revision_pass": true,
+        "revision_test_accuracy": 1.0,
+        "salt_index": 1
+      },
+      {
+        "first_test_accuracy": 0.955078125,
+        "revision_pass": true,
+        "revision_test_accuracy": 1.0,
+        "salt_index": 2
+      },
+      {
+        "first_test_accuracy": 0.951171875,
+        "revision_pass": true,
+        "revision_test_accuracy": 1.0,
+        "salt_index": 3
+      },
+      {
+        "first_test_accuracy": 0.9609375,
+        "revision_pass": true,
+        "revision_test_accuracy": 1.0,
+        "salt_index": 4
+      },
+      {
+        "first_test_accuracy": 0.96875,
+        "revision_pass": true,
+        "revision_test_accuracy": 1.0,
+        "salt_index": 5
+      },
+      {
+        "first_test_accuracy": 0.955078125,
+        "revision_pass": true,
+        "revision_test_accuracy": 1.0,
+        "salt_index": 6
+      },
+      {
+        "first_test_accuracy": 0.953125,
+        "revision_pass": true,
+        "revision_test_accuracy": 1.0,
+        "salt_index": 7
+      },
+      {
+        "first_test_accuracy": 0.951171875,
+        "revision_pass": true,
+        "revision_test_accuracy": 1.0,
+        "salt_index": 8
+      },
+      {
+        "first_test_accuracy": 0.947265625,
+        "revision_pass": true,
+        "revision_test_accuracy": 1.0,
+        "salt_index": 9
+      },
+      {
+        "first_test_accuracy": 0.9375,
+        "revision_pass": true,
+        "revision_test_accuracy": 1.0,
+        "salt_index": 10
+      },
+      {
+        "first_test_accuracy": 0.953125,
+        "revision_pass": true,
+        "revision_test_accuracy": 1.0,
+        "salt_index": 11
+      },
+      {
+        "first_test_accuracy": 0.953125,
+        "revision_pass": true,
+        "revision_test_accuracy": 1.0,
+        "salt_index": 12
+      },
+      {
+        "first_test_accuracy": 0.96484375,
+        "revision_pass": true,
+        "revision_test_accuracy": 1.0,
+        "salt_index": 13
+      },
+      {
+        "first_test_accuracy": 0.95703125,
+        "revision_pass": true,
+        "revision_test_accuracy": 1.0,
+        "salt_index": 14
+      },
+      {
+        "first_test_accuracy": 0.96484375,
+        "revision_pass": true,
+        "revision_test_accuracy": 1.0,
+        "salt_index": 15
+      },
+      {
+        "first_test_accuracy": 0.955078125,
+        "revision_pass": true,
+        "revision_test_accuracy": 1.0,
+        "salt_index": 16
+      },
+      {
+        "first_test_accuracy": 0.96875,
+        "revision_pass": true,
+        "revision_test_accuracy": 1.0,
+        "salt_index": 17
+      },
+      {
+        "first_test_accuracy": 0.947265625,
+        "revision_pass": true,
+        "revision_test_accuracy": 1.0,
+        "salt_index": 18
+      },
+      {
+        "first_test_accuracy": 0.94921875,
+        "revision_pass": true,
+        "revision_test_accuracy": 1.0,
+        "salt_index": 19
+      }
+    ],
+    "first_test_examples": [
+      {
+        "expected": 0,
+        "observed_logit": 2.220446049250313e-16,
+        "x": [
+          -2.601683067274217,
+          -1.1524106129633058
+        ]
+      },
+      {
+        "expected": 0,
+        "observed_logit": 4.440892098500626e-16,
+        "x": [
+          -2.744507055787049,
+          1.8129557371072034
+        ]
+      },
+      {
+        "expected": 0,
+        "observed_logit": 2.220446049250313e-16,
+        "x": [
+          -1.6216160165861566,
+          0.8899408942095102
+        ]
+      },
+      {
+        "expected": 0,
+        "observed_logit": 2.220446049250313e-16,
+        "x": [
+          -1.1922967332339989,
+          -2.4244226229614396
+        ]
+      },
+      {
+        "expected": 0,
+        "observed_logit": 4.440892098500626e-16,
+        "x": [
+          -2.7715919048430524,
+          2.561511087514389
+        ]
+      }
+    ],
+    "first_test_false_positives": 22,
+    "initial_sha256": "f7300a506257ae0d1b3356ad308da79e6e092853a08c4fee2cff8934545b57a2",
+    "posthoc_sha256": "ebf94a48ecfdfd1277186264b679095ba2f99550ba3c6eff8647ed1afb479f56",
+    "posthoc_test": {
+      "kind": "binary",
+      "pass": true,
+      "splits": {
+        "edge": {
+          "metric": "accuracy",
+          "n": 8,
+          "passed": true,
+          "value": 1.0
+        },
+        "ood": {
+          "metric": "accuracy",
+          "n": 512,
+          "passed": true,
+          "value": 1.0
+        },
+        "test": {
+          "metric": "accuracy",
+          "n": 512,
+          "passed": true,
+          "value": 1.0
+        }
+      },
+      "task": "annulus_l1_2"
+    }
+  },
+  "limitations": [
+    "Random weights not compute-matched to LLM",
+    "Correction is POST-HOC and forbidden as a revision of original blind B-W submission",
+    "Reference mathematical tasks and evaluator are public"
+  ],
+  "random_baseline": {
+    "distribution": "iid N(0,1)",
+    "information": "same architecture, no training",
+    "rows": [
+      {
+        "exact_successes": 0,
+        "random_trials": 30,
+        "task": "parity5"
+      },
+      {
+        "exact_successes": 0,
+        "random_trials": 30,
+        "task": "exactly3of6"
+      },
+      {
+        "exact_successes": 0,
+        "random_trials": 30,
+        "task": "xor_pairs_and"
+      },
+      {
+        "exact_successes": 0,
+        "random_trials": 30,
+        "task": "mux6"
+      },
+      {
+        "exact_successes": 0,
+        "random_trials": 30,
+        "task": "full_adder3"
+      },
+      {
+        "exact_successes": 0,
+        "random_trials": 30,
+        "task": "compare_two_2bit"
+      },
+      {
+        "exact_successes": 0,
+        "random_trials": 30,
+        "task": "trapezoid1"
+      },
+      {
+        "exact_successes": 0,
+        "random_trials": 30,
+        "task": "max3"
+      },
+      {
+        "exact_successes": 0,
+        "random_trials": 30,
+        "task": "median3"
+      },
+      {
+        "exact_successes": 0,
+        "random_trials": 30,
+        "task": "annulus_l1_2"
+      },
+      {
+        "exact_successes": 0,
+        "random_trials": 30,
+        "task": "rotated_quadrants4"
+      },
+      {
+        "exact_successes": 0,
+        "random_trials": 30,
+        "task": "fourlevel1"
+      },
+      {
+        "exact_successes": 0,
+        "random_trials": 30,
+        "task": "hinge2"
+      }
+    ],
+    "trials_per_realizable_task": 30
+  },
+  "schema_version": 2,
+  "status": "NO_MODEL_CALLS_DEVELOPMENT_CONTROLS"
+}

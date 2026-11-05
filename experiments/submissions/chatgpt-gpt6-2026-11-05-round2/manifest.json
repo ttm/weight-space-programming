@@ -1,0 +1,52 @@
+{
+  "kind": "exploratory development self-submission, first pass",
+  "participant": {
+    "access": "ChatGPT application",
+    "blind_trial": false,
+    "build_id": null,
+    "checkpoint_sha": null,
+    "generation_method": "direct analytic assignment and static JSON transcription",
+    "inference_model_id": null,
+    "local_date": "2026-11-05",
+    "provenance_limitations": [
+      "Backend build and exact thinking effort not exposed",
+      "Full hidden reasoning and exact model inference configuration unavailable",
+      "No independent timestamp or subject isolation"
+    ],
+    "reasoning_effort_tier": null,
+    "sampling_seed": null,
+    "sampling_temperature": null,
+    "self_identification": "GPT-6",
+    "surface": "ChatGPT conversation",
+    "task_visibility": "full public task specifications and oracle code were visible to subject",
+    "timezone": "Europe/Rome",
+    "tools_available": [
+      "GitHub connector",
+      "container shell",
+      "Python"
+    ],
+    "tools_used_in_workflow": [
+      "GitHub connector",
+      "container shell"
+    ],
+    "training_or_optimization_of_candidate_parameters": false,
+    "validation_probe_count_per_task": 0
+  },
+  "schema_version": 2,
+  "tasks": [
+    "parity5",
+    "exactly3of6",
+    "xor_pairs_and",
+    "mux6",
+    "full_adder3",
+    "compare_two_2bit",
+    "trapezoid1",
+    "max3",
+    "median3",
+    "annulus_l1_2",
+    "rotated_quadrants4",
+    "fourlevel1",
+    "hinge2",
+    "parity3_affine_impossible"
+  ]
+}

@@ -3,7 +3,7 @@ export PYTHONPATH=src
 # Committed results use the public seeds, whatever the caller's environment holds.
 unexport WSP_SEED_SALT
 
-.PHONY: test benchmark stress repair results check research-results provenance-results model-replay balanced-results direct-synthesis-replay
+.PHONY: test benchmark stress repair results check research-results provenance-results model-replay balanced-results round2-results round2-replay direct-synthesis-replay
 
 test:
 	$(PYTHON) -m unittest discover -s tests -v
@@ -28,7 +28,7 @@ balanced-results:
 	$(PYTHON) scripts/run_balanced_controls.py
 
 # Regenerate every committed result.
-results: benchmark stress repair research-results provenance-results balanced-results
+results: benchmark stress repair research-results provenance-results balanced-results round2-results
 
 # Replay archived model results without new inference or API credentials.
 model-replay:
@@ -49,5 +49,12 @@ model-replay:
 direct-synthesis-replay:
 	$(PYTHON) scripts/verify_direct_synthesis.py
 
-check: test results model-replay direct-synthesis-replay
+check: test results model-replay round2-replay direct-synthesis-replay
 	@git diff --exit-code -- results/ || { echo "results/ no longer matches committed files; commit intended changes." >&2; exit 1; }
+
+# Reproduce second GPT-6 numeric-network study and retained first attempts.
+round2-results:
+	$(PYTHON) scripts/run_round2_controls.py
+
+round2-replay:
+	$(PYTHON) scripts/verify_gpt6_round2.py
