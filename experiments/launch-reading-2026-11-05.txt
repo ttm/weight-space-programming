@@ -1,0 +1,2 @@
+One-time matched-topology, paired gauge-transformation LLM weight-reading smoke test.
+Public checkpoint pinned. No external model API key, model probes or execution tools.

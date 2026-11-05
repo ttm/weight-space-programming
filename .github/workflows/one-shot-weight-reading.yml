@@ -1,0 +1,38 @@
+name: One-time open-model weight-reading smoke test
+
+on:
+  push:
+    paths: ['experiments/launch-reading-2026-11-05.txt']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  offline-reading-pilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install CPU model dependencies
+        run: |
+          python -m pip install -e .
+          python -m pip install --index-url https://download.pytorch.org/whl/cpu 'torch==2.6.0'
+          python -m pip install 'transformers==4.57.1' 'safetensors>=0.4,<1'
+      - name: Validate reading-pair construction without model dependencies
+        run: python scripts/run_local_hf_reading.py --dry-run --output .runs/reading-dry.json
+      - name: Interpret paired original and transformed weights without tools
+        env:
+          HF_HUB_DISABLE_TELEMETRY: '1'
+          TOKENIZERS_PARALLELISM: 'false'
+        run: python scripts/run_local_hf_reading.py --output .runs/reading-model.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: weight-reading-smoke
+          path: .runs/*.json
+          if-no-files-found: warn
+          retention-days: 30
