@@ -1,0 +1,74 @@
+name: Optional exploratory participant pilot
+
+on:
+  workflow_dispatch:
+    inputs:
+      participant:
+        description: 'Use free stubs, or openai only with your explicitly configured repository secret'
+        type: choice
+        options: [random_stub, oracle_stub, openai]
+        default: random_stub
+        required: true
+      model:
+        description: 'OpenAI API model ID (only used with participant=openai)'
+        type: string
+        default: ''
+        required: false
+      families:
+        description: 'Comma separated task families (e.g. dnf4,hinge1)'
+        type: string
+        default: 'dnf4,hinge1'
+        required: true
+      seeds:
+        description: 'Independent tasks per family (1-20)'
+        type: number
+        default: 1
+        required: true
+      repeats:
+        description: 'Repeated attempts per task/condition (1-10)'
+        type: number
+        default: 1
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  pilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      WSP_SEED_SALT: ${{ secrets.WSP_SEED_SALT }}
+      PARTICIPANT: ${{ inputs.participant }}
+      MODEL: ${{ inputs.model }}
+      FAMILIES: ${{ inputs.families }}
+      SEEDS: ${{ inputs.seeds }}
+      REPEATS: ${{ inputs.repeats }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install package
+        run: python -m pip install -e .
+      - name: Require explicit API key for paid participant
+        shell: bash
+        run: |
+          if [[ "$PARTICIPANT" == "openai" && -z "$OPENAI_API_KEY" ]]; then
+            echo 'OPENAI_API_KEY repository secret must be set before opting into paid trials.' >&2
+            exit 1
+          fi
+      - name: Execute exploratory conditions
+        shell: bash
+        run: |
+          ARGS=(--participant "$PARTICIPANT" --families "$FAMILIES" --seeds "$SEEDS" --repeats "$REPEATS" --output .runs/pilot.json)
+          if [[ "$PARTICIPANT" == "openai" ]]; then ARGS+=(--model "$MODEL"); fi
+          python -m wsp.pilot "${ARGS[@]}"
+      - name: Upload full trial transcript
+        uses: actions/upload-artifact@v4
+        with:
+          name: exploratory-pilot
+          path: .runs/pilot.json
+          if-no-files-found: error
+          retention-days: 30

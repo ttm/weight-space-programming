@@ -8,6 +8,7 @@ from pathlib import Path
 
 from . import __version__
 from .evaluation import evaluate
+from .architecture import check_network, validate_architecture, architecture_hash
 from .network import parse_candidate, validate_network
 from .tasks import TASKS, seed_salt_sha256
 
@@ -29,11 +30,16 @@ def _now() -> str:
 
 
 def start(path: Path, task: str, mode: str, explanation: str, budget: int = 3, *,
-          participant: str | None = None, model: str | None = None, prompt_file: Path | None = None) -> dict:
+          participant: str | None = None, model: str | None = None, prompt_file: Path | None = None, architecture: dict | None = None) -> dict:
     if path.exists():
         raise FileExistsError(f"Session exists: {path}")
     if task not in TASKS or mode not in MODES or explanation not in EXPLANATIONS or budget < 0:
         raise ValueError("Invalid task, mode, explanation or budget")
+    if architecture is not None:
+        validate_architecture(architecture)
+        if (architecture["layers"][0]["inputs"] != TASKS[task].inputs or
+                architecture["layers"][-1]["outputs"] != TASKS[task].outputs):
+            raise ValueError("Architecture input/output dimensions mismatch task")
     if mode == "blind": budget = 0
     if mode == "open": budget = -1
     provenance = {"wsp_version": __version__, "participant": participant, "model": model,
@@ -42,6 +48,8 @@ def start(path: Path, task: str, mode: str, explanation: str, budget: int = 3, *
     session = {"schema_version": 1, "task": task, "mode": mode, "explanation": explanation,
                "budget": budget, "probes": [], "finalized": False, "created_at": _now(),
                "provenance": provenance}
+    session["architecture"] = architecture
+    session["architecture_sha256"] = architecture_hash(architecture) if architecture is not None else None
     _write(path, session)
     return session
 
@@ -65,6 +73,8 @@ def _submit(path: Path, session: dict, splits: tuple[str, ...]) -> dict:
             raise ValueError("This session forbids explanations")
         task = TASKS[session["task"]]
         validate_network(candidate.get("network"), task.inputs, task.outputs)
+        if session.get("architecture") is not None:
+            check_network(candidate.get("network"), session["architecture"])
         record["result"] = evaluate(candidate, splits)
     except (ValueError, ArithmeticError) as exc:  # bad JSON, schema, shapes, or numeric overflow
         record["error"] = f"{type(exc).__name__}: {exc}"

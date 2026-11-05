@@ -101,6 +101,26 @@ The tests are deterministic, and every result is inspectable. **They are not a s
 - [`docs/ROADMAP.md`](docs/ROADMAP.md): order of upcoming work, what counts as done, and open decisions.
 - [`docs/RESULTS.md`](docs/RESULTS.md): interpretation, baseline caveats, and follow-up designs.
 
+## Generated-task, model-pilot and weight-reading extensions
+
+Four seeded, constructively realizable task families, exact architecture matching, random/hill-climbing controls, a factorial participant runner and ReLU gauge-invariance reading challenges are now available. **The controls are not independent LLM evaluations.**
+
+```bash
+python3 -m wsp.generated --family dnf4 --seed 202
+python3 -m wsp.generated --family dnf4 --seed 202 --reference  # development only
+python3 -m wsp.baselines --seeds 4 --budgets 1 3 10
+python3 -m wsp.pilot --participant random_stub --seeds 1 --repeats 1 --output .runs/random.json
+python3 -m wsp.pilot --participant oracle_stub --seeds 1 --repeats 1 --output .runs/oracle.json
+python3 -m wsp.weight_reading --count 8 --seed 2 --bank .runs/reading.json --key .runs/reading-key.json
+python3 scripts/run_development.py
+```
+
+Ordinary `wsp start` accepts `--architecture-file architecture.json` to lock depth, widths and activations. Without that option, the original permissive development behavior remains. Generated pilot trials always lock architecture.
+
+For actual model calls, explicitly opt into the manual [exploratory GitHub Action](.github/workflows/research-pilot.yml), configure an API key in the repository's `OPENAI_API_KEY` secret, and supply a model ID. Normal CI makes no paid calls; a ChatGPT subscription is separate from API billing.
+
+See [exploratory methods](docs/EXPLORATORY.md), [weight-space equivalence](docs/THEORY.md), and the [roadmap](docs/ROADMAP.md). `make check` regenerates the development control summary in `results/development_research.json`.
+
 ## Research question
 
 **Can a model translate a behavioral specification into *numerical network parameters*, or diagnose and edit existing parameters, with a measurable advantage over known symbolic construction, random search, gradient methods, or conventional program synthesis?**

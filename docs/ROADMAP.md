@@ -4,7 +4,7 @@ This file is the plan of record: what exists, what gets built next and in what o
 
 ## Where things stand
 
-As of version 0.2.0 (November 2026) the laboratory works, but no experiment has been run.
+As of version 0.2.0 (November 2026) the laboratory works, but no independent LLM participant experiment has been run.
 
 - **Harness.** A pure-Python interpreter for small feedforward networks, ten fixed tasks with deterministic splits, scoring, random-weight baselines, perturbation and invariance checks, sparse weight patches, and feedback-limited sessions (`wsp start`, `probe`, `finalize`).
 - **Session integrity.** Rejected submissions count as attempts, the recorded hash is of the exact bytes scored, and `wsp start` records the participant, model, prompt hash and harness version. Setting `WSP_SEED_SALT` holds back the test and OOD inputs.
@@ -25,12 +25,12 @@ The files themselves record this only loosely. Their `author` field says "GPT-6 
 | Step | Work | Needs | Status |
 |---|---|---|---|
 | 0 | Record which model made each network | – | next |
-| 1 | Random-search baseline | – | next |
-| 2 | Hill-climbing and gradient-training baselines | 1 | planned |
-| 3 | Task generator | 1 and 2, for difficulty levels | planned |
-| 4 | Participant runner | 0; 3 for real runs | planned |
+| 1 | Random-search baseline | – | implemented for development tasks; final confirmatory comparisons pending |
+| 2 | Hill-climbing and gradient-training baselines | 1 | hill climbing implemented; gradient training pending |
+| 3 | Task generator | 1 and 2, for difficulty levels | four realizable development families implemented; sealed difficulty strata pending |
+| 4 | Participant runner | 0; 3 for real runs | stub runner and opt-in OpenAI API adapter implemented; sealed execution pending |
 | 5 | Preregistration and analysis | 1–4 | planned |
-| 6 | First pilot (H1) | 5 | planned |
+| 6 | First pilot (H1) | 5 | deterministic stub controls passed; independent model study pending |
 
 This order runs the agenda's stage 2 (synthesis on new tasks, H1) before its stage 1 (the weight-reading bank, H2), because the baselines, generator and runner built here are also what stage 1 needs.
 
@@ -97,6 +97,17 @@ Done when the preregistration is committed before the first pilot session and th
 ### Step 6: first pilot
 
 Draw the experiment tasks from secret seeds, run the participants, analyze exactly as preregistered, and report in RESULTS.md, including failure and rejected-JSON rates. A null or negative result is reported the same way.
+
+## Implementation checkpoint: November 5, 2026
+
+- **Architecture:** a supplied contract is now enforced by the ordinary session evaluator. Generated-model trials always lock exact depth, width and activations.
+- **Task construction:** four deterministic families have constructively realizable witness networks. A development CI job checks 128 witnesses; the families remain public and elementary.
+- **Baselines:** budgeted random search and hill climbing are implemented for generated tasks. Gradient training remains open.
+- **Participants:** deterministic oracle/random stubs exercise all feedback/explanation conditions. An opt-in OpenAI Responses API participant and manual GitHub Action are available, but no paid model run has been made.
+- **Interpretation:** 16 matched-topology development challenges preserve behavior and a *restricted* canonical fingerprint under positive ReLU rescaling and hidden permutations. This is not a complete canonicalization of neural functions.
+- **Documents:** see [EXPLORATORY.md](EXPLORATORY.md) and [THEORY.md](THEORY.md).
+
+Remaining prerequisites for confirmatory evidence include securely separated evaluator/participant, registered model trials, freeze of prompts and model versions, serious matched training/compiler baselines, gradient training and preregistration. Passing stubs do not demonstrate LLM competence.
 
 ## After the first pilot
 

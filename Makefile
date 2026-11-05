@@ -3,7 +3,7 @@ export PYTHONPATH=src
 # Committed results use the public seeds, whatever the caller's environment holds.
 unexport WSP_SEED_SALT
 
-.PHONY: test benchmark stress repair results check
+.PHONY: test benchmark stress repair results check research-results
 
 test:
 	$(PYTHON) -m unittest discover -s tests -v
@@ -17,8 +17,12 @@ stress:
 repair:
 	$(PYTHON) -m wsp repair fixtures/xor2_corrupted.json repairs/xor2_bias_fix.json --output results/xor2_repair.json
 
+# Extra no-cost development results.
+research-results:
+	$(PYTHON) scripts/run_development.py
+
 # Regenerate every committed result.
-results: benchmark stress repair
+results: benchmark stress repair research-results
 
 # Unit tests, then fail unless regenerating results/ reproduces the committed files exactly.
 check: test results

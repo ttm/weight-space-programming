@@ -1,0 +1,117 @@
+{
+  "baselines": [
+    {
+      "budget": 1,
+      "method": "random",
+      "perfect": 0,
+      "trials": 16
+    },
+    {
+      "budget": 3,
+      "method": "random",
+      "perfect": 0,
+      "trials": 16
+    },
+    {
+      "budget": 10,
+      "method": "random",
+      "perfect": 0,
+      "trials": 16
+    },
+    {
+      "budget": 1,
+      "method": "hill_climb",
+      "perfect": 0,
+      "trials": 16
+    },
+    {
+      "budget": 3,
+      "method": "hill_climb",
+      "perfect": 0,
+      "trials": 16
+    },
+    {
+      "budget": 10,
+      "method": "hill_climb",
+      "perfect": 0,
+      "trials": 16
+    }
+  ],
+  "constructive_witnesses_verified": 128,
+  "families": [
+    "dnf4",
+    "hinge1",
+    "l1ball2",
+    "threshold4"
+  ],
+  "matched_topology_reading_bank_size": 16,
+  "notes": [
+    "Not blinded model generations",
+    "No payment or provider calls",
+    "Only integers and booleans are committed for cross-platform reproducibility"
+  ],
+  "reading_bank_canonical_fingerprint_preserved": true,
+  "reading_bank_gauge_preserves_behavior": true,
+  "schema_version": 1,
+  "status": "DEVELOPMENT_CONTROLS_NOT_LLM_TRIALS",
+  "stub_oracle_summary": [
+    {
+      "explanation": "forbidden",
+      "invalid_final": 0,
+      "mode": "blind",
+      "n": 4,
+      "passed": 4
+    },
+    {
+      "explanation": "required",
+      "invalid_final": 0,
+      "mode": "blind",
+      "n": 4,
+      "passed": 4
+    },
+    {
+      "explanation": "forbidden",
+      "invalid_final": 0,
+      "mode": "budgeted",
+      "n": 4,
+      "passed": 4
+    },
+    {
+      "explanation": "required",
+      "invalid_final": 0,
+      "mode": "budgeted",
+      "n": 4,
+      "passed": 4
+    }
+  ],
+  "stub_random_summary": [
+    {
+      "explanation": "forbidden",
+      "invalid_final": 0,
+      "mode": "blind",
+      "n": 4,
+      "passed": 0
+    },
+    {
+      "explanation": "required",
+      "invalid_final": 0,
+      "mode": "blind",
+      "n": 4,
+      "passed": 0
+    },
+    {
+      "explanation": "forbidden",
+      "invalid_final": 0,
+      "mode": "budgeted",
+      "n": 4,
+      "passed": 0
+    },
+    {
+      "explanation": "required",
+      "invalid_final": 0,
+      "mode": "budgeted",
+      "n": 4,
+      "passed": 0
+    }
+  ]
+}
