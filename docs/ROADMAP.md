@@ -1,138 +1,68 @@
-# Roadmap
+# Roadmap: from reproducible circuits to independently measured weight-space reasoning
 
-This file is the plan of record: what exists, what gets built next and in what order, and what counts as done. [RESEARCH_AGENDA.md](RESEARCH_AGENDA.md) holds the hypotheses, and [PROTOCOL.md](PROTOCOL.md) the rules every experiment follows. Update this file whenever a step lands or the plan changes.
+**Updated 2026-11-05. This is the plan of record.** [TASKS.md](TASKS.md) tracks concrete acceptance tests, [PROTOCOL.md](PROTOCOL.md) defines experiment rules, [RESEARCH_AGENDA.md](RESEARCH_AGENDA.md) catalogs H1–H10, and [RESULTS.md](RESULTS.md) distinguishes observations from interpretation.
 
-## Where things stand
+## What the evidence currently supports
 
-As of version 0.2.0 (November 2026) the laboratory works, but no independent LLM participant experiment has been run.
+| Evidence level | Present status | Claim permitted |
+|---|---|---|
+| L0: engineering controls | Implemented: exact tensor interpreter; 10 directly specified constructive examples; random/hill-climbing/Adam baselines; 128 generated witnesses; architecture-locked sessions; CI and provenance index | The apparatus executes and checks small networks; analytic synthesis is possible |
+| L1: exploratory model calls | Two archived Qwen3-0.6B probes (2026-11-05): synthesis **0/4** valid weight artifacts; reading **0/6** exact functions, trivial all-zero agreement across 3 equivalent pairs | This specific model/prompt setup failed; output invariance alone is not understanding |
+| L2: discriminating replicated studies | **In progress:** balanced matched-topology reading; model and prompt-format ablations | Requires multiple independent functions, properly reported uncertainty, and nondegenerate success |
+| L3: confirmatory comparisons | Not started: external preregistration, genuinely sealed tasks, audit of tool access, repeated strong-model runs, information- and compute-aware baselines | No positive general WSP claim yet |
+| L4: practical large-network repair | Not started: trained defects and collateral-damage testing | No claim of general trained-model editability yet |
 
-- **Harness.** A pure-Python interpreter for small feedforward networks, ten fixed tasks with deterministic splits, scoring, random-weight baselines, perturbation and invariance checks, sparse weight patches, and feedback-limited sessions (`wsp start`, `probe`, `finalize`).
-- **Session integrity.** Rejected submissions count as attempts, the recorded hash is of the exact bytes scored, and `wsp start` records the participant, model, prompt hash and harness version. Setting `WSP_SEED_SALT` holds back the test and OOD inputs.
-- **Scoring.** Regression outputs pass when the largest absolute error is at most 1e-6.
-- **Reproducibility.** `make check` runs the tests, regenerates `results/` and fails unless the files match the committed ones byte for byte. CI runs it on Linux and macOS with Python 3.10 to 3.14.
-- **Licenses.** MIT for code and data, CC BY 4.0 for documentation.
+The completed L1 experiments are archived under `experiments/reports/` with prompts, raw responses, model revision, validation and replay. Development witnesses, stubs, and generated references **are not LLM trials**. Historical examples have structured provenance (13/14 files, one deliberately metadata-free fixture), but some original generation details cannot be recovered; see [PROVENANCE.md](PROVENANCE.md).
 
-Still missing: tasks a participant hasn't seen, baselines with a matched budget, a way to run real models as participants, and an analysis plan. The ten example networks were written during development and are not trials (PROTOCOL §9), so the research question remains open (RESULTS.md §6).
+## Research priority, in dependency order
 
-## Provenance of the existing artifacts
+### P0. Experimental validity and reporting (ongoing)
 
-Renato Fabbri, the repository owner, reported on 2026-11-05 that the existing networks were produced by **ChatGPT 6 with high reasoning, used through a ChatGPT Plus plan**. That covers the eleven networks in `examples/` (the ten constructions and the linear XOR control) and the two in `fixtures/`, all added in commit `b298e6e` on 2026-11-05. The repair patch in `repairs/` came in the same commit; its origin is to be confirmed in step 0.
+Keep exact architecture constraints, candidate byte hashes, attempt accounting, independent oracle verification, complete raw outputs, model IDs and immutable revisions. Each study must explicitly report whether evaluation is sealed, what is visible to participants, and whether its model inference was actually executed. Keep development oracles in separate records from model inputs.
 
-The files themselves record this only loosely. Their `author` field says "GPT-6 (analytically constructed, not trained)", and `fixtures/xor2_weights_only.json` has no author field by design. Nothing records the exact model version, when each network was generated, the prompts and transcript, or whether code-execution tools were used. If the ChatGPT conversation can still be exported, archiving it would close most of that gap.
+**Exit:** `make check` and report verification pass; controls deliberately fail when topology, score, or parser contracts are violated. No claims based on unavailable model runs.
 
-## Plan
+### P1. Balanced weight-reading and reparameterization (H2/H5) **NEXT**
 
-| Step | Work | Needs | Status |
-|---|---|---|---|
-| 0 | Record which model made each network | – | structured provenance and hash index completed; original transcript/model snapshot unknown |
-| 1 | Random-search baseline | – | implemented for development tasks; final confirmatory comparisons pending |
-| 2 | Hill-climbing and gradient-training baselines | 1 | both implemented for development; tuned, compute-matched baselines pending |
-| 3 | Task generator | 1 and 2, for difficulty levels | four realizable development families implemented; sealed difficulty strata pending |
-| 4 | Participant runner | 0; 3 for real runs | stub runner and opt-in OpenAI API adapter implemented; sealed execution pending |
-| 5 | Preregistration and analysis | 1–4 | planned |
-| 6 | First pilot (H1) | 5 | deterministic stub controls passed; independent model study pending |
+The previous 3/3 pair agreement was a constant-output collapse. Construct a new fixed-topology bank with *exactly eight positive and eight negative outputs per truth table* across multiple functions (parity, pairwise XOR, selector/multiplexer, nontrivial linear threshold). For each function present an original and a hidden-unit-permuted, positively rescaled ReLU network. Both have identical input/output semantics and architecture. Do not expose the family, answers, source seed or pair identity in model prompts.
 
-This order runs the agenda's stage 2 (synthesis on new tasks, H1) before its stage 1 (the weight-reading bank, H2), because the baselines, generator and runner built here are also what stage 1 needs.
+**Primary metric:** fraction of independent function pairs for which **both** networks are interpreted exactly. **Secondary:** individual exact truth tables, strict JSON validity, bitwise accuracy, agreement, rate of constant guesses, and comparison to all-zero/all-one controls (50% bit accuracy; 0 exact on this balanced bank). Evaluate oracle-reader and constant-reader controls before calling models.
 
-### Step 0: record which model made each network
+**First model pilot:** one deterministic greedy run on each network with a pinned, publicly accessible 1–2B instruction model, recorded prompt, checkpoint SHA, number of output tokens, latency, exact raw text and parser errors. No external API secrets or paid model calls. An explicit one-shot GitHub Actions launch can perform inference. This is exploratory, small, public, and **not** a preregistered or sealed capability estimate.
 
-Every network and patch in the repository should say who made it, in structured fields rather than free text.
+**Exit:** model outputs (including negative results), checksums, and replayable scores are archived; interpretation distinguishes genuine pair success from trivial agreement. Then extend to repeated seeds and more capable models, without selecting tasks based on test outcomes.
 
-- Add a `provenance` object to candidate and patch files: model name, reasoning setting, access route (for example "ChatGPT Plus plan, chat interface"), generation date, tools used, and a reference to the prompt or transcript. Unknown values are `null`, never guessed.
-- Backfill the existing files with the facts above, and confirm the origin of `repairs/xor2_bias_fix.json`. `fixtures/xor2_weights_only.json` stays minimal on purpose; its provenance is recorded here.
-- `python scripts/index_provenance.py` records the exact artifact hashes and structured metadata in `results/provenance_index.json`; ordinary benchmark reports remain backward-compatible. The benchmark can additionally embed provenance in a later schema revision.
-- Give `wsp start` the same fields. It now supports `--participant`, `--model`, `--prompt-file`, `--reasoning-effort`, `--access-route` and `--tools-used-json` so experimenters can record those session details.
-- In trials, provenance comes from the session, which the runner writes. What a participant writes about itself inside its submission is self-reported (PROTOCOL §9) and isn't trusted.
+### P2. Weight synthesis on genuinely novel specifications (H1)
 
-Done for the structured provenance/index requirement: 13/14 artifacts have complete fields, the deliberate minimal weight-only fixture is documented as an exception, the index is committed, and tests reject incomplete metadata. Original prompt/transcript and exact model snapshot remain unknown and must not be fabricated.
+Use constructively realizable generated families, with a fixed architecture known to contain a witness; compare weights-only, schema-constrained exemplars, and explanation-required prompts with matched inference settings. Count every invalid JSON response as failure, but report serialization compliance separately from mathematical accuracy. Start exploratory with one-shot/zero-validation, then compare feedback budgets of 0 and 3. Include **insufficient-architecture and contradiction** negatives where successful abstention is separately scored.
 
-### Step 1: random-search baseline
+**Exit:** at least 20 independent tasks per stratum, with a family held out entirely, recorded per-task scores, and proper conditioning on an explicitly declared data/feedback/tool budget. The symbolic witness must remain a separate baseline, not be shown to the participant.
 
-How well does blind search do with the same number of probes as a participant? A participant in a budgeted session sees validation scores for up to B candidates and then submits one. Random search gets the same deal.
+### P3. Stronger baselines, resources and preregistered analysis (H1/H2)
 
-- For each task and each budget B of 1, 3, 10 and 100: draw B random networks of the task's shape, score each on the validation split, keep the best, and score that one once on the final splits. Repeat with 30 seeds. Report the success rate per budget and the median number of probes before a network first passes validation. With B = 1 there is nothing to choose between, so that case equals the existing random baseline.
-- Draw weights from N(0, 1), as the existing baseline does. Make the distribution a parameter, so scale-matched or small-integer variants can be added (see the decisions below).
-- Keep the committed run small enough that `make check` stays under a minute; run larger budgets on demand.
+Random N(0,1), small-integer random, hill climbing, trained gradient systems, symbolic compilation, and an execution-enabled reader are distinct baselines. **Do not** call a comparison compute-matched just because the counts of validation probes are equal. Report the separately measurable resources: labeled oracle examples, forward evaluations, gradient steps, inference tokens, wall-clock time and approximate cost. Hold task, topology, prompt condition and random seeds fixed when making paired comparisons.
 
-Done when the results are committed in `results/` and reproduced by `make check`, tests check determinism and that the budget is respected, and RESULTS.md reports which tasks random search solves cheaply. Those tasks are weak tests of direct weight writing, and the numbers tell step 3 what "hard enough" means.
+Before a confirmatory trial, freeze the model revisions/prompts/code and register `docs/PREREGISTRATION.md` or an external registration specifying population, task families, primary outcome, sample sizes, stopping/exclusions, multiple comparisons and confidence intervals clustered by independent task. Draw held-out tasks **only after** freeze. Put the evaluator behind access restrictions; an environment variable alone is not a security boundary.
 
-### Step 2: hill-climbing and gradient-training baselines
+**Exit:** the preregistration predates held-out task generation and inference, with independently checked reports and explicit negative results.
 
-- **Hill climbing.** Start from a random network. Each probe perturbs the current best, and the change is kept if the validation score doesn't get worse. Same budgets as step 1.
-- **Gradient training.** Pure-Python backpropagation for the four supported activations, keeping the zero-dependency rule. Train on a seeded training split labeled by the oracle; the participant has the specification, so labeled data is fair. Measure the budget in forward and backward passes.
-- The hand-written constructions already serve as the symbolic baseline (PROTOCOL §5 (b)). A compiler from formulas to circuits (§5 (e)) comes later.
+### P4. Sparse repair in trained networks (H3)
 
-Done when both report success rate against budget on the step 1 tasks, committed and reproduced by `make check`.
+Train small models on genuinely different task instances, introduce blind parameter-level and functional defects with documented fault generators, and compare restricted direct edits to random-coordinate repair, gradient fine-tuning and unchanged controls. Measure repaired failures, regressions on previously correct cases, parameter count changed and validation calls. Distinguish independent sparse repairs from trivial restoration of a known original weight.
 
-### Step 3: task generator
+**Exit:** a repeatable trained-checkpoint repair study that reports collateral damage and failure cases, not only one illustrative bias fix.
 
-The ten fixed tasks are textbook constructions whose solutions are in this repository, so a model may simply remember them. PROTOCOL §6 asks for at least 20 new tasks per difficulty level and at least one problem family held out entirely.
+### P5. Theory and dissemination (H4–H10)
 
-- Seeded families with a size parameter. Boolean: random functions of n bits given as truth tables, bits of an adder's output, multiplexers, threshold functions. Continuous: random piecewise-linear functions of one or two inputs, random convex regions (generalizing `diamond2`), and controllers with more actions (generalizing `thermostat1`).
-- Each generated task has a natural-language and a formal specification, input and output semantics, an oracle, splits, and a network shape fixed per family, so the shape doesn't give away the function (PROTOCOL §8.2).
-- Difficulty levels come from size and from the step 1 and 2 baselines, for example "random search with 10 probes succeeds on fewer than 5% of seeds".
-- Development uses public seeds. Experiment tasks are drawn only after prompts and baselines are frozen (step 5), from secret seeds combined with `WSP_SEED_SALT`.
-- In code, the fixed `TASKS` table and the `target()` chain become a registry of families, with the ten current tasks as fixed instances.
+Establish invariance criteria over equivalence classes `W ~ W'` iff their functions agree on the specified domain; study restricted canonicalization, identifiability, complexity and robustness, followed by compositional construction and control systems. Report *what remains non-identifiable* (e.g. redundant units, cancellations, distribution-dependent equivalence). Prepare a methods/benchmark article first, an empirical results paper only if evidence warrants it.
 
-Done when at least 20 tasks per level and family can be generated deterministically from a seed, the evaluator, sessions and baselines all run on them, and tests pin a few generated instances.
+## Run strategy and safety rails
 
-### Step 4: participant runner
+- GitHub Actions on pushes performs **dependency-free validation only**. Dedicated one-shot inference workflows run only when an explicit launch marker changes or the workflow is manually dispatched. No recurring/automatic paid API calls.
+- Record each inference workflow's revision, runtime, result path and status. Never treat a successful CI job as proof of model success.
+- `main` receives direct fast-forward commits, not PRs. Workflows should preserve artifacts even when inference fails. Avoid auto-deploying secrets or storing hidden keys in the public repository.
+- Prefer a single decisive experiment over large matrices of weak tests. Keep exploratory and confirmatory results in different locations.
 
-- A script outside the evaluator, so scoring never depends on who produced a candidate (PROTOCOL §7).
-- For each trial: assign the condition at random with a trial ID (PROTOCOL §3); call `wsp start` with full provenance; send the frozen prompt (templates in PROTOCOL §7) with the task specification and network shape; keep the returned JSON exactly as received; probe within the budget; finalize once; and save the full transcript next to the session file.
-- Pilot conditions: blind against budgeted with 3 probes, crossed with explanation required against forbidden.
-- At least 5 independent attempts per model, condition and task (PROTOCOL §6), with a written cost estimate before anything runs.
-- Test it first with a stub participant that returns stored or random networks, which costs nothing.
+## Decisions before L3, not blockers for P1
 
-Done when a stub run completes end to end and every session file passes a provenance completeness check.
-
-### Step 5: preregistration and analysis
-
-- Before any experiment task is drawn or any model runs, commit `docs/PREREGISTRATION.md`. It states the hypothesis (H1); the primary metric (exact success on the final test, OOD and edge splits); the comparisons (each model and condition against random search, hill climbing and gradient training at the same probe budget); the statistics (bootstrap confidence intervals across tasks, paired comparisons on the same tasks); sample sizes; the stopping rule; and the exclusion rule, which is none: every failure counts, rejected JSON included. The commit date is the registration date.
-- Freeze prompts and baselines with a tagged release before drawing the experiment tasks.
-- An analysis script reads the session files and baseline results and writes its tables into `results/`, reproducible with `make check`.
-
-Done when the preregistration is committed before the first pilot session and the analysis runs on the stub sessions from step 4.
-
-### Step 6: first pilot
-
-Draw the experiment tasks from secret seeds, run the participants, analyze exactly as preregistered, and report in RESULTS.md, including failure and rejected-JSON rates. A null or negative result is reported the same way.
-
-## Model-trial results checkpoint: November 5, 2026
-
-Two single-sample, small-open-model (`Qwen/Qwen3-0.6B`) GitHub Actions experiments have now **completed**. Strict direct synthesis failed with **0/4 numeric weight artifacts** and no recoverable candidate even with post-hoc JSON inspection; the model copied task/architecture descriptions instead. Weight interpretation returned **6/6 valid JSON answers but 0/6 exact functions**, predicting an all-zero 16-bit truth table in all cases. The **3/3 equivalent-pair agreement is trivial output collapse**, not representation-invariant competence. Both experiments had zero validation feedback and preserved raw model responses and prompts in [experiments/reports](../experiments/reports/README.md). The runner and evaluator CI succeeded. This is an exploratory pipeline exercise, not a confirmatory study.
-
-Next priority: more capable models; cleaner JSON/weight serialization prompt ablations; class-balance baselines; repeated task seeds; and a sealed evaluator with matched compute and preregistered claims. An external model service cannot be launched through GitHub merely from a user's ChatGPT plan.
-
-## Implementation checkpoint: November 5, 2026
-
-- **H2/H5 empirical smoke test:** a separate one-time GitHub Action submits original and gauge-transformed equivalent networks to the pinned public Qwen3-0.6B model and scores the predicted truth tables without exposing the oracle; see [WEIGHT_READING_PILOT.md](WEIGHT_READING_PILOT.md). No result is asserted until the workflow completes.
-
-- **Optional genuine inference smoke test:** a one-time GitHub Actions CPU job uses the pinned public Qwen3-0.6B checkpoint on four generated tasks with zero feedback. This is exploratory only and its outcome is not known until the Action finishes; see [OPEN_MODEL_SMOKE.md](OPEN_MODEL_SMOKE.md).
-
-- **Provenance:** 13/14 development artifacts now have structured origin claims and exact SHA-256 index entries; the one weights-only fixture is intentionally metadata-free. The patch origin is unknown; original model version/transcript details are not authenticated. The session CLI can capture reasoning effort, access route and tools used. See [PROVENANCE.md](PROVENANCE.md).
-
-- **Architecture:** a supplied contract is now enforced by the ordinary session evaluator. Generated-model trials always lock exact depth, width and activations.
-- **Task construction:** four deterministic families have constructively realizable witness networks. A development CI job checks 128 witnesses; the families remain public and elementary.
-- **Baselines:** budgeted random search and hill climbing are implemented for generated tasks. A pure-Python supervised Adam baseline and finite-difference gradient checks are now implemented; tuned, matched-compute comparisons remain open.
-- **Participants:** deterministic oracle/random stubs exercise all feedback/explanation conditions. An opt-in OpenAI Responses API participant and manual GitHub Action are available, but no paid model run has been made.
-- **Interpretation:** 16 matched-topology development challenges preserve behavior and a *restricted* canonical fingerprint under positive ReLU rescaling and hidden permutations. This is not a complete canonicalization of neural functions.
-- **Documents:** see [EXPLORATORY.md](EXPLORATORY.md) and [THEORY.md](THEORY.md).
-
-Remaining prerequisites for confirmatory evidence include securely separated evaluator/participant, registered model trials, freeze of prompts and model versions, serious matched training/compiler baselines, tuned gradient baselines and preregistration. Passing stubs do not demonstrate LLM competence.
-
-## After the first pilot
-
-The other hypotheses in RESEARCH_AGENDA.md reuse these pieces. The weight-reading bank (H2, the agenda's stage 1) needs same-shape networks for different functions, randomized with `permute_hidden` and `rescale_relu`. Repairing real defects (H3) needs the networks trained in step 2. Composition (H4) and the rest follow.
-
-## Decisions for the repository owner
-
-- Which models to test, and the API budget for the pilot.
-- Whether chat-interface sessions, like the one that produced the existing networks, count as trials, and how their transcripts are archived.
-- The weight distribution for random search: N(0, 1) only, or also scale-matched and small-integer variants.
-- Where to preregister: a dated commit here, or an external registry as well.
-
-## Housekeeping
-
-- Add a `CITATION.cff`.
-- Set the GitHub repository description, which is empty.
+A budget and credentials for genuinely stronger hosted models, access to a sealed evaluator, choice of external preregistration, and an intended paper venue. These are not necessary to validate the current open-weight pilot. Do not retroactively count previous development conversations or prompt-tuned runs as preregistered blind trials.
